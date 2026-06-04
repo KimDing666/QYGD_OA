@@ -1,0 +1,2 @@
+﻿NewLabel0=Label files created on 06/04/2026 18:53:01 for label file Id OA and language en-US
+ ;Label file comment - see above label

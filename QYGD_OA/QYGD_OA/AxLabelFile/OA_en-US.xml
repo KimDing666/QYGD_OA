@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxLabelFile xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>OA_en-US</Name>
+	<LabelContentFileName>OA.en-US.label.txt</LabelContentFileName>
+	<LabelFileId>OA</LabelFileId>
+	<RelativeUriInModelStore>QYGD_OA\QYGD_OA\AxLabelFile\LabelResources\en-US\OA.en-US.label.txt</RelativeUriInModelStore>
+</AxLabelFile>

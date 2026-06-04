@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxLabelFile xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>OA_zh-Hans</Name>
+	<LabelContentFileName>OA.zh-Hans.label.txt</LabelContentFileName>
+	<LabelFileId>OA</LabelFileId>
+	<Language>zh-Hans</Language>
+	<RelativeUriInModelStore>QYGD_OA\QYGD_OA\AxLabelFile\LabelResources\zh-Hans\OA.zh-Hans.label.txt</RelativeUriInModelStore>
+</AxLabelFile>

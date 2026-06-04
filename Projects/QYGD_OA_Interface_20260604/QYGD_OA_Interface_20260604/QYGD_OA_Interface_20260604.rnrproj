@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>QYGD_OA</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <DeployOnline>False</DeployOnline>
+    <ProjectGuid>{83c76e20-469b-498a-9d0a-b5925dff26d2}</ProjectGuid>
+    <Name>QYGD_OA_Interface_20260604</Name>
+    <RootNamespace>QYGD_OA_Interface_20260604</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>False</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>
+    </Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="AxLabelFile\OA_en-US">
+      <SubType>Content</SubType>
+      <Name>OA_en-US</Name>
+      <Link>OA_en-US</Link>
+    </Content>
+    <Content Include="AxLabelFile\OA_zh-Hans">
+      <SubType>Content</SubType>
+      <Name>OA_zh-Hans</Name>
+      <Link>OA_zh-Hans</Link>
+    </Content>
+    <Content Include="OA.en-US.label.txt">
+      <SubType>Content</SubType>
+      <Name>OA.en-US.label.txt</Name>
+      <DependentUpon>AxLabelFile\OA_en-US</DependentUpon>
+    </Content>
+    <Content Include="OA.zh-Hans.label.txt">
+      <SubType>Content</SubType>
+      <Name>OA.zh-Hans.label.txt</Name>
+      <DependentUpon>AxLabelFile\OA_zh-Hans</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
+</Project>
