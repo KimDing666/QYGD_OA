@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>Global_QYGD_OA_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(classStr(Global))]
+final static class Global_QYGD_OA_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>getDataflowToken</Name>
+				<Source><![CDATA[
+    public static str getDataflowToken(str _authUrl,
+                                       str _clientId,
+                                       str _clientSecret)
+    {
+        System.Net.HttpWebRequest       request;
+        System.Net.HttpWebResponse      response;
+        System.Text.ASCIIEncoding       encodingASCII;
+        System.Net.WebHeaderCollection  httpHeader;
+        QYGD_OAAuthorizationToken       authorizationToken = new QYGD_OAAuthorizationToken();
+        GYGD_OAAccessToken              accessToken        = new GYGD_OAAccessToken();
+        System.IO.Stream                requestStream, receiveStream;
+        System.IO.StreamReader          readStream;
+        CLRObject                       clrObj;
+        str                             postData;
+        System.DateTime                 dateTime = DateTimeUtil::getSystemDateTime();
+        System.DateTimeOffset           curDateTime = new System.DateTimeOffset(dateTime);
+        TimeOfDay                       time    = curDateTime.ToUnixTimeSeconds();
+        //str                             signMD5 = Global::encryptMD5(strFmt("%1%2%3", _clientId, time, _clientSecret));
+        ;
+
+        try
+        {
+            new InteropPermission(InteropKind::ClrInterop).assert();
+            httpHeader = new System.Net.WebHeaderCollection();
+            clrObj  = System.Net.WebRequest::Create(_authUrl);
+            request = clrObj;
+
+            request.set_Method("POST");
+            request.set_KeepAlive(true);
+            request.set_ContentType("application/json");
+
+            //postData  = strFmt('{"clientid":"%1", "time": "%2", "signature":"%3"}', _clientId, time, signMD5);
+
+            encodingASCII = new System.Text.ASCIIEncoding();
+            var data                = encodingASCII.GetBytes(postData);
+            request.ContentLength   = data.Length;
+            requestStream = request.GetRequestStream();
+            requestStream.Write(data, 0, data.Length);
+            requestStream.Close();
+
+            response        = request.GetResponse();
+            receiveStream   = response.GetResponseStream();
+            readStream      = new System.IO.StreamReader(receiveStream, System.Text.Encoding::get_UTF8());
+
+            str result          = readStream.ReadToEnd();
+            authorizationToken  = FormJsonSerializer::deserializeObject(classNum(QYGD_OAAuthorizationToken), result);
+
+            if (authorizationToken.paramSuccess())
+            {
+                accessToken = authorizationToken.parmData();
+            }
+
+            response.Close();
+            readStream.Close();
+        }
+        catch (Exception::CLRError)
+        {
+            System.Exception ex = ClrInterop::getLastException();
+            if (ex != null)
+            {
+                ex = ex.get_InnerException();
+                error(ex.Message);
+            }
+        }
+
+        return accessToken.accessToken;
+
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

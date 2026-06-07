@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>GYGD_OAAccessToken</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+public class GYGD_OAAccessToken
+{
+    public str  accessToken;
+    public real expireInSeconds;
+
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>paramAccessToken</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('accessToken')]
+    public str paramAccessToken(str _accessToken = accessToken)
+    {
+        accessToken = _accessToken;
+
+        return accessToken;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>paramExpireInSeconds</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('expireInSeconds')]
+    public real paramExpireInSeconds(real _expireInSeconds = expireInSeconds)
+    {
+        expireInSeconds = _expireInSeconds;
+
+        return expireInSeconds;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

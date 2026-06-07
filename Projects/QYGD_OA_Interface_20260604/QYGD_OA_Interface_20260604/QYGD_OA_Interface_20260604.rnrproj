@@ -32,15 +32,66 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="Data Entity Extensions\" />
+    <Folder Include="Label Files\" />
+    <Folder Include="Table Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AxClass\Global_QYGD_OA_Extension">
+      <SubType>Content</SubType>
+      <Name>Global_QYGD_OA_Extension</Name>
+      <Link>Classes\Global_QYGD_OA_Extension</Link>
+    </Content>
+    <Content Include="AxClass\GYGD_OAAccessToken">
+      <SubType>Content</SubType>
+      <Name>GYGD_OAAccessToken</Name>
+      <Link>Classes\GYGD_OAAccessToken</Link>
+    </Content>
+    <Content Include="AxClass\HcmPositionV2EntityDataEntityQYGD_Extension">
+      <SubType>Content</SubType>
+      <Name>HcmPositionV2EntityDataEntityQYGD_Extension</Name>
+      <Link>Classes\HcmPositionV2EntityDataEntityQYGD_Extension</Link>
+    </Content>
+    <Content Include="AxClass\QYGD_OAAuthorizationToken">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAAuthorizationToken</Name>
+      <Link>Classes\QYGD_OAAuthorizationToken</Link>
+    </Content>
+    <Content Include="AxClass\VendVendorV2EntityDataEntityQYGD_Extension">
+      <SubType>Content</SubType>
+      <Name>VendVendorV2EntityDataEntityQYGD_Extension</Name>
+      <Link>Classes\VendVendorV2EntityDataEntityQYGD_Extension</Link>
+    </Content>
+    <Content Include="AxDataEntityViewExtension\DimensionSetEntity.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>DimensionSetEntity.QYGD_OA</Name>
+      <Link>Data Entity Extensions\DimensionSetEntity.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxDataEntityViewExtension\HcmPositionV2Entity.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>HcmPositionV2Entity.QYGD_OA</Name>
+      <Link>Data Entity Extensions\HcmPositionV2Entity.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxDataEntityViewExtension\VendVendorV2Entity.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>VendVendorV2Entity.QYGD_OA</Name>
+      <Link>Data Entity Extensions\VendVendorV2Entity.QYGD_OA</Link>
+    </Content>
     <Content Include="AxLabelFile\OA_en-US">
       <SubType>Content</SubType>
       <Name>OA_en-US</Name>
-      <Link>OA_en-US</Link>
+      <Link>Label Files\OA_en-US</Link>
     </Content>
     <Content Include="AxLabelFile\OA_zh-Hans">
       <SubType>Content</SubType>
       <Name>OA_zh-Hans</Name>
-      <Link>OA_zh-Hans</Link>
+      <Link>Label Files\OA_zh-Hans</Link>
+    </Content>
+    <Content Include="AxTableExtension\HcmPositionV2Staging.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>HcmPositionV2Staging.QYGD_OA</Name>
+      <Link>Table Extensions\HcmPositionV2Staging.QYGD_OA</Link>
     </Content>
     <Content Include="OA.en-US.label.txt">
       <SubType>Content</SubType>

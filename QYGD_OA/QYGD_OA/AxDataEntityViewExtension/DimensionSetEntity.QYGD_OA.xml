@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxDataEntityViewExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>DimensionSetEntity.QYGD_OA</Name>
+	<DataSources />
+	<FieldGroupExtensions />
+	<FieldGroups />
+	<FieldModifications />
+	<Fields>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewUnmappedFieldString">
+			<Name>FD03_CostCenter</Name>
+			<ComputedFieldMethod>getValueColumnForDimensionAttributeSql</ComputedFieldMethod>
+			<ExtendedDataType>DimensionValue</ExtendedDataType>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewUnmappedFieldString">
+			<Name>FD02_Department</Name>
+			<ComputedFieldMethod>getValueColumnForDimensionAttributeSql</ComputedFieldMethod>
+			<ExtendedDataType>DimensionValue</ExtendedDataType>
+		</AxDataEntityViewField>
+	</Fields>
+	<Mappings />
+	<PropertyModifications />
+	<Relations />
+</AxDataEntityViewExtension>

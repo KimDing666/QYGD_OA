@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>QYGD_OAAuthorizationToken</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+public class QYGD_OAAuthorizationToken
+{
+    public int  code;
+    public GYGD_OAAccessToken data;
+    public str  msg;
+    public boolean success;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>paramCode</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('code')]
+    public int paramCode(int _code = code)
+    {
+        code = _code;
+
+        return code;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmData</Name>
+				<Source><![CDATA[
+    [
+    DataMemberAttribute('data'),
+    DataCollectionAttribute(Types::Class, classStr(GYGD_OAAccessToken))
+    ]
+    public GYGD_OAAccessToken parmData(GYGD_OAAccessToken _data = data)
+    {
+        data = _data;
+        return data;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>paramMsg</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('msg')]
+    public str paramMsg(str _msg = msg)
+    {
+        msg = _msg;
+
+        return msg;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>paramSuccess</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('success')]
+    public boolean paramSuccess(boolean _success = success)
+    {
+        success = _success;
+
+        return success;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

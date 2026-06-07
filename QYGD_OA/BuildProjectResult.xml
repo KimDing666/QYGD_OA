@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagnostics
+  GenerationTime="2026-06-07T19:48:59.7369107+08:00">
+  <Items>
+    <Diagnostic>
+      <DiagnosticType>ExternalReference</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Reference/Microsoft.Dynamics___vices.PricingEngine</Path>
+      <Moniker>AssemblyFileNotFound</Moniker>
+      <Message>Assembly 'Microsoft.Dynamics.Commerce.Runtime.Entities.AttributeBasedPricing, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' failed to load because it was not found.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>ExternalReference</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Reference/Azure.Core</Path>
+      <Moniker>AssemblyFileNotFound</Moniker>
+      <Message>Assembly 'System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' failed to load because it was not found.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Generation</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://View/HcmPositionV2Entity</Path>
+      <ElementType>View</ElementType>
+      <Moniker>IsRuntimeServicesMode</Moniker>
+      <Line>0</Line>
+      <Column>0</Column>
+      <Message>Is Runtime Services mode: False</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/Global_QYGD_OA_Extension/Method/getDataflowToken</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRange</Moniker>
+      <Line>20</Line>
+      <Column>9</Column>
+      <EndLine>20</EndLine>
+      <EndColumn>83</EndColumn>
+      <Message>The type conversion from 'System.Int64' to 'int(TimeOfDay)' loses range.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityViewExtension/VendVendorV2Entity.QYGD_OA/Fields/CommercialRegisterName/DataField</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CommercialRegister' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityViewExtension/VendVendorV2Entity.QYGD_OA/Fields/CommercialRegisterInsetNumber/DataField</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CommercialRegisterInsetNumber' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityViewExtension/VendVendorV2Entity.QYGD_OA/Fields/CommercialRegisterSection/DataField</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CommercialRegisterSection' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityViewExtension/VendVendorV2Entity.QYGD_OA/Fields/EnterpriseNumber/DataField</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'EnterpriseNumber' is marked as obsolete. </Message>
+    </Diagnostic>
+  </Items>
+  <Aliases />
+</Diagnostics>

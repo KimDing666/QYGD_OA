@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>VendVendorV2EntityDataEntityQYGD_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(dataentityviewstr(VendVendorV2Entity))]
+final class VendVendorV2EntityDataEntityQYGD_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>postLoad</Name>
+				<Source><![CDATA[
+    public void postLoad()
+    {
+        next postLoad();
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
