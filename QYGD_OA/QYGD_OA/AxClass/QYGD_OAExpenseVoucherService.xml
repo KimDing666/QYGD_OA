@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>QYGD_OAExpenseVoucherService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class QYGD_OAExpenseVoucherService
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>generateExpenseVoucher</Name>
+				<Source><![CDATA[
+    public QYGD_OAExpenseVoucherResponse generateExpenseVoucher(QYGD_OAExpenseVoucherResponse _requestJson)
+    {
+        QYGD_OAExpenseVoucherResponse response = new QYGD_OAExpenseVoucherResponse();
+
+        //this.createPaymSched(_requestJson, response);
+
+        return response;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

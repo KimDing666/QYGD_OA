@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2026-06-08T21:15:16.5346939+08:00">
+  GenerationTime="2026-06-08T12:14:54.9357339+08:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>ExternalReference</DiagnosticType>
@@ -37,6 +37,34 @@
       <EndLine>20</EndLine>
       <EndColumn>83</EndColumn>
       <Message>The type conversion from 'System.Int64' to 'int(TimeOfDay)' loses range.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityViewExtension/VendVendorV2Entity.QYGD_OA/Fields/CommercialRegisterName/DataField</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CommercialRegister' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityViewExtension/VendVendorV2Entity.QYGD_OA/Fields/CommercialRegisterInsetNumber/DataField</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CommercialRegisterInsetNumber' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityViewExtension/VendVendorV2Entity.QYGD_OA/Fields/CommercialRegisterSection/DataField</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CommercialRegisterSection' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityViewExtension/VendVendorV2Entity.QYGD_OA/Fields/EnterpriseNumber/DataField</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'EnterpriseNumber' is marked as obsolete. </Message>
     </Diagnostic>
   </Items>
   <Aliases />

@@ -1,2 +1,24 @@
-﻿NewLabel0=Label files created on 06/04/2026 18:53:01 for label file Id OA and language en-US
+﻿GenerateExpenseVoucherService=Expense voucher generation service
+NewLabel0=Label files created on 06/04/2026 18:53:01 for label file Id OA and language en-US
  ;Label file comment - see above label
+OAExpenseCostCenter=Cost center
+OAExpenseDepartment=Deparment
+OAExpenseHeaderStagingTable=OA Expense staging header table
+OAExpenseJournalNum=OA Journal number
+OAExpenseLineCategory=Category
+OAExpenseLineCurrencyCode=Currency
+OAExpenseLineExchRate=Exchange rate
+OAExpenseLineExcludeTaxAmount=Excluding tax amount
+OAExpenseLineExpenseHeader=Expense header reference
+OAExpenseLineIncludeTaxAmount=Including tax amount
+OAExpenseLineNum=Line number
+OAExpenseLinesStagingTable=OA Expense staging lines table
+OAExpenseLineTax=Tax amount
+OAExpenseLineTxt=Txt
+OAExpenseNum=Expense number
+OAExpenseOwenEntity=Owen entity
+OAExpensePaymentMethod=Payment method
+OAExpenseProject=Project
+OAExpenseTransDate=Transaction date
+OAExpenseVendorCode=Vendor code
+OAExpenseVoucherStaging=OA Expense voucher staging list

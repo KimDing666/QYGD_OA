@@ -34,8 +34,13 @@
   <ItemGroup>
     <Folder Include="Classes\" />
     <Folder Include="Data Entity Extensions\" />
+    <Folder Include="Display Menu Items\" />
+    <Folder Include="Forms\" />
     <Folder Include="Label Files\" />
+    <Folder Include="Service Groups\" />
+    <Folder Include="Services\" />
     <Folder Include="Table Extensions\" />
+    <Folder Include="Tables\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AxClass\Global_QYGD_OA_Extension">
@@ -58,15 +63,40 @@
       <Name>QYGD_OAAuthorizationToken</Name>
       <Link>Classes\QYGD_OAAuthorizationToken</Link>
     </Content>
+    <Content Include="AxClass\QYGD_OAExpenseHeaderContract">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseHeaderContract</Name>
+      <Link>Classes\QYGD_OAExpenseHeaderContract</Link>
+    </Content>
+    <Content Include="AxClass\QYGD_OAExpenseLinesContract">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseLinesContract</Name>
+      <Link>Classes\QYGD_OAExpenseLinesContract</Link>
+    </Content>
+    <Content Include="AxClass\QYGD_OAExpenseVoucherResponse">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseVoucherResponse</Name>
+      <Link>Classes\QYGD_OAExpenseVoucherResponse</Link>
+    </Content>
+    <Content Include="AxClass\QYGD_OAExpenseVoucherService">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseVoucherService</Name>
+      <Link>Classes\QYGD_OAExpenseVoucherService</Link>
+    </Content>
     <Content Include="AxClass\VendVendorV2EntityDataEntityQYGD_Extension">
       <SubType>Content</SubType>
       <Name>VendVendorV2EntityDataEntityQYGD_Extension</Name>
       <Link>Classes\VendVendorV2EntityDataEntityQYGD_Extension</Link>
     </Content>
-    <Content Include="AxDataEntityViewExtension\DimensionSetEntity.QYGD_OA">
+    <Content Include="AxDataEntityViewExtension\DimensionCombinationEntity.DimensionIntegration">
       <SubType>Content</SubType>
-      <Name>DimensionSetEntity.QYGD_OA</Name>
-      <Link>Data Entity Extensions\DimensionSetEntity.QYGD_OA</Link>
+      <Name>DimensionCombinationEntity.DimensionIntegration</Name>
+      <Link>Data Entity Extensions\DimensionCombinationEntity.DimensionIntegration</Link>
+    </Content>
+    <Content Include="AxDataEntityViewExtension\DimensionSetEntity.DimensionIntegration">
+      <SubType>Content</SubType>
+      <Name>DimensionSetEntity.DimensionIntegration</Name>
+      <Link>Data Entity Extensions\DimensionSetEntity.DimensionIntegration</Link>
     </Content>
     <Content Include="AxDataEntityViewExtension\HcmPositionV2Entity.QYGD_OA">
       <SubType>Content</SubType>
@@ -78,6 +108,11 @@
       <Name>VendVendorV2Entity.QYGD_OA</Name>
       <Link>Data Entity Extensions\VendVendorV2Entity.QYGD_OA</Link>
     </Content>
+    <Content Include="AxForm\QYGD_OAExpenseHeaderSagingTable">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseHeaderSagingTable</Name>
+      <Link>Forms\QYGD_OAExpenseHeaderSagingTable</Link>
+    </Content>
     <Content Include="AxLabelFile\OA_en-US">
       <SubType>Content</SubType>
       <Name>OA_en-US</Name>
@@ -88,10 +123,40 @@
       <Name>OA_zh-Hans</Name>
       <Link>Label Files\OA_zh-Hans</Link>
     </Content>
+    <Content Include="AxMenuItemDisplay\QYGD_OAExpenseHeaderSagingTable">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseHeaderSagingTable</Name>
+      <Link>Display Menu Items\QYGD_OAExpenseHeaderSagingTable</Link>
+    </Content>
+    <Content Include="AxServiceGroup\QYGD_OAExpenseVoucherServiceGroup">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseVoucherServiceGroup</Name>
+      <Link>Service Groups\QYGD_OAExpenseVoucherServiceGroup</Link>
+    </Content>
+    <Content Include="AxService\QYGD_OAExpenseVoucherService">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseVoucherService</Name>
+      <Link>Services\QYGD_OAExpenseVoucherService</Link>
+    </Content>
     <Content Include="AxTableExtension\HcmPositionV2Staging.QYGD_OA">
       <SubType>Content</SubType>
       <Name>HcmPositionV2Staging.QYGD_OA</Name>
       <Link>Table Extensions\HcmPositionV2Staging.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxTableExtension\VendVendorV2Staging.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>VendVendorV2Staging.QYGD_OA</Name>
+      <Link>Table Extensions\VendVendorV2Staging.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxTable\QYGD_OAExpenseHeaderSagingTable">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseHeaderSagingTable</Name>
+      <Link>Tables\QYGD_OAExpenseHeaderSagingTable</Link>
+    </Content>
+    <Content Include="AxTable\QYGD_OAExpenseLinesSagingTable">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseLinesSagingTable</Name>
+      <Link>Tables\QYGD_OAExpenseLinesSagingTable</Link>
     </Content>
     <Content Include="OA.en-US.label.txt">
       <SubType>Content</SubType>

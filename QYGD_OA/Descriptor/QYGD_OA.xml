@@ -14,13 +14,17 @@
 	<ModuleReferences xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
 		<d2p1:string>ApplicationPlatform</d2p1:string>
 		<d2p1:string>ApplicationSuite</d2p1:string>
+		<d2p1:string>Currency</d2p1:string>
 		<d2p1:string>Dimensions</d2p1:string>
 		<d2p1:string>Directory</d2p1:string>
+		<d2p1:string>Ledger</d2p1:string>
 		<d2p1:string>OXC_Basic</d2p1:string>
 		<d2p1:string>Personnel</d2p1:string>
 		<d2p1:string>PersonnelCore</d2p1:string>
 		<d2p1:string>PersonnelManagement</d2p1:string>
 		<d2p1:string>QYGD</d2p1:string>
+		<d2p1:string>SourceDocumentation</d2p1:string>
+		<d2p1:string>SourceDocumentationTypes</d2p1:string>
 	</ModuleReferences>
 	<Name>QYGD_OA</Name>
 	<Publisher>Admin</Publisher>

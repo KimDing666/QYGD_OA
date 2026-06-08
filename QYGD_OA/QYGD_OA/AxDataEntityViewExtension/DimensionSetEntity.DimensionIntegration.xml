@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxDataEntityViewExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>DimensionSetEntity.DimensionIntegration</Name>
+	<DataSources />
+	<FieldGroupExtensions />
+	<FieldGroups />
+	<FieldModifications />
+	<Fields>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewUnmappedFieldString">
+			<Name>FD02_Department</Name>
+			<ComputedFieldMethod>getValueColumnForDimensionAttributeSql</ComputedFieldMethod>
+			<ExtendedDataType>DimensionValue</ExtendedDataType>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewUnmappedFieldString">
+			<Name>FD03_CostCenter</Name>
+			<ComputedFieldMethod>getValueColumnForDimensionAttributeSql</ComputedFieldMethod>
+			<ExtendedDataType>DimensionValue</ExtendedDataType>
+		</AxDataEntityViewField>
+	</Fields>
+	<Mappings />
+	<PropertyModifications />
+	<Relations>
+		<AxDataEntityViewRelation>
+			<Name>FD02_Department</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<RelatedDataEntity>DimAttributeOMDepartment</RelatedDataEntity>
+			<RelatedDataEntityCardinality>ZeroOne</RelatedDataEntityCardinality>
+			<RelatedDataEntityRole>DimensionSetBranch</RelatedDataEntityRole>
+			<RelationshipType>Association</RelationshipType>
+			<Role>DimensionSetBranch</Role>
+			<Constraints>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintField">
+					<Name>RelationConstraintField1</Name>
+					<Field>FD02_Department</Field>
+					<RelatedField>Value</RelatedField>
+				</AxDataEntityViewRelationConstraint>
+			</Constraints>
+		</AxDataEntityViewRelation>
+		<AxDataEntityViewRelation>
+			<Name>FD03_CostCenter</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<RelatedDataEntity>DimAttributeOMCostCenter</RelatedDataEntity>
+			<RelatedDataEntityCardinality>ZeroOne</RelatedDataEntityCardinality>
+			<RelatedDataEntityRole>DimensionSetBranch</RelatedDataEntityRole>
+			<RelationshipType>Association</RelationshipType>
+			<Role>DimensionSetBranch</Role>
+			<Constraints>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintField">
+					<Name>RelationConstraintField2</Name>
+					<Field>FD03_CostCenter</Field>
+					<RelatedField>Value</RelatedField>
+				</AxDataEntityViewRelationConstraint>
+			</Constraints>
+		</AxDataEntityViewRelation>
+	</Relations>
+</AxDataEntityViewExtension>

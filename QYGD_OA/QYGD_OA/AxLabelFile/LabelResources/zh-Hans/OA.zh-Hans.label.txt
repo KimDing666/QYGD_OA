@@ -1,2 +1,24 @@
-﻿NewLabel0=Label files created on 06/04/2026 18:53:01 for label file Id OA and language zh-Hans
+﻿GenerateExpenseVoucherService=OA报销凭证生成服务
+NewLabel0=Label files created on 06/04/2026 18:53:01 for label file Id OA and language zh-Hans
  ;Label file comment - see above label
+OAExpenseCostCenter=成本中心
+OAExpenseDepartment=部门
+OAExpenseHeaderStagingTable=OA报销凭证暂存表
+OAExpenseJournalNum=OA费用日记账编号
+OAExpenseLineCategory=费用类别
+OAExpenseLineCurrencyCode=币种
+OAExpenseLineExchRate=实际汇率
+OAExpenseLineExcludeTaxAmount=不含税金额
+OAExpenseLineExpenseHeader=OA报销凭证暂存参考
+OAExpenseLineIncludeTaxAmount=含税金额
+OAExpenseLineNum=行号
+OAExpenseLinesStagingTable=OA报销凭证暂存明细表
+OAExpenseLineTax=实际税额
+OAExpenseLineTxt=摘要
+OAExpenseNum=报销单号
+OAExpenseOwenEntity=所属法人
+OAExpensePaymentMethod=付款方式
+OAExpenseProject=项目
+OAExpenseTransDate=交易日期
+OAExpenseVendorCode=供应商代码
+OAExpenseVoucherStaging=OA报销凭证暂存清单

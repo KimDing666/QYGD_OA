@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxService xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>QYGD_OAExpenseVoucherService</Name>
+	<Class>QYGD_OAExpenseVoucherService</Class>
+	<Description>@OA:GenerateExpenseVoucherService</Description>
+	<ExternalName>OAExpenseVoucherService</ExternalName>
+	<ServiceOperations />
+</AxService>

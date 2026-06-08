@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AxTableExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-	<Name>HcmPositionV2Staging.QYGD_OA</Name>
+	<Name>VendVendorV2Staging.QYGD_OA</Name>
 	<FieldGroupExtensions />
 	<FieldGroups />
 	<FieldModifications />
 	<Fields>
 		<AxTableField xmlns=""
 			i:type="AxTableFieldString">
-			<Name>QYGD_ParentPositionId</Name>
-			<ExtendedDataType>HcmPositionId</ExtendedDataType>
-			<IsManuallyUpdated>Yes</IsManuallyUpdated>
-			<IsSystemGenerated>Yes</IsSystemGenerated>
-			<Label>@SYS115247</Label>
+			<Name>FD02_Department</Name>
+			<ExtendedDataType>DimensionValue</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>FD03_CostCenter</Name>
+			<ExtendedDataType>DimensionValue</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

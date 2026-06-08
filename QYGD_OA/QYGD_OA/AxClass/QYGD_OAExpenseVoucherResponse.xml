@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>QYGD_OAExpenseVoucherResponse</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class QYGD_OAExpenseVoucherResponse
+{
+    int statusCode;
+    str message;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmStatusCode</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute("status")]
+    public int parmStatusCode(int _statusCode = statusCode)
+    {
+        if (!prmIsDefault(_statusCode))
+        {
+            statusCode = _statusCode;
+        }
+
+        return statusCode;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmMessage</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute("message")]
+    public str parmMessage(str _message = message)
+    {
+        if (!prmIsDefault(_message))
+        {
+            message = _message;
+        }
+
+        return message;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

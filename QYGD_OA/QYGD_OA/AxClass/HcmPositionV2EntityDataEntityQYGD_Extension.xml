@@ -14,7 +14,13 @@ final class HcmPositionV2EntityDataEntityQYGD_Extension
 				<Source><![CDATA[
     public void postLoad()
     {
+        HcmPosition position = HcmPosition::findByPosition(this.PositionId);
+
         next postLoad();
+
+        HcmPositionHierarchy positionHierarchy = HcmPositionHierarchy::findByPosition(position.RecId);
+
+        this.QYGD_ParentPositionId  = HcmPosition::find(positionHierarchy.ParentPosition).PositionId;
     }
 
 ]]></Source>

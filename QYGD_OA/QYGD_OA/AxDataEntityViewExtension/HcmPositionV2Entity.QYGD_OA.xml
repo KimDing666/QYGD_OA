@@ -5,7 +5,15 @@
 	<FieldGroupExtensions />
 	<FieldGroups />
 	<FieldModifications />
-	<Fields />
+	<Fields>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewUnmappedFieldString">
+			<Name>QYGD_ParentPositionId</Name>
+			<Label>@SYS115247</Label>
+			<ExtendedDataType>HcmPositionId</ExtendedDataType>
+			<IsComputedField>No</IsComputedField>
+		</AxDataEntityViewField>
+	</Fields>
 	<Mappings />
 	<PropertyModifications />
 	<Relations />
