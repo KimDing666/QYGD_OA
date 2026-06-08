@@ -37,6 +37,8 @@
     <Folder Include="Display Menu Items\" />
     <Folder Include="Forms\" />
     <Folder Include="Label Files\" />
+    <Folder Include="Menu Extensions\" />
+    <Folder Include="Security Privileges\" />
     <Folder Include="Service Groups\" />
     <Folder Include="Services\" />
     <Folder Include="Table Extensions\" />
@@ -123,10 +125,20 @@
       <Name>OA_zh-Hans</Name>
       <Link>Label Files\OA_zh-Hans</Link>
     </Content>
+    <Content Include="AxMenuExtension\GeneralLedger.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>GeneralLedger.QYGD_OA</Name>
+      <Link>Menu Extensions\GeneralLedger.QYGD_OA</Link>
+    </Content>
     <Content Include="AxMenuItemDisplay\QYGD_OAExpenseHeaderSagingTable">
       <SubType>Content</SubType>
       <Name>QYGD_OAExpenseHeaderSagingTable</Name>
       <Link>Display Menu Items\QYGD_OAExpenseHeaderSagingTable</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\QYGD_OAExpenseHeaderSagingTableMaintain">
+      <SubType>Content</SubType>
+      <Name>QYGD_OAExpenseHeaderSagingTableMaintain</Name>
+      <Link>Security Privileges\QYGD_OAExpenseHeaderSagingTableMaintain</Link>
     </Content>
     <Content Include="AxServiceGroup\QYGD_OAExpenseVoucherServiceGroup">
       <SubType>Content</SubType>

@@ -78,8 +78,36 @@ public class QYGD_OAExpenseHeaderSagingTable extends common
 		</AxTableFieldGroup>
 		<AxTableFieldGroup>
 			<Name>Overview</Name>
-			<Label>Overview</Label>
-			<Fields />
+			<Label>@SYS34991</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>ExpenseNum</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>VendorCode</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>Department</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>CostCenter</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>Project</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>PaymentMethod</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>OwenEntity</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>TransDate</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>JournalNum</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
 		</AxTableFieldGroup>
 	</FieldGroups>
 	<Fields>

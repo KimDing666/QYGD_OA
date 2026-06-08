@@ -83,7 +83,8 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 	<Design>
 		<Caption xmlns="">@OA:OAExpenseVoucherStaging</Caption>
 		<DataSource xmlns="">QYGD_OAExpenseHeaderSagingTable</DataSource>
-		<Pattern xmlns="">Custom</Pattern>
+		<Pattern xmlns="">TaskParentChild</Pattern>
+		<PatternVersion xmlns="">1.2</PatternVersion>
 		<TitleDataSource xmlns="">QYGD_OAExpenseHeaderSagingTable</TitleDataSource>
 		<Controls xmlns="">
 			<AxFormControl xmlns=""
@@ -93,6 +94,252 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 				<FormControlExtension
 					i:nil="true" />
 				<Controls />
+			</AxFormControl>
+			<AxFormControl xmlns=""
+				i:type="AxFormTabControl">
+				<Name>TabHeader</Name>
+				<Type>Tab</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<Controls>
+					<AxFormControl xmlns=""
+						i:type="AxFormTabPageControl">
+						<Name>TabPageHeader</Name>
+						<Pattern>ToolbarList</Pattern>
+						<PatternVersion>1.2</PatternVersion>
+						<Type>TabPage</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<Controls>
+							<AxFormControl xmlns=""
+								i:type="AxFormActionPaneControl">
+								<Name>HeaderActionPane</Name>
+								<Type>ActionPane</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<Controls />
+								<Style>Strip</Style>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormGridControl">
+								<Name>HeaderGrid</Name>
+								<Type>Grid</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<Controls>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_ExpenseNum</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>ExpenseNum</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_VendorCode</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>VendorCode</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_Department</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>Department</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_CostCenter</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>CostCenter</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_Project</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>Project</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_PaymentMethod</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>PaymentMethod</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_OwenEntity</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>OwenEntity</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormDateControl">
+										<Name>HeaderGrid_TransDate</Name>
+										<Type>Date</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>TransDate</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_JournalNum</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>JournalNum</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+								</Controls>
+								<DataGroup>Overview</DataGroup>
+								<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+							</AxFormControl>
+						</Controls>
+						<Caption>@OA:OAExpenseTabHeader</Caption>
+					</AxFormControl>
+				</Controls>
+				<ArrangeMethod>Vertical</ArrangeMethod>
+			</AxFormControl>
+			<AxFormControl xmlns=""
+				i:type="AxFormGroupControl">
+				<Name>FooterGroup</Name>
+				<Type>Group</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<Controls />
+				<Style>SplitterHorizontalContainer</Style>
+			</AxFormControl>
+			<AxFormControl xmlns=""
+				i:type="AxFormTabControl">
+				<Name>TabLines</Name>
+				<Type>Tab</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<Controls>
+					<AxFormControl xmlns=""
+						i:type="AxFormTabPageControl">
+						<Name>TabPageLines</Name>
+						<Pattern>ToolbarList</Pattern>
+						<PatternVersion>1.2</PatternVersion>
+						<Type>TabPage</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<Controls>
+							<AxFormControl xmlns=""
+								i:type="AxFormActionPaneControl">
+								<Name>LinesActionPane</Name>
+								<Type>ActionPane</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<Controls />
+								<Style>Strip</Style>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormGridControl">
+								<Name>LinesGrid</Name>
+								<Type>Grid</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<Controls>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>LinesGrid_LineNum</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>LineNum</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>LinesGrid_Category</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>Category</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>LinesGrid_Txt</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>Txt</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>LinesGrid_CurrencyCode</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>CurrencyCode</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>LinesGrid_ExchRate</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>ExchRate</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>LinesGrid_ExcludeTaxAmount</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>ExcludeTaxAmount</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>LinesGrid_TaxAmount</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>TaxAmount</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>LinesGrid_IncludeTaxAmount</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>IncludeTaxAmount</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
+								</Controls>
+								<DataGroup>Overview</DataGroup>
+								<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+							</AxFormControl>
+						</Controls>
+						<Caption>@OA:OAExpenseLineDetails</Caption>
+					</AxFormControl>
+				</Controls>
+				<ArrangeMethod>Vertical</ArrangeMethod>
 			</AxFormControl>
 		</Controls>
 	</Design>
