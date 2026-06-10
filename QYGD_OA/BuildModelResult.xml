@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2026-06-08T12:14:54.9357339+08:00">
+  GenerationTime="2026-06-09T22:36:32.3644344+08:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>ExternalReference</DiagnosticType>
@@ -37,6 +37,13 @@
       <EndLine>20</EndLine>
       <EndColumn>83</EndColumn>
       <Message>The type conversion from 'System.Int64' to 'int(TimeOfDay)' loses range.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityViewExtension/DimensionSetEntity.DimensionIntegration/Relations/MainAccount/Constraints</Path>
+      <Moniker>RelationHasNoContraints</Moniker>
+      <Message>Relation 'MainAccount' has no constraints defined.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>

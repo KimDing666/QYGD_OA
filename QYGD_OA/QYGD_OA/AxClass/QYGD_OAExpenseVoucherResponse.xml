@@ -5,8 +5,9 @@
 		<Declaration><![CDATA[
 public class QYGD_OAExpenseVoucherResponse
 {
-    int statusCode;
-    str message;
+    private int statusCode;
+    private str message;
+    private str voucherId;
 
 }
 ]]></Declaration>
@@ -23,6 +24,22 @@ public class QYGD_OAExpenseVoucherResponse
         }
 
         return statusCode;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmVoucherId</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute("voucherId")]
+    public str parmVoucherId(str _voucherId = voucherId)
+    {
+        if (!prmIsDefault(_voucherId))
+        {
+            voucherId = _voucherId;
+        }
+
+        return voucherId;
     }
 
 ]]></Source>

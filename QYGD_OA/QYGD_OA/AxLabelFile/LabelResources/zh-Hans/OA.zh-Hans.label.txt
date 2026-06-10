@@ -2,6 +2,7 @@
 NewLabel0=Label files created on 06/04/2026 18:53:01 for label file Id OA and language zh-Hans
  ;Label file comment - see above label
 OAExpenseCostCenter=成本中心
+OAExpenseDate=费用日期
 OAExpenseDepartment=部门
 OAExpenseHeaderMaintain=维护OA报销凭证暂存
 OAExpenseHeaderStagingTable=OA报销凭证暂存表
@@ -20,6 +21,7 @@ OAExpenseLineTxt=摘要
 OAExpenseNum=报销单号
 OAExpenseOwenEntity=所属法人
 OAExpensePaymentMethod=付款方式
+OAExpensePaymentType=费用类型
 OAExpenseProject=项目
 OAExpenseTabHeader=OA报销凭证暂存
 OAExpenseTransDate=交易日期

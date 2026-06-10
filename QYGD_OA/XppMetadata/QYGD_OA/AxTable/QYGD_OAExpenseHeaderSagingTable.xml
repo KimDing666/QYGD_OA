@@ -33,5 +33,13 @@
 				<TypeName>QYGD_OAExpenseHeaderSagingTable</TypeName>
 			</ReturnType>
 		</Method>
+		<Method>
+			<Name>initValue</Name>
+			<Visibility>Public</Visibility>
+			<ReturnType>
+				<Tags></Tags>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
 	</Methods>
 </z:anyType>

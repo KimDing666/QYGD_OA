@@ -6,8 +6,120 @@
 [DataContractAttribute]
 public class QYGD_OAExpenseHeaderContract
 {
+    private str  expenseNum;
+    private str  department;
+    private str  costCenter;
+    private str  paymentMethod;
+    private str  vendorCode;
+    private str  owenEntity;
+    private int  paymentType;
+    private List expenseLines;
+
 }
 ]]></Declaration>
-		<Methods />
+		<Methods>
+			<Method>
+				<Name>parmExpenseNum</Name>
+				<Source><![CDATA[
+    [DataMember("expenseNum")]
+    public str parmExpenseNum(str _expenseNum = expenseNum)
+    {
+        expenseNum = _expenseNum;
+        return expenseNum;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmDepartment</Name>
+				<Source><![CDATA[
+    [DataMember("department")]
+    public str parmDepartment(str _department = department)
+    {
+        department = _department;
+        return department;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCostCenter</Name>
+				<Source><![CDATA[
+    [DataMember("costCenter")]
+    public str parmCostCenter(str _costCenter = costCenter)
+    {
+        costCenter = _costCenter;
+        return costCenter;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmPaymentMethod</Name>
+				<Source><![CDATA[
+    [DataMember("paymentMethod")]
+    public str parmPaymentMethod(str _paymentMethod = paymentMethod)
+    {
+        paymentMethod = _paymentMethod;
+        return paymentMethod;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmVendorCode</Name>
+				<Source><![CDATA[
+    [DataMember("vendorCode")]
+    public str parmVendorCode(str _vendorCode = vendorCode)
+    {
+        vendorCode = _vendorCode;
+        return vendorCode;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmOwenEntity</Name>
+				<Source><![CDATA[
+    [DataMember("owenEntity")]
+    public str parmOwenEntity(str _owenEntity = owenEntity)
+    {
+        owenEntity = _owenEntity;
+        return owenEntity;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmPaymentType</Name>
+				<Source><![CDATA[
+    [DataMember("paymentType")]
+    public int parmPaymentType(int _paymentType = paymentType)
+    {
+        paymentType = _paymentType;
+        return paymentType;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmExpenseLines</Name>
+				<Source><![CDATA[
+    [
+        DataMemberAttribute("expenseLines"),
+        DataCollection(Types::Class, classStr(QYGD_OAExpenseLinesContract)),
+        AifCollectionTypeAttribute('_expenseLines', Types::Class, classStr(QYGD_OAExpenseLinesContract)),
+        AifCollectionTypeAttribute('return', Types::Class, classStr(QYGD_OAExpenseLinesContract))
+    ]
+    public List parmExpenseLines(List _expenseLines = expenseLines)
+    {
+        expenseLines = _expenseLines;
+
+        return expenseLines;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
 	</SourceCode>
 </AxClass>

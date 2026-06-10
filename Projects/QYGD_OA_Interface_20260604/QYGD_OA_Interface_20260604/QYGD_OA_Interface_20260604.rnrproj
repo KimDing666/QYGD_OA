@@ -130,6 +130,11 @@
       <Name>GeneralLedger.QYGD_OA</Name>
       <Link>Menu Extensions\GeneralLedger.QYGD_OA</Link>
     </Content>
+    <Content Include="AxMenuExtension\OXC_GeneralLedger.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>OXC_GeneralLedger.QYGD_OA</Name>
+      <Link>Menu Extensions\OXC_GeneralLedger.QYGD_OA</Link>
+    </Content>
     <Content Include="AxMenuItemDisplay\QYGD_OAExpenseHeaderSagingTable">
       <SubType>Content</SubType>
       <Name>QYGD_OAExpenseHeaderSagingTable</Name>

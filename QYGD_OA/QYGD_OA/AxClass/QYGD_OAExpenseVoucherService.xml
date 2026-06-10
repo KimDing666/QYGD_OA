@@ -11,13 +11,104 @@ public class QYGD_OAExpenseVoucherService
 			<Method>
 				<Name>generateExpenseVoucher</Name>
 				<Source><![CDATA[
-    public QYGD_OAExpenseVoucherResponse generateExpenseVoucher(QYGD_OAExpenseVoucherResponse _requestJson)
+    public QYGD_OAExpenseVoucherResponse generateExpenseVoucher(QYGD_OAExpenseHeaderContract _requestJson)
     {
         QYGD_OAExpenseVoucherResponse response = new QYGD_OAExpenseVoucherResponse();
 
-        //this.createPaymSched(_requestJson, response);
+        this.createExpenseVoucher(_requestJson, response);
 
         return response;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>createExpenseVoucher</Name>
+				<Source><![CDATA[
+    public void createExpenseVoucher(QYGD_OAExpenseHeaderContract _contract, QYGD_OAExpenseVoucherResponse _response)
+    {
+        int             statusCode,infologStartLine;
+        List            expenseLines;
+        ListEnumerator  listEnumerator;
+        str             messge;
+        str             expenseNum;
+        ;
+
+        expenseLines = new List(Types::Class);
+        expenseLines = _contract.parmExpenseLines();
+
+        try
+        {
+            infologStartLine = infologLine();
+            if (this.validateContract(_contract))
+            {
+                ttsbegin;
+                if(expenseLines.elements() > 0)
+                {
+                    expenseNum  = _contract.parmExpenseNum();
+                }
+                ttscommit;
+            }
+            else
+            {
+                _response.parmStatusCode(2);
+                _response.parmVoucherId('');
+                _response.parmMessage(this.getInfologStr(infologStartLine));
+            }
+        }
+        catch
+        {
+            ttsabort;
+            _response.parmStatusCode(2);
+            _response.parmVoucherId('');
+            _response.parmMessage(this.getInfologStr(infologStartLine));
+
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validateContract</Name>
+				<Source><![CDATA[
+    public boolean validateContract(QYGD_OAExpenseHeaderContract _contract)
+    {
+        boolean validate = true;
+        ;
+
+        return validate;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getInfologStr</Name>
+				<Source><![CDATA[
+    private str getInfologStr(int _infologStartLine)
+    {
+        SysInfologEnumerator    enumerator;
+        SysInfologMessageStruct msgStruct;
+        str                     error;
+        container               infologData;
+ 
+        int infologCurrentLine = infologLine();
+ 
+        if (infologCurrentLine > _infologStartLine)
+        {
+            infologData = infolog.copy(_infologStartLine + 1, infologCurrentLine);
+        }
+ 
+        if (infologData)
+        {
+            enumerator = SysInfologEnumerator::newData(infologData);
+            
+            while (enumerator.moveNext())
+            {
+                msgStruct = new SysInfologMessageStruct(enumerator.currentMessage());
+                error += msgStruct.message()+",";
+            }
+        }
+        return error;
     }
 
 ]]></Source>

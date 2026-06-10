@@ -57,6 +57,9 @@ public class QYGD_OAExpenseLinesSagingTable extends common
 					<DataField>Txt</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
+					<DataField>Project</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
 					<DataField>CurrencyCode</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
@@ -137,6 +140,20 @@ public class QYGD_OAExpenseLinesSagingTable extends common
 			<ExtendedDataType>ExchRate</ExtendedDataType>
 			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
 			<Label>@OA:OAExpenseLineExchRate</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>Project</Name>
+			<ExtendedDataType>DimensionValue</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+			<Label>@OA:OAExpenseProject</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldDate">
+			<Name>ExpenseDate</Name>
+			<ExtendedDataType>TransDate</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+			<Label>@OA:OAExpenseDate</Label>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

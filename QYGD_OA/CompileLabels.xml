@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2026-06-08T12:15:01.0537776+08:00">
+  GenerationTime="2026-06-09T22:36:38.7238183+08:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>VisualStudioIntegration</DiagnosticType>
@@ -92,6 +92,27 @@
       <Path>labelc.exe</Path>
       <Moniker>Done compiling 2 label files!</Moniker>
       <Message>Done compiling 2 label files!</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Model store query time 00:00:00.7445148.</Moniker>
+      <Message>Model store query time 00:00:00.7445148.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Label compilation time 00:00:01.3247505.</Moniker>
+      <Message>Label compilation time 00:00:01.3247505.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Completed label compilation in 2 seconds with exit code 0.</Moniker>
+      <Message>Completed label compilation in 2 seconds with exit code 0.</Message>
     </Diagnostic>
   </Items>
   <Aliases />

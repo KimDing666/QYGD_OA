@@ -6,8 +6,140 @@
 [DataContractAttribute]
 public class QYGD_OAExpenseLinesContract
 {
+    private int  lineNum;
+    private str  category;
+    private str  project;
+    private str  currencyCode;
+    private str  txt;
+    private str  expenseDate;
+    private real exchRate;
+    private real excludeTaxAmount;
+    private real taxAmount;
+    private real includeTaxAmount;
+
 }
 ]]></Declaration>
-		<Methods />
+		<Methods>
+			<Method>
+				<Name>parmLineNum</Name>
+				<Source><![CDATA[
+    [DataMember("lineNum")]
+    public int parmLineNum(int _lineNum = lineNum)
+    {
+        lineNum = _lineNum;
+        return lineNum;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCategory</Name>
+				<Source><![CDATA[
+    [DataMember("category")]
+    public str parmCategory(str _category = category)
+    {
+        category = _category;
+        return category;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmProject</Name>
+				<Source><![CDATA[
+    [DataMember("project")]
+    public str parmProject(str _project = project)
+    {
+        project = _project;
+        return project;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCurrencyCode</Name>
+				<Source><![CDATA[
+    [DataMember("currencyCode")]
+    public str parmCurrencyCode(str _currencyCode = currencyCode)
+    {
+        currencyCode = _currencyCode;
+        return currencyCode;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmTxt</Name>
+				<Source><![CDATA[
+    [DataMember("txt")]
+    public str parmTxt(str _txt = txt)
+    {
+        txt = _txt;
+        return txt;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmExpenseDate</Name>
+				<Source><![CDATA[
+    [DataMember("expenseDate")]
+    public str parmExpenseDate(str _expenseDate = expenseDate)
+    {
+        expenseDate = _expenseDate;
+        return expenseDate;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmExchRate</Name>
+				<Source><![CDATA[
+    [DataMember("exchRate")]
+    public real parmExchRate(real _exchRate = exchRate)
+    {
+        exchRate = _exchRate;
+        return exchRate;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmExcludeTaxAmount</Name>
+				<Source><![CDATA[
+    [DataMember("excludeTaxAmount")]
+    public real parmExcludeTaxAmount(real _excludeTaxAmount = excludeTaxAmount)
+    {
+        excludeTaxAmount = _excludeTaxAmount;
+        return excludeTaxAmount;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmTaxAmount</Name>
+				<Source><![CDATA[
+    [DataMember("taxAmount")]
+    public real parmTaxAmount(real _taxAmount = taxAmount)
+    {
+        taxAmount = _taxAmount;
+        return taxAmount;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmIncludeTaxAmount</Name>
+				<Source><![CDATA[
+    [DataMember("includeTaxAmount")]
+    public real parmIncludeTaxAmount(real _includeTaxAmount = includeTaxAmount)
+    {
+        includeTaxAmount = _includeTaxAmount;
+        return includeTaxAmount;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
 	</SourceCode>
 </AxClass>

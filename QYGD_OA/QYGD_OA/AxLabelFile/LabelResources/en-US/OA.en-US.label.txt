@@ -2,6 +2,7 @@
 NewLabel0=Label files created on 06/04/2026 18:53:01 for label file Id OA and language en-US
  ;Label file comment - see above label
 OAExpenseCostCenter=Cost center
+OAExpenseDate=Expense date
 OAExpenseDepartment=Deparment
 OAExpenseHeaderMaintain=Maintain OA Expense voucher staging table
 OAExpenseHeaderStagingTable=OA Expense staging header table
@@ -20,6 +21,7 @@ OAExpenseLineTxt=Txt
 OAExpenseNum=Expense number
 OAExpenseOwenEntity=Owen entity
 OAExpensePaymentMethod=Payment method
+OAExpensePaymentType=Payment type
 OAExpenseProject=Project
 OAExpenseTabHeader=OA Expense voucher staging 
 OAExpenseTransDate=Transaction date

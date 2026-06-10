@@ -9,6 +9,7 @@
 			<TypeName></TypeName>
 			<Name>statusCode</Name>
 			<Attributes />
+			<Visibility>Private</Visibility>
 		</AxClassMemberVariable>
 		<AxClassMemberVariable>
 			<Tags></Tags>
@@ -16,6 +17,15 @@
 			<TypeName></TypeName>
 			<Name>message</Name>
 			<Attributes />
+			<Visibility>Private</Visibility>
+		</AxClassMemberVariable>
+		<AxClassMemberVariable>
+			<Tags></Tags>
+			<Type>String</Type>
+			<TypeName></TypeName>
+			<Name>voucherId</Name>
+			<Attributes />
+			<Visibility>Private</Visibility>
 		</AxClassMemberVariable>
 	</Members>
 	<Methods>
@@ -45,6 +55,35 @@
 			<ReturnType>
 				<Tags></Tags>
 				<Type>Int32</Type>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>parmVoucherId</Name>
+			<Visibility>Public</Visibility>
+			<Attributes>
+				<AxAttribute>
+					<Name>DataMemberAttribute</Name>
+					<Parameters>
+						<AxAttributeParameter>
+							<TypeValue>"voucherId"</TypeValue>
+							<AdditionalData />
+						</AxAttributeParameter>
+					</Parameters>
+				</AxAttribute>
+			</Attributes>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>String</Type>
+					<TypeName></TypeName>
+					<DefaultValue>voucherId</DefaultValue>
+					<Name>_voucherId</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>String</Type>
 				<TypeName></TypeName>
 			</ReturnType>
 		</Method>

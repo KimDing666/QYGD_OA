@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2026-06-08T21:15:16.5346939+08:00">
+  GenerationTime="2026-06-10T17:30:28.7836878+08:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>ExternalReference</DiagnosticType>
@@ -15,16 +15,6 @@
       <Path>dynamics://Reference/Azure.Core</Path>
       <Moniker>AssemblyFileNotFound</Moniker>
       <Message>Assembly 'System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' failed to load because it was not found.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Generation</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://View/HcmPositionV2Entity</Path>
-      <ElementType>View</ElementType>
-      <Moniker>IsRuntimeServicesMode</Moniker>
-      <Line>0</Line>
-      <Column>0</Column>
-      <Message>Is Runtime Services mode: False</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>

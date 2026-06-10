@@ -10,7 +10,7 @@
 				<AxMethodParameter>
 					<Tags></Tags>
 					<Type>Class</Type>
-					<TypeName>QYGD_OAExpenseVoucherResponse</TypeName>
+					<TypeName>QYGD_OAExpenseHeaderContract</TypeName>
 					<Name>_requestJson</Name>
 				</AxMethodParameter>
 			</Parameters>
@@ -18,6 +18,61 @@
 				<Tags></Tags>
 				<Type>Class</Type>
 				<TypeName>QYGD_OAExpenseVoucherResponse</TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>createExpenseVoucher</Name>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Class</Type>
+					<TypeName>QYGD_OAExpenseHeaderContract</TypeName>
+					<Name>_contract</Name>
+				</AxMethodParameter>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Class</Type>
+					<TypeName>QYGD_OAExpenseVoucherResponse</TypeName>
+					<Name>_response</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>validateContract</Name>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Class</Type>
+					<TypeName>QYGD_OAExpenseHeaderContract</TypeName>
+					<Name>_contract</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>Enum</Type>
+				<TypeName>boolean</TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>getInfologStr</Name>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Int32</Type>
+					<TypeName></TypeName>
+					<Name>_infologStartLine</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>String</Type>
+				<TypeName></TypeName>
 			</ReturnType>
 		</Method>
 	</Methods>
