@@ -43,6 +43,23 @@
 			</ReturnType>
 		</Method>
 		<Method>
+			<Name>generateVoucher</Name>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Record</Type>
+					<TypeName>QYGD_OAExpenseHeaderSagingTable</TypeName>
+					<Name>_expenseHeading</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>Container</Type>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
 			<Name>validateContract</Name>
 			<Visibility>Public</Visibility>
 			<Parameters>

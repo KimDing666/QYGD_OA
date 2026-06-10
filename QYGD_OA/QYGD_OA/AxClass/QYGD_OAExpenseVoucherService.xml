@@ -5,6 +5,7 @@
 		<Declaration><![CDATA[
 public class QYGD_OAExpenseVoucherService
 {
+    #QYGD_MacroCommon
 }
 ]]></Declaration>
 		<Methods>
@@ -27,9 +28,14 @@ public class QYGD_OAExpenseVoucherService
 				<Source><![CDATA[
     public void createExpenseVoucher(QYGD_OAExpenseHeaderContract _contract, QYGD_OAExpenseVoucherResponse _response)
     {
+        QYGD_OAExpenseHeaderSagingTable expenseHeaderSagingTable;
+        QYGD_OAExpenseLinesSagingTable  expenseLinesSagingTable;
+        QYGD_OAExpenseLinesContract     expenseLinesContract;
         int             statusCode,infologStartLine;
         List            expenseLines;
-        ListEnumerator  listEnumerator;
+        ListEnumerator  lineEnumerator;
+        boolean         posted;
+        str             voucherId;
         str             messge;
         str             expenseNum;
         ;
@@ -45,8 +51,63 @@ public class QYGD_OAExpenseVoucherService
                 ttsbegin;
                 if(expenseLines.elements() > 0)
                 {
-                    expenseNum  = _contract.parmExpenseNum();
+                    expenseHeaderSagingTable.clear();
+                    expenseHeaderSagingTable.initValue();
+                    expenseHeaderSagingTable.ExpenseNum         = _contract.parmExpenseNum();
+                    expenseHeaderSagingTable.Department         = _contract.parmDepartment();
+                    expenseHeaderSagingTable.CostCenter         = _contract.parmCostCenter();
+                    expenseHeaderSagingTable.PaymentMethod      = _contract.parmPaymentMethod();
+                    expenseHeaderSagingTable.PaymentType        = _contract.parmPaymentType();
+                    expenseHeaderSagingTable.VendorCode         = _contract.parmVendorCode();
+                    expenseHeaderSagingTable.OwenEntity         = _contract.parmOwenEntity();
+                    expenseHeaderSagingTable.insert();
+
+                    if (expenseHeaderSagingTable.RecId != 0)
+                    {
+                        expenseLines = _contract.parmExpenseLines();
+                        if (expenseLines.elements() > 0)
+                        {
+                            lineEnumerator  = expenseLines.getEnumerator();
+                            while (lineEnumerator.moveNext())
+                            {
+                                expenseLinesContract    = lineEnumerator.current() as QYGD_OAExpenseLinesContract;
+
+                                expenseLinesSagingTable.clear();
+                                expenseLinesSagingTable.initValue();
+                                expenseLinesSagingTable.ExpenseHeader       = expenseHeaderSagingTable.RecId;
+                                expenseLinesSagingTable.LineNum             = expenseLinesContract.parmLineNum();
+                                expenseLinesSagingTable.Project             = expenseLinesContract.parmProject();
+                                expenseLinesSagingTable.Category            = expenseLinesContract.parmCategory();
+                                expenseLinesSagingTable.CurrencyCode        = expenseLinesContract.parmCurrencyCode();
+                                expenseLinesSagingTable.ExpenseDate         = str2Date(expenseLinesContract.parmExpenseDate(), 321);
+                                expenseLinesSagingTable.ExchRate            = expenseLinesContract.parmExchRate();
+                                expenseLinesSagingTable.ExcludeTaxAmount    = expenseLinesContract.parmExcludeTaxAmount();
+                                expenseLinesSagingTable.TaxAmount           = expenseLinesContract.parmTaxAmount();
+                                expenseLinesSagingTable.IncludeTaxAmount    = expenseLinesContract.parmIncludeTaxAmount();
+                                expenseLinesSagingTable.insert();
+                            }
+                        }
+                    }
                 }
+
+                [posted, voucherId] = this.generateVoucher(expenseHeaderSagingTable);
+
+                if (posted)
+                {
+                    _response.parmStatusCode(1);
+                    _response.parmVoucherId(voucherId);
+                    _response.parmMessage(strFmt('@OA:OAExpenseVoucherSuccess', voucherId));
+                }
+                else
+                {
+                    expenseHeaderSagingTable.selectForUpdate(true);
+                    expenseHeaderSagingTable.delete();
+
+                    _response.parmStatusCode(2);
+                    _response.parmVoucherId('');
+                    _response.parmMessage(this.getInfologStr(infologStartLine));
+                }
+
                 ttscommit;
             }
             else
@@ -69,13 +130,171 @@ public class QYGD_OAExpenseVoucherService
 ]]></Source>
 			</Method>
 			<Method>
+				<Name>generateVoucher</Name>
+				<Source><![CDATA[
+    public container generateVoucher(QYGD_OAExpenseHeaderSagingTable _expenseHeading)
+    {
+        container   conResult;
+
+
+        return conResult;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
 				<Name>validateContract</Name>
 				<Source><![CDATA[
     public boolean validateContract(QYGD_OAExpenseHeaderContract _contract)
-    {
-        boolean validate = true;
+    {    
+        QYGD_OAExpenseHeaderSagingTable expenseHeaderSagingTable;
+        QYGD_OAExpenseLinesSagingTable  expenseLnesSagingTable;
+        QYGD_OAExpenseLinesContract     expenseLinesContract;
+        List                            expenseLines;
+        ListEnumerator                  lineEnumerator;
+        boolean                         validate = true;
+        
         ;
 
+        if (_contract.parmOwenEntity())
+        {
+            if (CompanyInfo::findDataArea(_contract.parmOwenEntity()).RecId == 0)
+            {
+                validate = checkFailed(strFmt('@OA:OAExpenseValidateOwenEntity', _contract.parmOwenEntity()));
+            }
+            else
+            {
+                if (_contract.parmExpenseNum())
+                {
+                    if (QYGD_OAExpenseHeaderSagingTable::find(_contract.parmExpenseNum(), _contract.parmOwenEntity()).RecId != 0)
+                    {
+                        validate = checkFailed(strFmt('@OA:OAExpenseValidateExpenseNum', _contract.parmExpenseNum(),
+                                                                                         _contract.parmOwenEntity()));
+                    }
+                }
+                else
+                {
+                    validate = checkFailed(strFmt('@OA:OAExpenseValidateExpenseNumNull'));
+                }
+
+                if (_contract.parmVendorCode())
+                {
+                    changecompany (_contract.parmOwenEntity())
+                    {
+                        if (VendTable::find(_contract.parmVendorCode()).RecId == 0)
+                        {
+                            validate = checkFailed(strFmt('@OA:OAExpenseValidateVendorCode', _contract.parmVendorCode(),
+                                                                                             _contract.parmOwenEntity()));
+                        }
+                    }
+                }
+                else
+                {
+                    validate = checkFailed(strFmt('@OA:OAExpenseValidateVendorCodeNull'));
+                }
+            }
+        }
+        else
+        {
+            validate = checkFailed(strFmt('@OA:OAExpenseValidateOwenNull'));
+        }
+
+        if (_contract.parmDepartment())
+        {
+            DimensionAttribute dimensionAttribute = DimensionAttribute::findByName(#Department);
+            if (DimensionAttributeValue::findByDimensionAttributeAndValue(dimensionAttribute, _contract.parmDepartment()).RecId == 0)
+            {
+                validate = checkFailed(strFmt('@OA:OAExpenseValidateDepartment', _contract.parmDepartment()));
+            }
+        }
+        else
+        {
+            validate = checkFailed(strFmt('@OA:OAExpenseValidateDepartmentNull'));
+        }
+
+        if (_contract.parmCostCenter())
+        {
+            DimensionAttribute dimensionAttribute = DimensionAttribute::findByName(#CostCenter);
+            if (DimensionAttributeValue::findByDimensionAttributeAndValue(dimensionAttribute, _contract.parmCostCenter()).RecId == 0)
+            {
+                validate = checkFailed(strFmt('@OA:OAExpenseValidateCostCenter', _contract.parmCostCenter()));
+            }
+        }
+        else
+        {
+            validate = checkFailed(strFmt('@OA:OAExpenseValidateCostCenterNull'));
+        }
+
+        expenseLines = _contract.parmExpenseLines();
+        if (expenseLines.elements() > 0)
+        {
+            lineEnumerator  = expenseLines.getEnumerator();
+            while (lineEnumerator.moveNext())
+            {
+                expenseLinesContract    = lineEnumerator.current() as QYGD_OAExpenseLinesContract;
+
+                if (expenseLinesContract.parmCategory())
+                {
+                    changecompany (_contract.parmOwenEntity())
+                    {
+                        if (TrvCostType::find(expenseLinesContract.parmCategory()).RecId == 0)
+                        {
+                            validate = checkFailed(strFmt('@OA:OAExpenseValidateCategory', expenseLinesContract.parmCategory(),
+                                                                                           _contract.parmOwenEntity()));
+                        }
+                    }
+                }
+                else
+                {
+                    validate = checkFailed(strFmt('@OA:OAExpenseValidateCategoryNull'));
+                }
+
+                if (expenseLinesContract.parmProject())
+                {
+                    DimensionAttribute dimensionAttribute = DimensionAttribute::findByName(#Project);
+                    if (DimensionAttributeValue::findByDimensionAttributeAndValue(dimensionAttribute, expenseLinesContract.parmProject()).RecId == 0)
+                    {
+                        validate = checkFailed(strFmt('@OA:OAExpenseValidateProject', expenseLinesContract.parmProject()));
+                    }
+                }
+                else
+                {
+                    validate = checkFailed(strFmt('@OA:OAExpenseValidateProjectNull'));
+                }
+
+                if (expenseLinesContract.parmCurrencyCode())
+                {
+                    if (!Currency::exist(expenseLinesContract.parmCurrencyCode()))
+                    {
+                        validate = checkFailed(strFmt('@OA:OAExpenseValidateCurrency', expenseLinesContract.parmCurrencyCode()));
+                    }
+                }
+                else
+                {
+                    validate = checkFailed(strFmt('@OA:OAExpenseValidateCurrencyNull'));
+                }
+
+                if (expenseLinesContract.parmExcludeTaxAmount() <= 0 ||
+                    expenseLinesContract.parmIncludeTaxAmount() <= 0)
+                {
+                    validate = checkFailed(strFmt('@OA:OAExpenseValidateAmount'));
+                }
+                else
+                {
+                    if ((expenseLinesContract.parmExcludeTaxAmount() + expenseLinesContract.parmTaxAmount()) != expenseLinesContract.parmIncludeTaxAmount())
+                    {
+                        validate = checkFailed(strFmt('@OA:OAExpenseValidateAmountBalance'));
+                    }
+                }
+
+            }
+        }
+        else
+        {
+            validate = checkFailed(strFmt('@OA:OAExpenseValidateCostCenterNull'));
+        }
+
+        
         return validate;
     }
 

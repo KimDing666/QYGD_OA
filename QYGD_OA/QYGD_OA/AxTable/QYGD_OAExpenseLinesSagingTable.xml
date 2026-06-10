@@ -7,7 +7,32 @@ public class QYGD_OAExpenseLinesSagingTable extends common
 {
 }
 ]]></Declaration>
-		<Methods />
+		<Methods>
+			<Method>
+				<Name>find</Name>
+				<Source><![CDATA[
+    public static QYGD_OAExpenseLinesSagingTable find(RefRecId   _expenseHeaderRecId,
+                                                      LineNum    _lineNum,
+                                                      boolean    _forUpdate = false)
+
+    {
+        QYGD_OAExpenseLinesSagingTable expenseLinesSagingTable;
+
+        if (_expenseHeaderRecId)
+        {
+            expenseLinesSagingTable.selectForUpdate(_forUpdate);
+
+            select firstonly expenseLinesSagingTable
+                index LinNumIdx
+                where expenseLinesSagingTable.ExpenseHeader == _expenseHeaderRecId
+                   && expenseLinesSagingTable.LineNum    == _lineNum;
+        }
+        return expenseLinesSagingTable;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
 	</SourceCode>
 	<Label>@OA:OAExpenseLinesStagingTable</Label>
 	<SubscriberAccessLevel>

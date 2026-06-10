@@ -99,6 +99,9 @@ public class QYGD_OAExpenseHeaderSagingTable extends common
 					<DataField>VendorCode</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
+					<DataField>VendorName</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
 					<DataField>Department</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
@@ -195,6 +198,13 @@ public class QYGD_OAExpenseHeaderSagingTable extends common
 			<AllowEditOnCreate>No</AllowEditOnCreate>
 			<Label>@OA:OAExpensePaymentType</Label>
 			<EnumType>IWS_PaymentType</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>VendorName</Name>
+			<ExtendedDataType>Name</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+			<Label>@OA:OAExpenseVendorName</Label>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <z:anyType xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns=""
 	i:type="AxPropertyCollection" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/">
-	<Methods />
+	<Methods>
+		<Method>
+			<Name>find</Name>
+			<IsStatic>true</IsStatic>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>ExtendedDataType</Type>
+					<TypeName>RefRecId</TypeName>
+					<Name>_expenseHeaderRecId</Name>
+				</AxMethodParameter>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>ExtendedDataType</Type>
+					<TypeName>LineNum</TypeName>
+					<Name>_lineNum</Name>
+				</AxMethodParameter>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Enum</Type>
+					<TypeName>boolean</TypeName>
+					<DefaultValue>false</DefaultValue>
+					<Name>_forUpdate</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>Record</Type>
+				<TypeName>QYGD_OAExpenseLinesSagingTable</TypeName>
+			</ReturnType>
+		</Method>
+	</Methods>
 </z:anyType>

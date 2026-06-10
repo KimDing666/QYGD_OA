@@ -37,6 +37,7 @@
     <Folder Include="Display Menu Items\" />
     <Folder Include="Forms\" />
     <Folder Include="Label Files\" />
+    <Folder Include="Macros\" />
     <Folder Include="Menu Extensions\" />
     <Folder Include="Security Privileges\" />
     <Folder Include="Service Groups\" />
@@ -124,6 +125,11 @@
       <SubType>Content</SubType>
       <Name>OA_zh-Hans</Name>
       <Link>Label Files\OA_zh-Hans</Link>
+    </Content>
+    <Content Include="AxMacroDictionary\QYGD_MacroCommon">
+      <SubType>Content</SubType>
+      <Name>QYGD_MacroCommon</Name>
+      <Link>Macros\QYGD_MacroCommon</Link>
     </Content>
     <Content Include="AxMenuExtension\GeneralLedger.QYGD_OA">
       <SubType>Content</SubType>
