@@ -94,6 +94,7 @@ public class QYGD_OAExpenseVoucherService
 
                 if (posted)
                 {
+                    this.insertHeaderLSagingAttatcher(expenseHeaderSagingTable, _contract);
                     _response.parmStatusCode(1);
                     _response.parmVoucherId(voucherId);
                     _response.parmMessage(strFmt('@OA:OAExpenseVoucherSuccess', voucherId));
@@ -130,14 +131,82 @@ public class QYGD_OAExpenseVoucherService
 ]]></Source>
 			</Method>
 			<Method>
+				<Name>insertHeaderLSagingAttatcher</Name>
+				<Source><![CDATA[
+    public void insertHeaderLSagingAttatcher(QYGD_OAExpenseHeaderSagingTable _expenseHeading, QYGD_OAExpenseHeaderContract _requestJson)
+    {
+        DocumentManagement::attachNote(_expenseHeading.TableId, _expenseHeading.RecId, 'dat', '文件','OA报销流程单', _requestJson.xml());
+    }
+
+]]></Source>
+			</Method>
+			<Method>
 				<Name>generateVoucher</Name>
 				<Source><![CDATA[
     public container generateVoucher(QYGD_OAExpenseHeaderSagingTable _expenseHeading)
     {
-        container   conResult;
+        QYGD_OAExpenseLinesSagingTable  expenseLines;
+        LedgerJournalTable              ledgerJournalTable;
+        LedgerJournalTrans              ledgerJournalTrans;
+        DimensionDefaultContract        contract       = DimensionDefaultContract::construct();
+        DimensionAttributeValueContract departmentDim  =  DimensionAttributeValueContract::construct(#Department, _expenseHeading.Department);
+        DimensionAttributeValueContract costCenterDim  =  DimensionAttributeValueContract::construct(#CostCenter, _expenseHeading.CostCenter);
+        DimensionAttributeValueContract projectDim     =  new DimensionAttributeValueContract();
+        List                     dimensionList   = new List(Types::Class);
+        container                conResult;
+        DimensionDefault         defaultDimension;
+        ;
 
+        while select expenseLines
+            where expenseLines.ExpenseHeader == _expenseHeading.RecId
+        {
+            if (ledgerJournalTable.RecId == 0)
+            {
+                ledgerJournalTable = this.insertLedgerJournalTable('test');
+            }
+            dimensionList.addEnd(departmentDim);
+            dimensionList.addEnd(costCenterDim);
+
+            projectDim.parmName(#Project);
+            projectDim.parmValue(expenseLines.Project);
+
+            dimensionList.addEnd(projectDim);
+
+            contract.parmValues(dimensionList);
+            defaultDimension = DimensionNameValueListServiceProvider::newForDimensionNameValueListContract(contract).resolve().parmSavedRecId();
+
+
+        }
 
         return conResult;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>insertLedgerJournalTable</Name>
+				<Source><![CDATA[
+    public LedgerJournalTable insertLedgerJournalTable(Description _journalDesc)
+    {
+        LedgerJournalTableData  ledgerJourTableData;
+        LedgerJournalTable      ledgerJournalTable;
+
+        ;
+
+        ledgerJourTableData       = JournalTableData::newTable(ledgerJournalTable);
+
+        ledgerJournalTable.clear();
+        ledgerJournalTable.initValue();
+        ledgerJournalTable.initFromLedgerJournalName('');
+        ledgerJournalTable.JournalNum    = ledgerJourTableData.nextJournalId();
+        ledgerJournalTable.Name          = _journalDesc;
+
+        if (ledgerJournalTable.validateWrite())
+        {
+            ledgerJournalTable.insert();
+        }
+        
+        return ledgerJournalTable;
     }
 
 ]]></Source>

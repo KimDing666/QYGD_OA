@@ -43,6 +43,28 @@
 			</ReturnType>
 		</Method>
 		<Method>
+			<Name>insertHeaderLSagingAttatcher</Name>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Record</Type>
+					<TypeName>QYGD_OAExpenseHeaderSagingTable</TypeName>
+					<Name>_expenseHeading</Name>
+				</AxMethodParameter>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Class</Type>
+					<TypeName>QYGD_OAExpenseHeaderContract</TypeName>
+					<Name>_requestJson</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
 			<Name>generateVoucher</Name>
 			<Visibility>Public</Visibility>
 			<Parameters>
@@ -57,6 +79,23 @@
 				<Tags></Tags>
 				<Type>Container</Type>
 				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>insertLedgerJournalTable</Name>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>ExtendedDataType</Type>
+					<TypeName>Description</TypeName>
+					<Name>_journalDesc</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>Record</Type>
+				<TypeName>LedgerJournalTable</TypeName>
 			</ReturnType>
 		</Method>
 		<Method>
