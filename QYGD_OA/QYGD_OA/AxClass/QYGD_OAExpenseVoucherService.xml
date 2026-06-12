@@ -59,6 +59,7 @@ public class QYGD_OAExpenseVoucherService
                     expenseHeaderSagingTable.WorkerName         = _contract.parmWorkerName();
                     expenseHeaderSagingTable.Department         = _contract.parmDepartment();
                     expenseHeaderSagingTable.CostCenter         = _contract.parmCostCenter();
+                    expenseHeaderSagingTable.CurrencyCode       = _contract.parmCurrencyCode();
                     expenseHeaderSagingTable.Other              = _contract.parmOther();
                     expenseHeaderSagingTable.PaymentMethod      = _contract.parmPaymentMethod();
                     expenseHeaderSagingTable.PaymentType        = _contract.parmPaymentType();
@@ -82,6 +83,7 @@ public class QYGD_OAExpenseVoucherService
                                 expenseLinesSagingTable.LineNum             = expenseLinesContract.parmLineNum();
                                 expenseLinesSagingTable.Project             = expenseLinesContract.parmProject();
                                 expenseLinesSagingTable.Category            = expenseLinesContract.parmCategory();
+                                expenseLinesSagingTable.LedgerDimension     = TrvCostType::find(expenseLinesSagingTable.Category).LedgerDimension;
                                 expenseLinesSagingTable.Txt                 = expenseLinesContract.parmTxt();
                                 expenseLinesSagingTable.CurrencyCode        = expenseLinesContract.parmCurrencyCode();
                                 expenseLinesSagingTable.ExpenseDate         = str2Date(expenseLinesContract.parmExpenseDate(), 321);
@@ -162,7 +164,8 @@ public class QYGD_OAExpenseVoucherService
         DimensionDefault         defaultDimension;
         ;
 
-        while select expenseLines
+        while select sum(IncludeTaxAmount), sum(TaxAmount), sum(ExcludeTaxAmount) from expenseLines
+            group by expenseLines.Category, expenseLines.LedgerDimension, expenseLines.Project
             where expenseLines.ExpenseHeader == _expenseHeading.RecId
         {
             if (ledgerJournalTable.RecId == 0)

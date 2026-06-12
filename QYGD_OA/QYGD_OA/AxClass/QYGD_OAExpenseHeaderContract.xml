@@ -17,6 +17,7 @@ public class QYGD_OAExpenseHeaderContract
     private str  vendorCode;
     private str  owenEntity;
     private int  paymentType;
+    private str  currencyCode;
     private List expenseLines;
 
 }
@@ -102,6 +103,18 @@ public class QYGD_OAExpenseHeaderContract
     {
         workerName = _workerName;
         return workerName;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCurrencyCode</Name>
+				<Source><![CDATA[
+    [DataMember("currencyCode")]
+    public str parmCurrencyCode(str _currencyCode = currencyCode)
+    {
+        currencyCode = _currencyCode;
+        return currencyCode;
     }
 
 ]]></Source>

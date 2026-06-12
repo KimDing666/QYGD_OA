@@ -99,6 +99,14 @@
 		</AxClassMemberVariable>
 		<AxClassMemberVariable>
 			<Tags></Tags>
+			<Type>String</Type>
+			<TypeName></TypeName>
+			<Name>currencyCode</Name>
+			<Attributes />
+			<Visibility>Private</Visibility>
+		</AxClassMemberVariable>
+		<AxClassMemberVariable>
+			<Tags></Tags>
 			<Type>Class</Type>
 			<TypeName>List</TypeName>
 			<Name>expenseLines</Name>
@@ -302,6 +310,35 @@
 					<TypeName></TypeName>
 					<DefaultValue>workerName</DefaultValue>
 					<Name>_workerName</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>String</Type>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>parmCurrencyCode</Name>
+			<Visibility>Public</Visibility>
+			<Attributes>
+				<AxAttribute>
+					<Name>DataMember</Name>
+					<Parameters>
+						<AxAttributeParameter>
+							<TypeValue>"currencyCode"</TypeValue>
+							<AdditionalData />
+						</AxAttributeParameter>
+					</Parameters>
+				</AxAttribute>
+			</Attributes>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>String</Type>
+					<TypeName></TypeName>
+					<DefaultValue>currencyCode</DefaultValue>
+					<Name>_currencyCode</Name>
 				</AxMethodParameter>
 			</Parameters>
 			<ReturnType>
