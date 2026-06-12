@@ -35,6 +35,7 @@
     <Folder Include="Classes\" />
     <Folder Include="Data Entity Extensions\" />
     <Folder Include="Display Menu Items\" />
+    <Folder Include="Form Extensions\" />
     <Folder Include="Forms\" />
     <Folder Include="Label Files\" />
     <Folder Include="Macros\" />
@@ -111,6 +112,11 @@
       <Name>VendVendorV2Entity.QYGD_OA</Name>
       <Link>Data Entity Extensions\VendVendorV2Entity.QYGD_OA</Link>
     </Content>
+    <Content Include="AxFormExtension\LedgerParameters.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>LedgerParameters.QYGD_OA</Name>
+      <Link>Form Extensions\LedgerParameters.QYGD_OA</Link>
+    </Content>
     <Content Include="AxForm\QYGD_OAExpenseHeaderSagingTable">
       <SubType>Content</SubType>
       <Name>QYGD_OAExpenseHeaderSagingTable</Name>
@@ -165,6 +171,11 @@
       <SubType>Content</SubType>
       <Name>HcmPositionV2Staging.QYGD_OA</Name>
       <Link>Table Extensions\HcmPositionV2Staging.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxTableExtension\LedgerParameters.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>LedgerParameters.QYGD_OA</Name>
+      <Link>Table Extensions\LedgerParameters.QYGD_OA</Link>
     </Content>
     <Content Include="AxTableExtension\VendVendorV2Staging.QYGD_OA">
       <SubType>Content</SubType>

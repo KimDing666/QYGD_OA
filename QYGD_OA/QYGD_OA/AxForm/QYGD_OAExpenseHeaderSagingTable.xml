@@ -138,6 +138,33 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 									</AxFormControl>
 									<AxFormControl xmlns=""
 										i:type="AxFormStringControl">
+										<Name>HeaderGrid_Description</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>Description</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_WorkerId</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>WorkerId</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_WorkerName</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>WorkerName</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
 										<Name>HeaderGrid_VendorCode</Name>
 										<Type>String</Type>
 										<FormControlExtension
@@ -170,6 +197,15 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 										<FormControlExtension
 											i:nil="true" />
 										<DataField>CostCenter</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>HeaderGrid_Other</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>Other</DataField>
 										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
 									</AxFormControl>
 									<AxFormControl xmlns=""

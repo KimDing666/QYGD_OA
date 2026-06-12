@@ -54,8 +54,12 @@ public class QYGD_OAExpenseVoucherService
                     expenseHeaderSagingTable.clear();
                     expenseHeaderSagingTable.initValue();
                     expenseHeaderSagingTable.ExpenseNum         = _contract.parmExpenseNum();
+                    expenseHeaderSagingTable.Description        = _contract.parmDescription();
+                    expenseHeaderSagingTable.WorkerId           = _contract.parmWorkerId();
+                    expenseHeaderSagingTable.WorkerName         = _contract.parmWorkerName();
                     expenseHeaderSagingTable.Department         = _contract.parmDepartment();
                     expenseHeaderSagingTable.CostCenter         = _contract.parmCostCenter();
+                    expenseHeaderSagingTable.Other              = _contract.parmOther();
                     expenseHeaderSagingTable.PaymentMethod      = _contract.parmPaymentMethod();
                     expenseHeaderSagingTable.PaymentType        = _contract.parmPaymentType();
                     expenseHeaderSagingTable.VendorCode         = _contract.parmVendorCode();
@@ -78,6 +82,7 @@ public class QYGD_OAExpenseVoucherService
                                 expenseLinesSagingTable.LineNum             = expenseLinesContract.parmLineNum();
                                 expenseLinesSagingTable.Project             = expenseLinesContract.parmProject();
                                 expenseLinesSagingTable.Category            = expenseLinesContract.parmCategory();
+                                expenseLinesSagingTable.Txt                 = expenseLinesContract.parmTxt();
                                 expenseLinesSagingTable.CurrencyCode        = expenseLinesContract.parmCurrencyCode();
                                 expenseLinesSagingTable.ExpenseDate         = str2Date(expenseLinesContract.parmExpenseDate(), 321);
                                 expenseLinesSagingTable.ExchRate            = expenseLinesContract.parmExchRate();

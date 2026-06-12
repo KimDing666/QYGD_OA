@@ -7,8 +7,12 @@
 public class QYGD_OAExpenseHeaderContract
 {
     private str  expenseNum;
+    private str  description;
     private str  department;
     private str  costCenter;
+    private str  other;
+    private str  workerId;
+    private str  workerName;
     private str  paymentMethod;
     private str  vendorCode;
     private str  owenEntity;
@@ -26,6 +30,18 @@ public class QYGD_OAExpenseHeaderContract
     {
         expenseNum = _expenseNum;
         return expenseNum;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmDescription</Name>
+				<Source><![CDATA[
+    [DataMember("description")]
+    public str parmDescription(str _description = description)
+    {
+        description = _description;
+        return description;
     }
 
 ]]></Source>
@@ -50,6 +66,42 @@ public class QYGD_OAExpenseHeaderContract
     {
         costCenter = _costCenter;
         return costCenter;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmOther</Name>
+				<Source><![CDATA[
+    [DataMember("other")]
+    public str parmOther(str _other = other)
+    {
+        other = _other;
+        return other;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmWorkerId</Name>
+				<Source><![CDATA[
+    [DataMember("workerId")]
+    public str parmWorkerId(str _workerId = workerId)
+    {
+        workerId = _workerId;
+        return workerId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmWorkerName</Name>
+				<Source><![CDATA[
+    [DataMember("workerName")]
+    public str parmWorkerName(str _workerName = workerName)
+    {
+        workerName = _workerName;
+        return workerName;
     }
 
 ]]></Source>
