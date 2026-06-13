@@ -5,6 +5,7 @@
 #define.CostCenter('FD03_CostCenter')&#xD;
 #define.Project('FD09_Project')&#xD;
 #define.Vendor('FD07_Vendor')&#xD;
-#define.Other('FD10_Other')</Source>
+#define.Other('FD10_Other')&#xD;
+#define.VAT('VAT')</Source>
 	<Macros />
 </AxMacroDictionary>

@@ -10,10 +10,10 @@
 					<DataField>QYGD_OAInterfaceTokenUrl</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
-					<DataField>QYGD_OAInterfaceSecretValue</DataField>
+					<DataField>QYGD_OAInterfaceSecret</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
-					<DataField>QYGD_OAInterfaceSecret</DataField>
+					<DataField>QYGD_OAInterfaceSecretValue</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
 					<DataField>QYGD_OAInterfaceUrl</DataField>
@@ -35,6 +35,7 @@
 			<Name>QYGD_OAInterfaceUrl</Name>
 			<ExtendedDataType>String255</ExtendedDataType>
 			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+			<Label>@OA:OAExpenseInterfaceUrl</Label>
 		</AxTableField>
 		<AxTableField xmlns=""
 			i:type="AxTableFieldString">

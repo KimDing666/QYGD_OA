@@ -61,20 +61,20 @@
 							</AxFormControl>
 							<AxFormControl xmlns=""
 								i:type="AxFormStringControl">
-								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceSecretValue</Name>
-								<Type>String</Type>
-								<FormControlExtension
-									i:nil="true" />
-								<DataField>QYGD_OAInterfaceSecretValue</DataField>
-								<DataSource>SystemParameters</DataSource>
-							</AxFormControl>
-							<AxFormControl xmlns=""
-								i:type="AxFormStringControl">
 								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceSecret</Name>
 								<Type>String</Type>
 								<FormControlExtension
 									i:nil="true" />
 								<DataField>QYGD_OAInterfaceSecret</DataField>
+								<DataSource>SystemParameters</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceSecretValue</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>QYGD_OAInterfaceSecretValue</DataField>
 								<DataSource>SystemParameters</DataSource>
 							</AxFormControl>
 							<AxFormControl xmlns=""

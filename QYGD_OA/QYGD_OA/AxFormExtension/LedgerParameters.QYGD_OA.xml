@@ -9,7 +9,6 @@
 				i:type="AxFormTabPageControl">
 				<Name>QYGD_OAInterfaceTab</Name>
 				<AutoDeclaration>Yes</AutoDeclaration>
-				<CountryRegionCodes>IT</CountryRegionCodes>
 				<Type>TabPage</Type>
 				<FormControlExtension
 					i:nil="true" />

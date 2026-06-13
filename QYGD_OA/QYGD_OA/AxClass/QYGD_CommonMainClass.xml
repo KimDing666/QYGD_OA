@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>QYGD_CommonMainClass</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class QYGD_CommonMainClass extends RunBaseBatch
+{
+    Str1260                 data;
+    HcmPersonnelNumberId    employeeId;
+    DialogField             dfData;
+    #DEFINE.CurrentVersion(1)
+    #LOCALMACRO.CurrentList
+    data
+    #ENDMACRO
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>canGoBatch</Name>
+				<Source><![CDATA[
+    public boolean canGoBatch()
+    {
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>canGoBatchJournal</Name>
+				<Source><![CDATA[
+    protected boolean canGoBatchJournal()
+    {
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>description</Name>
+				<Source><![CDATA[
+    public static ClassDescription description()
+    {
+        return "OA报销凭证接口测试";
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>dialog</Name>
+				<Source><![CDATA[
+    public Object dialog()
+    {
+        DialogRunbase   dialog = super();
+
+        dfData        = dialog.addField(extendedTypeStr(Str1260), 'Data');
+        dfData.multiLine(true);
+        
+        return dialog;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getFromDialog</Name>
+				<Source><![CDATA[
+    public boolean getFromDialog()
+    {
+        data                  = dfData.value();
+
+        return super();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>pack</Name>
+				<Source><![CDATA[
+    public container pack()
+    {
+        return [#CurrentVersion];
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>unpack</Name>
+				<Source><![CDATA[
+    public boolean unpack(container _packedClass)
+    {
+        Version     version     = RunBase::getVersion(_packedClass);
+    
+        switch (version)
+        {
+            case #CurrentVersion :
+                [version] = _packedClass;
+                break;
+            default :
+                return false;
+        }
+    
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>run</Name>
+				<Source><![CDATA[
+    public void run()
+    {
+        QYGD_OAExpenseVoucherService    service = new QYGD_OAExpenseVoucherService();
+        #OCCRetryCount
+        setPrefix(this.caption());
+
+        try
+        {
+            service.generateExpenseVoucher(FormJsonSerializer::deserializeObject(classNum(QYGD_OAExpenseHeaderContract), data));
+        }
+        catch (Exception::Deadlock)
+        {
+            retry;
+        }
+        catch (Exception::UpdateConflict)
+        {
+            if (appl.ttsLevel() == 0)
+            {
+                if (xSession::currentRetryCount() >= #RetryNum)
+                {
+                    throw Exception::UpdateConflictNotRecovered;
+                }
+                else
+                {
+                    retry;
+                }
+            }
+            else
+            {
+                throw Exception::UpdateConflict;
+            }
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    static void main(Args _args)
+    {
+        QYGD_CommonMainClass mainClass;
+        ;
+
+        mainClass = new QYGD_CommonMainClass();
+        if (mainClass.prompt())
+        {
+            mainClass.run();
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -24,7 +24,6 @@
 			i:type="AxTableFieldString">
 			<Name>QYGD_OAJournalNameId</Name>
 			<ExtendedDataType>LedgerJournalNameId</ExtendedDataType>
-			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
 			<Label>@OA:OAExpenseJournalNameId</Label>
 		</AxTableField>
 		<AxTableField xmlns=""
@@ -66,7 +65,7 @@
 					i:type="AxTableRelationConstraintField">
 					<Name>QYGD_VoucherType</Name>
 					<Field>QYGD_VoucherType</Field>
-					<RelatedField>RecId</RelatedField>
+					<RelatedField>Id</RelatedField>
 				</AxTableRelationConstraint>
 			</Constraints>
 			<Index>RecId</Index>
@@ -75,7 +74,6 @@
 			i:type="AxTableRelationForeignKey">
 			<Name>QYGD_LedgerJournalName</Name>
 			<Cardinality>ZeroMore</Cardinality>
-			<EDTRelation>Yes</EDTRelation>
 			<RelatedTable>LedgerJournalName</RelatedTable>
 			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
 			<RelationshipType>Association</RelationshipType>

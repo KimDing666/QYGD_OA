@@ -174,15 +174,6 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 									</AxFormControl>
 									<AxFormControl xmlns=""
 										i:type="AxFormStringControl">
-										<Name>HeaderGrid_VendorName</Name>
-										<Type>String</Type>
-										<FormControlExtension
-											i:nil="true" />
-										<DataField>VendorName</DataField>
-										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
-									</AxFormControl>
-									<AxFormControl xmlns=""
-										i:type="AxFormStringControl">
 										<Name>HeaderGrid_Department</Name>
 										<Type>String</Type>
 										<FormControlExtension
@@ -233,6 +224,15 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 										<FormControlExtension
 											i:nil="true" />
 										<DataField>CurrencyCode</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>HeaderGrid_ExchRate</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>ExchRate</DataField>
 										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
 									</AxFormControl>
 									<AxFormControl xmlns=""
