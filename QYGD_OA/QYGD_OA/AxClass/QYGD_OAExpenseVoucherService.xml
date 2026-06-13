@@ -296,7 +296,7 @@ public class QYGD_OAExpenseVoucherService
             select firstOnly taxLedgerAccountGroup
                 where taxLedgerAccountGroup.TaxAccountGroup == #VAT;
             ledgerJournalTrans.AccountType           = LedgerJournalACType::Ledger;
-            ledgerJournalTrans.LedgerDimension       = taxLedgerAccountGroup.TaxIncomingLedgerDimension;
+            ledgerJournalTrans.LedgerDimension       = LedgerDimensionFacade::serviceCreateLedgerDimension(taxLedgerAccountGroup.TaxIncomingLedgerDimension);
             //sledgerJournalTrans.DefaultDimension      = defaultDimension;
             ledgerJournalTrans.AmountCurDebit        = expenseLinesTax.TaxAmount;
             ledgerJournalTrans.TransactionType       = LedgerTransType::GeneralJournal;
