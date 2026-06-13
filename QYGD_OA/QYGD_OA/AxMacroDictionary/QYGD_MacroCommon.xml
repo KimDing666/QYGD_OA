@@ -3,6 +3,8 @@
 	<Name>QYGD_MacroCommon</Name>
 	<Source>#define.Department('FD02_Department')&#xD;
 #define.CostCenter('FD03_CostCenter')&#xD;
-#define.Project('FD09_Project')</Source>
+#define.Project('FD09_Project')&#xD;
+#define.Vendor('FD07_Vendor')&#xD;
+#define.Other('FD10_Other')</Source>
 	<Macros />
 </AxMacroDictionary>

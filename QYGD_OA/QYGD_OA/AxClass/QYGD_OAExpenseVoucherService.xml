@@ -60,6 +60,7 @@ public class QYGD_OAExpenseVoucherService
                     expenseHeaderSagingTable.Department         = _contract.parmDepartment();
                     expenseHeaderSagingTable.CostCenter         = _contract.parmCostCenter();
                     expenseHeaderSagingTable.CurrencyCode       = _contract.parmCurrencyCode();
+                    expenseHeaderSagingTable.TotalAmount        = _contract.parmTotalAmount();
                     expenseHeaderSagingTable.Other              = _contract.parmOther();
                     expenseHeaderSagingTable.PaymentMethod      = _contract.parmPaymentMethod();
                     expenseHeaderSagingTable.PaymentType        = _contract.parmPaymentType();
@@ -96,8 +97,10 @@ public class QYGD_OAExpenseVoucherService
                         }
                     }
                 }
-
-                [posted, voucherId] = this.generateVoucher(expenseHeaderSagingTable);
+                changecompany (expenseHeaderSagingTable.OwenEntity)
+                {
+                    [posted, voucherId] = this.generateVoucher(expenseHeaderSagingTable);
+                }
 
                 if (posted)
                 {
@@ -152,26 +155,49 @@ public class QYGD_OAExpenseVoucherService
 				<Source><![CDATA[
     public container generateVoucher(QYGD_OAExpenseHeaderSagingTable _expenseHeading)
     {
-        QYGD_OAExpenseLinesSagingTable  expenseLines;
+        QYGD_OAExpenseLinesSagingTable  expenseLines, expenseLinesTax, expenseLinesTaxInlc;
         LedgerJournalTable              ledgerJournalTable;
         LedgerJournalTrans              ledgerJournalTrans;
-        DimensionDefaultContract        contract       = DimensionDefaultContract::construct();
-        DimensionAttributeValueContract departmentDim  =  DimensionAttributeValueContract::construct(#Department, _expenseHeading.Department);
-        DimensionAttributeValueContract costCenterDim  =  DimensionAttributeValueContract::construct(#CostCenter, _expenseHeading.CostCenter);
-        DimensionAttributeValueContract projectDim     =  new DimensionAttributeValueContract();
-        List                     dimensionList   = new List(Types::Class);
-        container                conResult;
-        DimensionDefault         defaultDimension;
+        DimensionDynamicAccount         ledgerDimension;
+        LedgerJournalName               ledgerJournalName   = LedgerJournalName::find(LedgerParameters::find().QYGD_OAJournalNameId);
+        LedgerVoucherType_CN            ledgerVoucherTypeCN = LedgerVoucherType_CN::findByNaturalKey(LedgerParameters::find().QYGD_VoucherType);
+        DimensionDefaultContract        contract            = DimensionDefaultContract::construct();
+        DimensionAttributeValueContract departmentDim       = DimensionAttributeValueContract::construct(#Department, _expenseHeading.Department);
+        DimensionAttributeValueContract costCenterDim       = DimensionAttributeValueContract::construct(#CostCenter, _expenseHeading.CostCenter);
+        DimensionAttributeValueContract projectDim          = new DimensionAttributeValueContract();
+        DimensionAttributeValueContract vendorDim           = new DimensionAttributeValueContract();
+        DimensionAttributeValueContract otherDim            = new DimensionAttributeValueContract();
+        List                            dimensionList       = new List(Types::Class);
+        container                       conResult;
+        DimensionDefault                defaultDimension;
+        Voucher                         voucher;
+        Voucher_CN                      voucher_CN;
+        Description                     txt = strFmt('支出-%1-%2', _expenseHeading.ExpenseNum, _expenseHeading.WorkerId);
         ;
 
-        while select sum(IncludeTaxAmount), sum(TaxAmount), sum(ExcludeTaxAmount) from expenseLines
+        if (ledgerJournalTable.RecId == 0)
+        {
+            ledgerJournalTable = this.insertLedgerJournalTable(ledgerJournalName, txt);
+        }
+        [voucher, voucher_CN] = QYGD_OAExpenseVoucherService::getVoucherId(ledgerJournalTable, ledgerJournalName);
+        while select sum(ExcludeTaxAmount), maxof(ExchRate) from expenseLines
             group by expenseLines.Category, expenseLines.LedgerDimension, expenseLines.Project
             where expenseLines.ExpenseHeader == _expenseHeading.RecId
         {
-            if (ledgerJournalTable.RecId == 0)
+            ledgerJournalTrans.clear();
+            ledgerJournalTrans.initValue();
+            ledgerJournalTrans.JournalNum            = ledgerJournalTable.JournalNum;
+            ledgerJournalTrans.TransDate             = DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone());
+            ledgerJournalTrans.CurrencyCode          = _expenseHeading.CurrencyCode;
+            ledgerJournalTrans.ExchRate              = expenseLines.ExchRate;
+            ledgerJournalTrans.Voucher               = voucher;
+            ledgerJournalTrans.LedgerVoucherType_CN  = ledgerVoucherTypeCN.RecId;
+            if (LedgerParameters::find().ChineseVoucher_CN)
             {
-                ledgerJournalTable = this.insertLedgerJournalTable('test');
+                ledgerJournalTrans.Voucher_CN        = voucher_CN;
             }
+            ledgerJournalTrans.AccountType           = LedgerJournalACType::Ledger;
+
             dimensionList.addEnd(departmentDim);
             dimensionList.addEnd(costCenterDim);
 
@@ -183,7 +209,111 @@ public class QYGD_OAExpenseVoucherService
             contract.parmValues(dimensionList);
             defaultDimension = DimensionNameValueListServiceProvider::newForDimensionNameValueListContract(contract).resolve().parmSavedRecId();
 
+            if (defaultDimension)
+            {
+                ledgerDimension = LedgerDimensionFacade::serviceCreateLedgerDimension(expenseLines.LedgerDimension, defaultDimension);
+            }
 
+            ledgerJournalTrans.LedgerDimension       = ledgerDimension;
+            ledgerJournalTrans.DefaultDimension      = defaultDimension;
+            ledgerJournalTrans.AmountCurDebit        = expenseLines.ExcludeTaxAmount;
+            ledgerJournalTrans.TransactionType       = LedgerTransType::GeneralJournal;
+            ledgerJournalTrans.Txt                   = txt;
+            if (ledgerJournalTrans.validateWrite())
+            {
+                ledgerJournalTrans.insert();
+            }
+        }
+
+        select sum(TaxAmount), sum(IncludeTaxAmount) from expenseLinesTax
+            where expenseLinesTax.ExpenseHeader == _expenseHeading.RecId;
+
+        dimensionList = null;
+
+        if (expenseLinesTax.TaxAmount != 0)
+        {
+            ledgerJournalTrans.clear();
+            ledgerJournalTrans.initValue();
+            ledgerJournalTrans.JournalNum            = ledgerJournalTable.JournalNum;
+            ledgerJournalTrans.TransDate             = DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone());
+            ledgerJournalTrans.CurrencyCode          = _expenseHeading.CurrencyCode;
+            ledgerJournalTrans.ExchRate              = expenseLines.ExchRate;
+            ledgerJournalTrans.Voucher               = voucher;
+            ledgerJournalTrans.LedgerVoucherType_CN  = ledgerVoucherTypeCN.RecId;
+            if (LedgerParameters::find().ChineseVoucher_CN)
+            {
+                ledgerJournalTrans.Voucher_CN        = voucher_CN;
+            }
+            ledgerJournalTrans.AccountType           = LedgerJournalACType::Ledger;
+            ledgerJournalTrans.LedgerDimension       = ledgerDimension;
+            ledgerJournalTrans.DefaultDimension      = defaultDimension;
+            ledgerJournalTrans.AmountCurDebit        = expenseLines.ExcludeTaxAmount;
+            ledgerJournalTrans.TransactionType       = LedgerTransType::GeneralJournal;
+            ledgerJournalTrans.Txt                   = txt;
+            if (ledgerJournalTrans.validateWrite())
+            {
+                ledgerJournalTrans.insert();
+            }
+        }
+        if (expenseLinesTax.IncludeTaxAmount != 0)
+        {
+            ledgerJournalTrans.clear();
+            ledgerJournalTrans.initValue();
+            ledgerJournalTrans.JournalNum            = ledgerJournalTable.JournalNum;
+            ledgerJournalTrans.TransDate             = DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone());
+            ledgerJournalTrans.CurrencyCode          = _expenseHeading.CurrencyCode;
+            ledgerJournalTrans.ExchRate              = expenseLines.ExchRate;
+            ledgerJournalTrans.Voucher               = voucher;
+            ledgerJournalTrans.LedgerVoucherType_CN  = ledgerVoucherTypeCN.RecId;
+            if (LedgerParameters::find().ChineseVoucher_CN)
+            {
+                ledgerJournalTrans.Voucher_CN        = voucher_CN;
+            }
+            ledgerJournalTrans.AccountType           = LedgerJournalACType::Vend;
+            ledgerDimension                          = LedgerDynamicAccountHelper::getDynamicAccountFromAccountNumber(_expenseHeading.VendorCode, LedgerJournalACType::Vend);
+            ledgerJournalTrans.LedgerDimension       = ledgerDimension;
+
+            vendorDim.parmName(#Vendor);
+            vendorDim.parmValue(_expenseHeading.VendorCode);
+            dimensionList.addEnd(vendorDim);
+
+            otherDim.parmName(#Other);
+            otherDim.parmValue(_expenseHeading.Other);
+            dimensionList.addEnd(otherDim);
+            contract.parmValues(dimensionList);
+            defaultDimension = DimensionNameValueListServiceProvider::newForDimensionNameValueListContract(contract).resolve().parmSavedRecId();
+            
+            ledgerJournalTrans.DefaultDimension      = defaultDimension;
+            ledgerJournalTrans.AmountCurCredit       = expenseLines.IncludeTaxAmount;
+            ledgerJournalTrans.TransactionType       = LedgerTransType::GeneralJournal;
+            ledgerJournalTrans.Txt                   = txt;
+            if (ledgerJournalTrans.validateWrite())
+            {
+                ledgerJournalTrans.insert();
+            }
+        }
+
+        if (LedgerParameters::find().QYGD_OAAutoPostJournal)
+        {
+            LedgerJournalCheckPost::newLedgerJournalTable(ledgerJournalTable, NoYes::Yes).run();
+
+            ledgerJournalTable.reread();
+
+            if (ledgerJournalTable.Posted)
+            {
+                conResult = [true, voucher];
+            }
+            else
+            {
+                ledgerJournalTable.selectForUpdate(true);
+                ledgerJournalTable.delete();
+                
+                conResult = [false, ''];
+            }
+        }
+        else
+        {
+            conResult = [true, voucher];
         }
 
         return conResult;
@@ -192,9 +322,39 @@ public class QYGD_OAExpenseVoucherService
 ]]></Source>
 			</Method>
 			<Method>
+				<Name>getVoucherId</Name>
+				<Source><![CDATA[
+    public static container getVoucherId(LedgerJournalTable _ledgerJournalTable, LedgerJournalName _ledgerJournalName)
+    {
+        JournalVoucherNum               journalVoucherNum;
+        LedgerVoucherType_CN            ledgerVoucherTypeCN = LedgerVoucherType_CN::findByNaturalKey(LedgerParameters::find().QYGD_VoucherType);
+        Voucher                         voucher;
+        Voucher_CN                      voucher_CN;
+        ;
+
+        if (_ledgerJournalName.VoucherAllocatedAtPosting)
+        {
+            NumberSeq   numberSeq;
+            numberSeq   = NumberSeq::newGetVoucher(LedgerParameters::numRefLedgerTempVoucher());
+            voucher     = numberSeq.voucher();
+        }
+        else
+        {
+            journalVoucherNum   = new JournalVoucherNum(JournalTableData::newTable(_ledgerJournalTable));
+            voucher             = journalVoucherNum.getNew(true);
+            journalVoucherNum.used(voucher);
+            voucher_CN          = ledgerVoucherTypeCN.getVoucherNumber(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()));
+        }
+
+        return [voucher, voucher_CN];
+    }
+
+]]></Source>
+			</Method>
+			<Method>
 				<Name>insertLedgerJournalTable</Name>
 				<Source><![CDATA[
-    public LedgerJournalTable insertLedgerJournalTable(Description _journalDesc)
+    public LedgerJournalTable insertLedgerJournalTable(LedgerJournalName _ledgerJournalName, Description _journalDesc)
     {
         LedgerJournalTableData  ledgerJourTableData;
         LedgerJournalTable      ledgerJournalTable;
@@ -205,7 +365,7 @@ public class QYGD_OAExpenseVoucherService
 
         ledgerJournalTable.clear();
         ledgerJournalTable.initValue();
-        ledgerJournalTable.initFromLedgerJournalName('');
+        ledgerJournalTable.initFromLedgerJournalName(_ledgerJournalName.JournalName);
         ledgerJournalTable.JournalNum    = ledgerJourTableData.nextJournalId();
         ledgerJournalTable.Name          = _journalDesc;
 

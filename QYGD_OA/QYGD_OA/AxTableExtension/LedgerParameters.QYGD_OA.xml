@@ -13,16 +13,7 @@
 					<DataField>QYGD_VoucherType</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
-					<DataField>QYGD_OAInterfaceTokenUrl</DataField>
-				</AxTableFieldGroupField>
-				<AxTableFieldGroupField>
-					<DataField>QYGD_OAInterfaceSecretValue</DataField>
-				</AxTableFieldGroupField>
-				<AxTableFieldGroupField>
-					<DataField>QYGD_OAInterfaceSecret</DataField>
-				</AxTableFieldGroupField>
-				<AxTableFieldGroupField>
-					<DataField>QYGD_OAInterfaceUrl</DataField>
+					<DataField>QYGD_OAAutoPostJournal</DataField>
 				</AxTableFieldGroupField>
 			</Fields>
 		</AxTableFieldGroup>
@@ -44,31 +35,12 @@
 			<Label>@OA:OAExpenseVoucherType</Label>
 		</AxTableField>
 		<AxTableField xmlns=""
-			i:type="AxTableFieldString">
-			<Name>QYGD_OAInterfaceUrl</Name>
-			<ExtendedDataType>String255</ExtendedDataType>
+			i:type="AxTableFieldEnum">
+			<Name>QYGD_OAAutoPostJournal</Name>
+			<ExtendedDataType>NoYesId</ExtendedDataType>
 			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
-		</AxTableField>
-		<AxTableField xmlns=""
-			i:type="AxTableFieldString">
-			<Name>QYGD_OAInterfaceSecretValue</Name>
-			<ExtendedDataType>String255</ExtendedDataType>
-			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
-			<Label>@OA:OAExpenseInterfaceSecretValue</Label>
-		</AxTableField>
-		<AxTableField xmlns=""
-			i:type="AxTableFieldString">
-			<Name>QYGD_OAInterfaceSecret</Name>
-			<ExtendedDataType>String255</ExtendedDataType>
-			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
-			<Label>@OA:OAExpenseInterfaceSecret</Label>
-		</AxTableField>
-		<AxTableField xmlns=""
-			i:type="AxTableFieldString">
-			<Name>QYGD_OAInterfaceTokenUrl</Name>
-			<ExtendedDataType>String255</ExtendedDataType>
-			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
-			<Label>@OA:OAExpenseInterfaceTokenUrl</Label>
+			<Label>@OA:OAExpenseAutoPostJournal</Label>
+			<EnumType>NoYes</EnumType>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

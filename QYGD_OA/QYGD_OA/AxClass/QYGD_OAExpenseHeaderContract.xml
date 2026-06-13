@@ -18,6 +18,7 @@ public class QYGD_OAExpenseHeaderContract
     private str  owenEntity;
     private int  paymentType;
     private str  currencyCode;
+    private real totalAmount;
     private List expenseLines;
 
 }
@@ -103,6 +104,18 @@ public class QYGD_OAExpenseHeaderContract
     {
         workerName = _workerName;
         return workerName;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmTotalAmount</Name>
+				<Source><![CDATA[
+    [DataMember("totalAmount")]
+    public real parmTotalAmount(real _totalAmount = totalAmount)
+    {
+        totalAmount = _totalAmount;
+        return totalAmount;
     }
 
 ]]></Source>

@@ -117,6 +117,11 @@
       <Name>LedgerParameters.QYGD_OA</Name>
       <Link>Form Extensions\LedgerParameters.QYGD_OA</Link>
     </Content>
+    <Content Include="AxFormExtension\SystemParameters.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>SystemParameters.QYGD_OA</Name>
+      <Link>Form Extensions\SystemParameters.QYGD_OA</Link>
+    </Content>
     <Content Include="AxForm\QYGD_OAExpenseHeaderSagingTable">
       <SubType>Content</SubType>
       <Name>QYGD_OAExpenseHeaderSagingTable</Name>
@@ -176,6 +181,11 @@
       <SubType>Content</SubType>
       <Name>LedgerParameters.QYGD_OA</Name>
       <Link>Table Extensions\LedgerParameters.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxTableExtension\SystemParameters.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>SystemParameters.QYGD_OA</Name>
+      <Link>Table Extensions\SystemParameters.QYGD_OA</Link>
     </Content>
     <Content Include="AxTableExtension\VendVendorV2Staging.QYGD_OA">
       <SubType>Content</SubType>

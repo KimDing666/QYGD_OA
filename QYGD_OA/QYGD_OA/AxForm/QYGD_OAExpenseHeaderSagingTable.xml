@@ -236,6 +236,15 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
 									</AxFormControl>
 									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>HeaderGrid_TotalAmount</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>TotalAmount</DataField>
+										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
 										i:type="AxFormDateControl">
 										<Name>HeaderGrid_TransDate</Name>
 										<Type>Date</Type>

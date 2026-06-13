@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AxFormExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V6">
-	<Name>LedgerParameters.QYGD_OA</Name>
+	<Name>SystemParameters.QYGD_OA</Name>
 	<ControlModifications />
 	<Controls>
 		<AxFormExtensionControl xmlns="">
-			<Name>Copyqwvqemk01</Name>
+			<Name>Copyauuw5zbb1</Name>
 			<FormControl xmlns=""
 				i:type="AxFormTabPageControl">
 				<Name>QYGD_OAInterfaceTab</Name>
@@ -52,36 +52,44 @@
 						<Controls>
 							<AxFormControl xmlns=""
 								i:type="AxFormStringControl">
-								<Name>QYGD_OAInterfaceSetup_QYGD_OAJournalNameId</Name>
+								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceTokenUrl</Name>
 								<Type>String</Type>
 								<FormControlExtension
 									i:nil="true" />
-								<DataField>QYGD_OAJournalNameId</DataField>
-								<DataSource>LedgerParameters</DataSource>
+								<DataField>QYGD_OAInterfaceTokenUrl</DataField>
+								<DataSource>SystemParameters</DataSource>
 							</AxFormControl>
 							<AxFormControl xmlns=""
 								i:type="AxFormStringControl">
-								<Name>QYGD_OAInterfaceSetup_QYGD_VoucherType</Name>
+								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceSecretValue</Name>
 								<Type>String</Type>
 								<FormControlExtension
 									i:nil="true" />
-								<DataField>QYGD_VoucherType</DataField>
-								<DataSource>LedgerParameters</DataSource>
+								<DataField>QYGD_OAInterfaceSecretValue</DataField>
+								<DataSource>SystemParameters</DataSource>
 							</AxFormControl>
 							<AxFormControl xmlns=""
-								i:type="AxFormComboBoxControl">
-								<Name>QYGD_OAInterfaceSetup_QYGD_OAAutoPostJournal</Name>
-								<Type>ComboBox</Type>
+								i:type="AxFormStringControl">
+								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceSecret</Name>
+								<Type>String</Type>
 								<FormControlExtension
 									i:nil="true" />
-								<DataField>QYGD_OAAutoPostJournal</DataField>
-								<DataSource>LedgerParameters</DataSource>
-								<Items />
+								<DataField>QYGD_OAInterfaceSecret</DataField>
+								<DataSource>SystemParameters</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceUrl</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>QYGD_OAInterfaceUrl</DataField>
+								<DataSource>SystemParameters</DataSource>
 							</AxFormControl>
 						</Controls>
 						<ColumnsMode>Fill</ColumnsMode>
 						<DataGroup>QYGD_OAInterface</DataGroup>
-						<DataSource>LedgerParameters</DataSource>
+						<DataSource>SystemParameters</DataSource>
 						<FrameType>None</FrameType>
 					</AxFormControl>
 				</Controls>

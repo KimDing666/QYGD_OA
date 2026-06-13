@@ -107,6 +107,14 @@
 		</AxClassMemberVariable>
 		<AxClassMemberVariable>
 			<Tags></Tags>
+			<Type>Real</Type>
+			<TypeName></TypeName>
+			<Name>totalAmount</Name>
+			<Attributes />
+			<Visibility>Private</Visibility>
+		</AxClassMemberVariable>
+		<AxClassMemberVariable>
+			<Tags></Tags>
 			<Type>Class</Type>
 			<TypeName>List</TypeName>
 			<Name>expenseLines</Name>
@@ -315,6 +323,35 @@
 			<ReturnType>
 				<Tags></Tags>
 				<Type>String</Type>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>parmTotalAmount</Name>
+			<Visibility>Public</Visibility>
+			<Attributes>
+				<AxAttribute>
+					<Name>DataMember</Name>
+					<Parameters>
+						<AxAttributeParameter>
+							<TypeValue>"totalAmount"</TypeValue>
+							<AdditionalData />
+						</AxAttributeParameter>
+					</Parameters>
+				</AxAttribute>
+			</Attributes>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Real</Type>
+					<TypeName></TypeName>
+					<DefaultValue>totalAmount</DefaultValue>
+					<Name>_totalAmount</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>Real</Type>
 				<TypeName></TypeName>
 			</ReturnType>
 		</Method>

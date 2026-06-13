@@ -1,6 +1,7 @@
 ﻿GenerateExpenseVoucherService=OA报销凭证生成服务
 NewLabel0=Label files created on 06/04/2026 18:53:01 for label file Id OA and language zh-Hans
  ;Label file comment - see above label
+OAExpenseAutoPostJournal=OA报销自动过账凭证
 OAExpenseCostCenter=成本中心
 OAExpenseDate=费用日期
 OAExpenseDepartment=部门
@@ -32,6 +33,7 @@ OAExpensePaymentMethod=付款方式
 OAExpensePaymentType=费用类型
 OAExpenseProject=项目
 OAExpenseTabHeader=OA报销凭证暂存
+OAExpenseTotalAmount=付款总金额
 OAExpenseTransDate=交易日期
 OAExpenseValidateAmount=不含税金额和含税金额必须大于零。
 OAExpenseValidateAmountBalance=不含税金额必须等于含税金额和税额合计。

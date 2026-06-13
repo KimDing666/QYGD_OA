@@ -129,6 +129,9 @@ public class QYGD_OAExpenseHeaderSagingTable extends common
 					<DataField>CurrencyCode</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
+					<DataField>TotalAmount</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
 					<DataField>TransDate</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
@@ -254,6 +257,13 @@ public class QYGD_OAExpenseHeaderSagingTable extends common
 			<ExtendedDataType>CurrencyCode</ExtendedDataType>
 			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
 			<Label>@OA:OAExpenseLineCurrencyCode</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldReal">
+			<Name>TotalAmount</Name>
+			<ExtendedDataType>Amount</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+			<Label>@OA:OAExpenseTotalAmount</Label>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

@@ -82,9 +82,39 @@
 			</ReturnType>
 		</Method>
 		<Method>
+			<Name>getVoucherId</Name>
+			<IsStatic>true</IsStatic>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Record</Type>
+					<TypeName>LedgerJournalTable</TypeName>
+					<Name>_ledgerJournalTable</Name>
+				</AxMethodParameter>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Record</Type>
+					<TypeName>LedgerJournalName</TypeName>
+					<Name>_ledgerJournalName</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>Container</Type>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
 			<Name>insertLedgerJournalTable</Name>
 			<Visibility>Public</Visibility>
 			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Record</Type>
+					<TypeName>LedgerJournalName</TypeName>
+					<Name>_ledgerJournalName</Name>
+				</AxMethodParameter>
 				<AxMethodParameter>
 					<Tags></Tags>
 					<Type>ExtendedDataType</Type>

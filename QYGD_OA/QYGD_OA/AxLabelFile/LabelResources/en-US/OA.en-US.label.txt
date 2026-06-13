@@ -1,6 +1,7 @@
 ﻿GenerateExpenseVoucherService=Expense voucher generation service
 NewLabel0=Label files created on 06/04/2026 18:53:01 for label file Id OA and language en-US
  ;Label file comment - see above label
+OAExpenseAutoPostJournal=OA expense post journal automatically
 OAExpenseCostCenter=Cost center
 OAExpenseDate=Expense date
 OAExpenseDepartment=Deparment
@@ -31,6 +32,7 @@ OAExpensePaymentMethod=Payment method
 OAExpensePaymentType=Payment type
 OAExpenseProject=Project
 OAExpenseTabHeader=OA Expense voucher staging 
+OAExpenseTotalAmount=Payment total amount
 OAExpenseTransDate=Transaction date
 OAExpenseValidateAmount=The non-tax amount and the tax-inclusive amount must both be greater than zero.
 OAExpenseValidateAmountBalance=The tax-exclusive amount must be equal to the sum of the tax-inclusive amount and the tax amount.
