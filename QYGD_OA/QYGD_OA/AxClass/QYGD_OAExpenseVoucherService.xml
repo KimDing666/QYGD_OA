@@ -107,6 +107,7 @@ public class QYGD_OAExpenseVoucherService
                 {
                     expenseHeaderSagingTable.selectForUpdate(true);
                     expenseHeaderSagingTable.JournalNum     = voucherId;
+                    expenseHeaderSagingTable.TransDate      = DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone());
                     expenseHeaderSagingTable.update();
                     this.insertHeaderLSagingAttatcher(expenseHeaderSagingTable, _contract);
                     _response.parmStatusCode(1);
@@ -150,7 +151,7 @@ public class QYGD_OAExpenseVoucherService
 				<Source><![CDATA[
     public void insertHeaderLSagingAttatcher(QYGD_OAExpenseHeaderSagingTable _expenseHeading, QYGD_OAExpenseHeaderContract _requestJson)
     {
-        DocumentManagement::attachNote(_expenseHeading.TableId, _expenseHeading.RecId, 'dat', '注释','OA报销流程单', _requestJson.xml());
+        DocumentManagement::attachNote(_expenseHeading.TableId, _expenseHeading.RecId, 'dat', '注释','OA报销流程单', FormJsonSerializer::serializeClass(_requestJson));
     }
 
 ]]></Source>
@@ -457,12 +458,14 @@ public class QYGD_OAExpenseVoucherService
         QYGD_OAExpenseHeaderSagingTable expenseHeaderSagingTable;
         QYGD_OAExpenseLinesSagingTable  expenseLnesSagingTable;
         QYGD_OAExpenseLinesContract     expenseLinesContract;
+        LedgerParameters                ledgerParameters = LedgerParameters::find();
         List                            expenseLines;
         ListEnumerator                  lineEnumerator;
         boolean                         validate = true;
         
         ;
 
+        
         if (_contract.parmOwenEntity())
         {
             if (CompanyInfo::findDataArea(_contract.parmOwenEntity()).RecId == 0)
@@ -499,6 +502,12 @@ public class QYGD_OAExpenseVoucherService
                 {
                     validate = checkFailed(strFmt('@OA:OAExpenseValidateVendorCodeNull'));
                 }
+
+                if (ledgerParameters.QYGD_OAJournalNameId == '' ||
+                    ledgerParameters.QYGD_VoucherType)
+                {
+                    validate = checkFailed(strFmt('@OA:OAExpenseLedgerParameterCheck'));
+                }
             }
         }
         else
@@ -530,6 +539,19 @@ public class QYGD_OAExpenseVoucherService
         else
         {
             validate = checkFailed(strFmt('@OA:OAExpenseValidateCostCenterNull'));
+        }
+
+        if (_contract.parmOther())
+        {
+            DimensionAttribute dimensionAttribute = DimensionAttribute::findByName(#Other);
+            if (DimensionAttributeValue::findByDimensionAttributeAndValue(dimensionAttribute, _contract.parmOther()).RecId == 0)
+            {
+                validate = checkFailed(strFmt('@OA:OAExpenseValidateOther', _contract.parmOther()));
+            }
+        }
+        else
+        {
+            validate = checkFailed(strFmt('@OA:OAExpenseValidateOtherNull'));
         }
 
         expenseLines = _contract.parmExpenseLines();

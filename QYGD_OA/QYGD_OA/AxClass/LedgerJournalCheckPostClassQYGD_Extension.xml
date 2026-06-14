@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>LedgerJournalCheckPostClassQYGD_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(classstr(LedgerJournalCheckPost))]
+final class LedgerJournalCheckPostClassQYGD_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>postJournal</Name>
+				<Source><![CDATA[
+    protected container postJournal()
+    {
+        boolean              postingSuccess;
+        boolean              intercompanyPostingSuccess;
+        ;
+
+        ttsbegin;
+        [postingSuccess, intercompanyPostingSuccess] = next postJournal();
+
+        if (postingSuccess)
+        {
+            if (LedgerParameters::find().QYGD_OAJournalNameId == ledgerJournalTable.JournalName)
+            {
+                this.createPaymentRequest(ledgerJournalTable.JournalNum);
+            }
+        }
+        ttscommit;
+
+        return [postingSuccess, intercompanyPostingSuccess];
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>createPaymentRequest</Name>
+				<Source><![CDATA[
+    public void createPaymentRequest(LedgerJournalId _jorunalId)
+    {
+        QYGD_OAExpenseHeaderSagingTable expenseHeaderSagingTable;
+        QYGD_OAExpenseLinesSagingTable  expenseLinesSagingTable;
+        IWS_PaymentWorkFlowTable        paymentWorkFlowTable;
+        ;
+
+        select firstonly expenseHeaderSagingTable
+            where expenseHeaderSagingTable.JournalNum == _jorunalId;
+
+        if (expenseHeaderSagingTable.RecId)
+        {
+
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

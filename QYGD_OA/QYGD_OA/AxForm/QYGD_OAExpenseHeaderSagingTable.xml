@@ -321,6 +321,7 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 											i:nil="true" />
 										<DataField>LineNum</DataField>
 										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+										<NoOfDecimalsMode>Fixed</NoOfDecimalsMode>
 									</AxFormControl>
 									<AxFormControl xmlns=""
 										i:type="AxFormStringControl">
