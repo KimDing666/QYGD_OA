@@ -5,7 +5,7 @@
 		<Declaration><![CDATA[
 internal final class QYGD_CommonMainClass extends RunBaseBatch
 {
-    Str1260                 data;
+    Str4095                 data;
     HcmPersonnelNumberId    employeeId;
     DialogField             dfData;
     #DEFINE.CurrentVersion(1)
@@ -53,7 +53,7 @@ internal final class QYGD_CommonMainClass extends RunBaseBatch
     {
         DialogRunbase   dialog = super();
 
-        dfData        = dialog.addField(extendedTypeStr(Str1260), 'Data');
+        dfData        = dialog.addField(extendedTypeStr(Str4095), 'Data');
         dfData.multiLine(true);
         
         return dialog;

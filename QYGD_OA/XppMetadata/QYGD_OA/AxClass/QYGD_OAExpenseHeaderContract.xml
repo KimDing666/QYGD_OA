@@ -109,14 +109,6 @@
 			<Tags></Tags>
 			<Type>Real</Type>
 			<TypeName></TypeName>
-			<Name>exchRate</Name>
-			<Attributes />
-			<Visibility>Private</Visibility>
-		</AxClassMemberVariable>
-		<AxClassMemberVariable>
-			<Tags></Tags>
-			<Type>Real</Type>
-			<TypeName></TypeName>
 			<Name>totalAmount</Name>
 			<Attributes />
 			<Visibility>Private</Visibility>
@@ -389,35 +381,6 @@
 			<ReturnType>
 				<Tags></Tags>
 				<Type>String</Type>
-				<TypeName></TypeName>
-			</ReturnType>
-		</Method>
-		<Method>
-			<Name>parmExchRate</Name>
-			<Visibility>Public</Visibility>
-			<Attributes>
-				<AxAttribute>
-					<Name>DataMember</Name>
-					<Parameters>
-						<AxAttributeParameter>
-							<TypeValue>"exchRate"</TypeValue>
-							<AdditionalData />
-						</AxAttributeParameter>
-					</Parameters>
-				</AxAttribute>
-			</Attributes>
-			<Parameters>
-				<AxMethodParameter>
-					<Tags></Tags>
-					<Type>Real</Type>
-					<TypeName></TypeName>
-					<DefaultValue>exchRate</DefaultValue>
-					<Name>_exchRate</Name>
-				</AxMethodParameter>
-			</Parameters>
-			<ReturnType>
-				<Tags></Tags>
-				<Type>Real</Type>
 				<TypeName></TypeName>
 			</ReturnType>
 		</Method>

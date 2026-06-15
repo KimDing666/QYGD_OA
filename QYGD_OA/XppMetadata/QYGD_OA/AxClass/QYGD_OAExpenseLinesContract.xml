@@ -59,6 +59,14 @@
 		</AxClassMemberVariable>
 		<AxClassMemberVariable>
 			<Tags></Tags>
+			<Type>String</Type>
+			<TypeName></TypeName>
+			<Name>taxRate</Name>
+			<Attributes />
+			<Visibility>Private</Visibility>
+		</AxClassMemberVariable>
+		<AxClassMemberVariable>
+			<Tags></Tags>
 			<Type>Real</Type>
 			<TypeName></TypeName>
 			<Name>exchRate</Name>
@@ -257,6 +265,35 @@
 					<TypeName></TypeName>
 					<DefaultValue>expenseDate</DefaultValue>
 					<Name>_expenseDate</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>String</Type>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>parmTaxRate</Name>
+			<Visibility>Public</Visibility>
+			<Attributes>
+				<AxAttribute>
+					<Name>DataMember</Name>
+					<Parameters>
+						<AxAttributeParameter>
+							<TypeValue>"taxRate"</TypeValue>
+							<AdditionalData />
+						</AxAttributeParameter>
+					</Parameters>
+				</AxAttribute>
+			</Attributes>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>String</Type>
+					<TypeName></TypeName>
+					<DefaultValue>taxRate</DefaultValue>
+					<Name>_taxRate</Name>
 				</AxMethodParameter>
 			</Parameters>
 			<ReturnType>

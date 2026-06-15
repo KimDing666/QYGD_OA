@@ -8,7 +8,7 @@
 		<AxClassMemberVariable>
 			<Tags></Tags>
 			<Type>ExtendedDataType</Type>
-			<TypeName>Str1260</TypeName>
+			<TypeName>Str4095</TypeName>
 			<Name>data</Name>
 			<Attributes />
 		</AxClassMemberVariable>

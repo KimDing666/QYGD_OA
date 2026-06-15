@@ -10,6 +10,7 @@
 				<Name>QYGD_OAInterfaceTab</Name>
 				<AutoDeclaration>Yes</AutoDeclaration>
 				<Type>TabPage</Type>
+				<Visible>No</Visible>
 				<FormControlExtension
 					i:nil="true" />
 				<Controls>

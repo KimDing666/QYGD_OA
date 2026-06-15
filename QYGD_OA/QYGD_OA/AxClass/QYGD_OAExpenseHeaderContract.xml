@@ -18,7 +18,7 @@ public class QYGD_OAExpenseHeaderContract
     private str  owenEntity;
     private int  paymentType;
     private str  currencyCode;
-    private real exchRate;
+    //private real exchRate;
     private real totalAmount;
     private List expenseLines;
 
@@ -134,20 +134,16 @@ public class QYGD_OAExpenseHeaderContract
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>parmExchRate</Name>
+				<Name>parmPaymentMethod</Name>
 				<Source><![CDATA[
+    /*
     [DataMember("exchRate")]
     public real parmExchRate(real _exchRate = exchRate)
     {
         exchRate = _exchRate;
         return exchRate;
     }
-
-]]></Source>
-			</Method>
-			<Method>
-				<Name>parmPaymentMethod</Name>
-				<Source><![CDATA[
+    */
     [DataMember("paymentMethod")]
     public str parmPaymentMethod(str _paymentMethod = paymentMethod)
     {

@@ -18,6 +18,12 @@
 			<DataField>FD02_Department</DataField>
 			<DataSource>DefaultDimensionDAVS</DataSource>
 		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>FD10_Other</Name>
+			<DataField>FD10_Other</DataField>
+			<DataSource>DefaultDimensionDAVS</DataSource>
+		</AxDataEntityViewField>
 	</Fields>
 	<Mappings />
 	<PropertyModifications />

@@ -4,5 +4,13 @@
 	<Class>QYGD_OAExpenseVoucherService</Class>
 	<Description>@OA:GenerateExpenseVoucherService</Description>
 	<ExternalName>OAExpenseVoucherService</ExternalName>
-	<ServiceOperations />
+	<ServiceOperations>
+		<AxServiceOperation>
+			<Name>generateExpenseVoucher</Name>
+			<Method>generateExpenseVoucher</Method>
+			<SubscriberAccessLevel>
+				<Read>Allow</Read>
+			</SubscriberAccessLevel>
+		</AxServiceOperation>
+	</ServiceOperations>
 </AxService>

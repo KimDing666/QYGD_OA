@@ -65,6 +65,46 @@
 			</ReturnType>
 		</Method>
 		<Method>
+			<Name>generateTrvExpense</Name>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Record</Type>
+					<TypeName>QYGD_OAExpenseHeaderSagingTable</TypeName>
+					<Name>_expenseHeading</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>Container</Type>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>updateDocumentStatus</Name>
+			<IsStatic>true</IsStatic>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Record</Type>
+					<TypeName>TrvExpTable</TypeName>
+					<Name>_trvExpTable</Name>
+				</AxMethodParameter>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Enum</Type>
+					<TypeName>TrvAppStatus</TypeName>
+					<Name>_trvAppStatus</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
 			<Name>generateVoucher</Name>
 			<Visibility>Public</Visibility>
 			<Parameters>

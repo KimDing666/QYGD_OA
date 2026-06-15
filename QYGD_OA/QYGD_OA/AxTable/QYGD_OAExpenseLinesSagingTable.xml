@@ -91,6 +91,9 @@ public class QYGD_OAExpenseLinesSagingTable extends common
 					<DataField>ExchRate</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
+					<DataField>TaxRate</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
 					<DataField>ExcludeTaxAmount</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
@@ -185,6 +188,13 @@ public class QYGD_OAExpenseLinesSagingTable extends common
 			<Name>LedgerDimension</Name>
 			<AssetClassification>Customer Content</AssetClassification>
 			<ExtendedDataType>LedgerDimensionDefaultAccount</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>TaxRate</Name>
+			<ExtendedDataType>String30</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+			<Label>@OA:OAExpenseVendorCode</Label>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

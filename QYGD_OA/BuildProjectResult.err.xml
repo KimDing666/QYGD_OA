@@ -1,30 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2026-06-08T21:14:13.2915867+08:00">
+  GenerationTime="2026-06-15T22:27:14.5369144+08:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Error</Severity>
-      <Path>dynamics://Table/QYGD_OAExpenseLinesSagingTable</Path>
-      <ElementType>Table</ElementType>
-      <Moniker>UnderlyingFieldTypeNotFound</Moniker>
-      <Line>1</Line>
-      <Column>14</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>44</EndColumn>
-      <Message>The underlying type 'CurrencyCode ' or its base type for table 'QYGD_OAExpenseLinesSagingTable' field 'CurrencyCode' does not exist.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Error</Severity>
-      <Path>dynamics://Table/QYGD_OAExpenseLinesSagingTable</Path>
-      <ElementType>Table</ElementType>
-      <Moniker>UnderlyingFieldTypeNotFound</Moniker>
-      <Line>1</Line>
-      <Column>14</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>44</EndColumn>
-      <Message>The underlying type 'ExchRate ' or its base type for table 'QYGD_OAExpenseLinesSagingTable' field 'ExchRate' does not exist.</Message>
+      <Path>dynamics://Class/QYGD_OAExpenseVoucherService/Method/generateTrvExpense</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ExpectedToken</Moniker>
+      <Line>266</Line>
+      <Column>13</Column>
+      <EndLine>266</EndLine>
+      <EndColumn>14</EndColumn>
+      <Message>'}' expected.</Message>
     </Diagnostic>
   </Items>
   <Aliases />

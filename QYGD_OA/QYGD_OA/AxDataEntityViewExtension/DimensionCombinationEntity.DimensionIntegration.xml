@@ -18,6 +18,12 @@
 			<ComputedFieldMethod>getValueColumnForDimensionAttributeSql</ComputedFieldMethod>
 			<ExtendedDataType>DimensionValue</ExtendedDataType>
 		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewUnmappedFieldString">
+			<Name>FD10_Other</Name>
+			<ComputedFieldMethod>getValueColumnForDimensionAttributeSql</ComputedFieldMethod>
+			<ExtendedDataType>DimensionValue</ExtendedDataType>
+		</AxDataEntityViewField>
 	</Fields>
 	<Mappings />
 	<PropertyModifications />

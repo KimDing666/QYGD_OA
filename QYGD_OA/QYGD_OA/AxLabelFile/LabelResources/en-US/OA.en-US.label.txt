@@ -33,6 +33,7 @@ OAExpensePaymentMethod=Payment method
 OAExpensePaymentType=Payment type
 OAExpenseProject=Project
 OAExpenseTabHeader=OA Expense voucher staging 
+OAExpenseTaxRate=Tax rate
 OAExpenseTotalAmount=Payment total amount
 OAExpenseTransDate=Transaction date
 OAExpenseValidateAmount=The non-tax amount and the tax-inclusive amount must both be greater than zero.

@@ -126,16 +126,13 @@ public class QYGD_OAExpenseHeaderSagingTable extends common
 					<DataField>CurrencyCode</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
-					<DataField>ExchRate</DataField>
-				</AxTableFieldGroupField>
-				<AxTableFieldGroupField>
 					<DataField>TotalAmount</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
 					<DataField>TransDate</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
-					<DataField>JournalNum</DataField>
+					<DataField>ExpNumber</DataField>
 				</AxTableFieldGroupField>
 			</Fields>
 		</AxTableFieldGroup>
@@ -272,6 +269,15 @@ public class QYGD_OAExpenseHeaderSagingTable extends common
 			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
 			<Label>@OA:OAExpenseLineExchRate</Label>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>ExpNumber</Name>
+			<AllowEdit>No</AllowEdit>
+			<AllowEditOnCreate>No</AllowEditOnCreate>
+			<AssetClassification>Customer Content</AssetClassification>
+			<ExtendedDataType>TrvExpNumber</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes>
@@ -308,6 +314,22 @@ public class QYGD_OAExpenseHeaderSagingTable extends common
 				</AxTableRelationConstraint>
 			</Constraints>
 			<Index>TypeNumIdx</Index>
+		</AxTableRelation>
+		<AxTableRelation xmlns=""
+			i:type="AxTableRelationForeignKey">
+			<Name>TrvExpTable</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<RelatedTable>TrvExpTable</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>ExpNumber</Name>
+					<Field>ExpNumber</Field>
+					<RelatedField>ExpNumber</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
 		</AxTableRelation>
 	</Relations>
 	<StateMachines />

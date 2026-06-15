@@ -12,6 +12,7 @@ public class QYGD_OAExpenseLinesContract
     private str  currencyCode;
     private str  txt;
     private str  expenseDate;
+    private str  taxRate;
     private real exchRate;
     private real excludeTaxAmount;
     private real taxAmount;
@@ -88,6 +89,18 @@ public class QYGD_OAExpenseLinesContract
     {
         expenseDate = _expenseDate;
         return expenseDate;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmTaxRate</Name>
+				<Source><![CDATA[
+    [DataMember("taxRate")]
+    public str parmTaxRate(str _taxRate = taxRate)
+    {
+        taxRate = _taxRate;
+        return taxRate;
     }
 
 ]]></Source>

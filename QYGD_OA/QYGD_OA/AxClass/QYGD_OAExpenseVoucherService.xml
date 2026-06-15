@@ -60,7 +60,7 @@ public class QYGD_OAExpenseVoucherService
                     expenseHeaderSagingTable.Department         = _contract.parmDepartment();
                     expenseHeaderSagingTable.CostCenter         = _contract.parmCostCenter();
                     expenseHeaderSagingTable.CurrencyCode       = _contract.parmCurrencyCode();
-                    expenseHeaderSagingTable.ExchRate           = _contract.parmExchRate();
+                    //expenseHeaderSagingTable.ExchRate           = _contract.parmExchRate();
                     expenseHeaderSagingTable.TotalAmount        = _contract.parmTotalAmount();
                     expenseHeaderSagingTable.Other              = _contract.parmOther();
                     expenseHeaderSagingTable.PaymentMethod      = _contract.parmPaymentMethod();
@@ -90,6 +90,7 @@ public class QYGD_OAExpenseVoucherService
                                 expenseLinesSagingTable.CurrencyCode        = expenseLinesContract.parmCurrencyCode();
                                 expenseLinesSagingTable.ExpenseDate         = str2Date(expenseLinesContract.parmExpenseDate(), 321);
                                 expenseLinesSagingTable.ExchRate            = expenseLinesContract.parmExchRate();
+                                expenseLinesSagingTable.TaxRate             = expenseLinesContract.parmTaxRate();
                                 expenseLinesSagingTable.ExcludeTaxAmount    = expenseLinesContract.parmExcludeTaxAmount();
                                 expenseLinesSagingTable.TaxAmount           = expenseLinesContract.parmTaxAmount();
                                 expenseLinesSagingTable.IncludeTaxAmount    = expenseLinesContract.parmIncludeTaxAmount();
@@ -100,13 +101,14 @@ public class QYGD_OAExpenseVoucherService
                 }
                 changecompany (expenseHeaderSagingTable.OwenEntity)
                 {
-                    [posted, voucherId] = this.generateVoucher(expenseHeaderSagingTable);
+                    //[posted, voucherId] = this.generateVoucher(expenseHeaderSagingTable);
+                    [posted, voucherId] = this.generateTrvExpense(expenseHeaderSagingTable);
                 }
 
                 if (posted)
                 {
                     expenseHeaderSagingTable.selectForUpdate(true);
-                    expenseHeaderSagingTable.JournalNum     = voucherId;
+                    expenseHeaderSagingTable.ExpNumber      = voucherId;
                     expenseHeaderSagingTable.TransDate      = DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone());
                     expenseHeaderSagingTable.update();
                     this.insertHeaderLSagingAttatcher(expenseHeaderSagingTable, _contract);
@@ -152,6 +154,172 @@ public class QYGD_OAExpenseVoucherService
     public void insertHeaderLSagingAttatcher(QYGD_OAExpenseHeaderSagingTable _expenseHeading, QYGD_OAExpenseHeaderContract _requestJson)
     {
         DocumentManagement::attachNote(_expenseHeading.TableId, _expenseHeading.RecId, 'dat', '注释','OA报销流程单', FormJsonSerializer::serializeClass(_requestJson));
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>generateTrvExpense</Name>
+				<Source><![CDATA[
+    public container generateTrvExpense(QYGD_OAExpenseHeaderSagingTable _expenseHeading)
+    {
+        QYGD_OAExpenseLinesSagingTable  expenseLines;
+        TrvExpTable                     trvExpTable;
+        TrvExpTrans                     trvExpTrans;
+        container                       conResult;
+        DimensionValue                  departmentDim;
+        DimensionValue                  costCenterDim;
+        DimensionValue                  otherDim;
+        DimensionValue                  vendorCodeDim;
+        DimensionDefault                newDimensionDefault, newLineDimensionDefault;
+        NumberSeq                       numberSeqTrvExpense;
+        ;
+
+        numberSeqTrvExpense = NumberSeq::newGetNum(TrvParameters::numRefExpNumber(),
+                                                   false,
+                                                   true);
+
+        trvExpTable.clear();
+        trvExpTable.initValue();
+        trvExpTable.ExpNumber       = numberSeqTrvExpense.num();
+        trvExpTable.CreatingWorker  = HcmWorker::findByPersonnelNumber(_expenseHeading.WorkerId).RecId;
+        trvExpTable.Txt2            = _expenseHeading.Description;
+        trvExpTable.VendAccount     = _expenseHeading.VendorCode;
+
+        newDimensionDefault         = trvExpTable.DefaultDimension;
+        if (trvExpTable.DefaultDimension != 0)
+        {
+            departmentDim   = Global::getDimensionValue(newDimensionDefault, #Department);
+            if (departmentDim != _expenseHeading.Department)
+            {
+                newDimensionDefault = appendDimensions(newDimensionDefault, [#Department, _expenseHeading.Department]);
+            }
+            costCenterDim   = Global::getDimensionValue(newDimensionDefault, #CostCenter);
+            if (costCenterDim != _expenseHeading.CostCenter)
+            {
+                newDimensionDefault = appendDimensions(newDimensionDefault, [#CostCenter, _expenseHeading.CostCenter]);
+            }
+            vendorCodeDim   = Global::getDimensionValue(newDimensionDefault, #Vendor);
+            if (vendorCodeDim != _expenseHeading.VendorCode)
+            {
+                newDimensionDefault = appendDimensions(newDimensionDefault, [#Vendor, _expenseHeading.VendorCode]);
+            }
+            otherDim        = Global::getDimensionValue(newDimensionDefault, #Other);
+            if (otherDim != _expenseHeading.Other)
+            {
+                newDimensionDefault = appendDimensions(newDimensionDefault, [#Other, _expenseHeading.Other]);
+            }
+            trvExpTable.DefaultDimension    = newDimensionDefault;
+        }
+        else
+        {
+            if (_expenseHeading.Department)
+            {
+                newDimensionDefault = appendDimensions(newDimensionDefault, [#Department, _expenseHeading.Department]);
+            }
+            if (_expenseHeading.CostCenter)
+            {
+                newDimensionDefault = appendDimensions(newDimensionDefault, [#CostCenter, _expenseHeading.CostCenter]);
+            }
+            if (_expenseHeading.VendorCode)
+            {
+                newDimensionDefault = appendDimensions(newDimensionDefault, [#Vendor, _expenseHeading.VendorCode]);
+            }
+            if (_expenseHeading.Other)
+            {
+                newDimensionDefault = appendDimensions(newDimensionDefault, [#Other, _expenseHeading.Other]);
+            }
+        }
+        
+        trvExpTable.insert();
+
+        if (trvExpTable.RecId)
+        {
+            while select expenseLines
+                where expenseLines.ExpenseHeader == _expenseHeading.RecId
+            {
+                trvExpTrans.clear();
+                trvExpTrans.initValue();
+                trvExpTrans.ExpNumber   = trvExpTable.ExpNumber;
+                trvExpTrans.initFromTrvExpTable(trvExpTable.ExpNumber);
+                trvExpTrans.CostType    = expenseLines.Category;
+                trvExpTrans.modifiedField(fieldNum(TrvExpTrans, CostType));
+                trvExpTrans.AmountCurr  = expenseLines.IncludeTaxAmount;
+                trvExpTrans.TaxGroup    = expenseLines.TaxRate;
+                trvExpTrans.modifiedField(fieldNum(TrvExpTrans, TaxGroup));
+                if (expenseLines.CurrencyCode != trvExpTrans.ExchangeCode)
+                {
+                    trvExpTrans.ExchangeCode        = expenseLines.CurrencyCode;
+                    trvExpTrans.modifiedFieldExchCode(true);
+                    if (expenseLines.ExchRate != 0)
+                    {
+                        trvExpTrans.editExchRate(true, expenseLines.ExchRate);
+                    }
+                    
+                }
+                if (expenseLines.TaxAmount)
+                {
+                    trvExpTrans.CorrectedTaxAmount  = expenseLines.TaxAmount;
+                    trvExpTrans.modifiedField(fieldNum(TrvExpTrans, CorrectedTaxAmount));
+                }
+                trvExpTrans.Description         = expenseLines.Txt;
+                newLineDimensionDefault         = trvExpTrans.DefaultDimension;
+                if (expenseLines.Project)
+                {
+                    newDimensionDefault = appendDimensions(newLineDimensionDefault, [#Project, expenseLines.Project]);
+                    trvExpTrans.DefaultDimension    = newDimensionDefault;
+                }
+
+                trvExpTrans.insert();
+
+            }
+
+            //Workflow::activateFromWorkflowType(workflowTypeStr(TrvDocumentTemplate), trvExpTable.RecId, 'Auto submit', false);
+            //trvExpTable.reread();
+            TrvSubmitExpenseReportToWorkflow submitToWorkflow = TrvSubmitExpenseReportToWorkflow::construct(trvExpTable, null, 'Triggered expense submit workflow from Expense Agent');
+            boolean submit = submitToWorkflow.submitEntityToWorkflow(true);
+            if (submit)
+            {
+                QYGD_OAExpenseVoucherService::updateDocumentStatus(trvExpTable, TrvAppStatus::Approved);
+            }
+
+            trvExpTable.reread();
+            if (trvExpTable.ApprovalStatus == TrvAppStatus::Approved)
+            {
+                TrvPost::post(trvExpTable);
+            }
+            trvExpTable.reread();
+        }
+
+        conResult = [true, trvExpTable.ExpNumber];
+
+
+        return conResult;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateDocumentStatus</Name>
+				<Source><![CDATA[
+    public static void updateDocumentStatus(TrvExpTable _trvExpTable, TrvAppStatus _trvAppStatus)
+    {
+        WorkflowContext workflowContext = WorkflowContext::construct();
+        SysWorkflowTable sysWorkflowTableHeader;
+
+        workflowContext.parmRecId(_trvExpTable.RecId);
+        workflowContext.parmTableId(tableNum(TrvExpTable));
+
+        select firstonly WorkflowCorrelationId from sysWorkflowTableHeader
+            where sysWorkflowTableHeader.ContextTableId == tableNum(TrvExpTable)
+                && sysWorkflowTableHeader.ContextRecId == _trvExpTable.RecId;
+
+        workflowContext.parmRootCorrelationId(sysWorkflowTableHeader.WorkflowCorrelationId);
+
+        WorkflowEventArgs workflowEventArgs = WorkflowEventArgs::newWorkflowEventArgs(workflowContext);
+
+        //Setting expense document approval status
+        TrvWorkflowUtilities::setExpenseDocumentStatus(workflowEventArgs.parmWorkflowContext(), _trvAppStatus);
     }
 
 ]]></Source>
@@ -502,12 +670,13 @@ public class QYGD_OAExpenseVoucherService
                 {
                     validate = checkFailed(strFmt('@OA:OAExpenseValidateVendorCodeNull'));
                 }
-
+                /*
                 if (ledgerParameters.QYGD_OAJournalNameId == '' ||
                     ledgerParameters.QYGD_VoucherType)
                 {
                     validate = checkFailed(strFmt('@OA:OAExpenseLedgerParameterCheck'));
                 }
+                */
             }
         }
         else

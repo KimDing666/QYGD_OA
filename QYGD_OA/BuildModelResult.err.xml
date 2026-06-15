@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagnostics
+  GenerationTime="2026-06-15T21:08:27.2292863+08:00">
+  <Items>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/QYGD_OAExpenseVoucherService/Method/`generateTrvExpense</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>AssemblyMustBeReferenced</Moniker>
+      <Line>138</Line>
+      <Column>5</Column>
+      <EndLine>138</EndLine>
+      <EndColumn>40</EndColumn>
+      <Message>A reference to 'Dynamics.AX.CaseManagement, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' is required to compile this module.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Fatal</Severity>
+      <Path></Path>
+      <Moniker>UnableToRestoreFile</Moniker>
+      <Message>Unable to restore the file 'C:\AOSService\PackagesLocalDirectory\QYGD_OA\bin\Dynamics.AX.QYGD_OA.Forms.QYGD_OAExpenseHeaderSagingTable.pdb' to its original state before compilation. A full build of the 'QYGD_OA' module may be necessary to restore functionality. The error message given was: Could not find file 'C:\AOSService\PackagesLocalDirectory\QYGD_OA\bin\Dynamics.AX.QYGD_OA.Forms.QYGD_OAExpenseHeaderSagingTable.pdbjnudddf3.zux.delete'.</Message>
+    </Diagnostic>
+  </Items>
+  <Aliases />
+</Diagnostics>

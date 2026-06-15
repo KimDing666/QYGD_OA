@@ -228,15 +228,6 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 									</AxFormControl>
 									<AxFormControl xmlns=""
 										i:type="AxFormRealControl">
-										<Name>HeaderGrid_ExchRate</Name>
-										<Type>Real</Type>
-										<FormControlExtension
-											i:nil="true" />
-										<DataField>ExchRate</DataField>
-										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
-									</AxFormControl>
-									<AxFormControl xmlns=""
-										i:type="AxFormRealControl">
 										<Name>HeaderGrid_TotalAmount</Name>
 										<Type>Real</Type>
 										<FormControlExtension
@@ -255,11 +246,11 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 									</AxFormControl>
 									<AxFormControl xmlns=""
 										i:type="AxFormStringControl">
-										<Name>HeaderGrid_JournalNum</Name>
+										<Name>HeaderGrid_ExpNumber</Name>
 										<Type>String</Type>
 										<FormControlExtension
 											i:nil="true" />
-										<DataField>JournalNum</DataField>
+										<DataField>ExpNumber</DataField>
 										<DataSource>QYGD_OAExpenseHeaderSagingTable</DataSource>
 									</AxFormControl>
 								</Controls>
@@ -366,6 +357,15 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 										<FormControlExtension
 											i:nil="true" />
 										<DataField>ExchRate</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormStringControl">
+										<Name>LinesGrid_TaxRate</Name>
+										<Type>String</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>TaxRate</DataField>
 										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
 									</AxFormControl>
 									<AxFormControl xmlns=""

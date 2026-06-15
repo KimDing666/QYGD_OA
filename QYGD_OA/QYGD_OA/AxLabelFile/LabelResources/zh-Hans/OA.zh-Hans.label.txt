@@ -34,6 +34,7 @@ OAExpensePaymentMethod=付款方式
 OAExpensePaymentType=费用类型
 OAExpenseProject=项目
 OAExpenseTabHeader=OA报销凭证暂存
+OAExpenseTaxRate=税率
 OAExpenseTotalAmount=付款总金额
 OAExpenseTransDate=交易日期
 OAExpenseValidateAmount=不含税金额和含税金额必须大于零。

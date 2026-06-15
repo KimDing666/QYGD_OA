@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2026-06-14T14:31:34.3083196+08:00">
+  GenerationTime="2026-06-15T22:28:20.6180418+08:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>ExternalReference</DiagnosticType>
@@ -17,6 +17,16 @@
       <Message>Assembly 'System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' failed to load because it was not found.</Message>
     </Diagnostic>
     <Diagnostic>
+      <DiagnosticType>Generation</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://View/HcmPositionV2Entity</Path>
+      <ElementType>View</ElementType>
+      <Moniker>IsRuntimeServicesMode</Moniker>
+      <Line>0</Line>
+      <Column>0</Column>
+      <Message>Is Runtime Services mode: False</Message>
+    </Diagnostic>
+    <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
       <Path>dynamics://Class/Global_QYGD_OA_Extension/Method/getDataflowToken</Path>
@@ -27,6 +37,18 @@
       <EndLine>20</EndLine>
       <EndColumn>83</EndColumn>
       <Message>The type conversion from 'System.Int64' to 'int(TimeOfDay)' loses range.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/Global_QYGD_OA_Extension/Method/appendDimensions</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>80</Line>
+      <Column>9</Column>
+      <EndLine>80</EndLine>
+      <EndColumn>93</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
     </Diagnostic>
   </Items>
   <Aliases />

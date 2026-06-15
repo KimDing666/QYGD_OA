@@ -83,6 +83,183 @@ final static class Global_QYGD_OA_Extension
 
 ]]></Source>
 			</Method>
+			<Method>
+				<Name>appendDimensions</Name>
+				<Source><![CDATA[
+    public static DimensionDefault appendDimensions(DimensionDefault    _origDefaultDimension,
+                                                    container           _conDimensions)
+    {
+        container           origDim         = _origDefaultDimension ? getDimensionAttributeValueSetValue(_origDefaultDimension) : conNull();
+        container           dimensionValue;
+        DimensionDefault    dimensionSetId;
+        int                 attributeCount  = (conLen(origDim) > 0) ? conPeek(origDim, 1) : 0;
+        int                 newAttrCount    = attributeCount + (conLen(_conDimensions) / 2);
+        Counter             pos;
+
+        //组合新旧维度
+        dimensionValue = (conLen(origDim) > 0) ? conPoke(origDim, 1, newAttrCount) : conIns(dimensionValue, 1, newAttrCount);
+        for (pos = 1; pos <= conLen(_conDimensions); pos++)
+        {
+            dimensionValue += [conPeek(_conDimensions, pos)];
+        }
+        //获取新维度值的RECID
+        dimensionSetId = getDimensionAttributeValueSetId(dimensionValue);
+
+        return dimensionSetId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getDimensionValue</Name>
+				<Source><![CDATA[
+    static Name getDimensionValue(RefRecId _defaultDimension, Name _dimensionName)
+    {
+        container dimensioncon;
+        
+        dimensioncon = getDimensionAttributeValueSetValue(_defaultDimension);
+        if (conFind(dimensioncon, _dimensionName))
+        {
+            return conPeek(dimensioncon, conFind(dimensioncon, _dimensionName)+1);
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validateFinancialDimension</Name>
+				<Source><![CDATA[
+    public static DimensionAttribute validateFinancialDimension(str _dimensionName)
+    {
+        #DimensionServiceFaults
+        DimensionAttribute  dimensionAttribute;
+
+        dimensionAttribute = DimensionAttribute::findByName(_dimensionName);
+
+        if (!dimensionAttribute)
+        {
+            AifFault::checkFailedLogFault(strFmt("@SYS342559", _dimensionName), #DimensionAttributeDoesNotExist);
+            throw AifFault::faultList("@SYS98197", #ValidationFailed);
+        }
+
+        return dimensionAttribute;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getDimensionAttributeValueSetId</Name>
+				<Source><![CDATA[
+    public static recId getDimensionAttributeValueSetId(container _dimensionValue, dataAreaId _dataAreaId = curext())
+    {
+        recId                               dimensionId;
+        DimensionAttributeValueSetStorage   storage;
+        DimensionAttribute                  dimensionAttribute;
+        DimensionAttributeValue             dimensionAttributeValue;
+        int                                 attributeCount, attributeIndex;
+        str                                 attributeName, attributeValue;
+        int                                 containerElementIndex;
+
+        changecompany(_dataAreaId)
+        {
+            containerElementIndex = 1;
+
+            storage = new DimensionAttributeValueSetStorage();
+
+            // Get attribute count
+            attributeCount = conPeek(_dimensionValue, containerElementIndex);
+            containerElementIndex++;
+
+            // Get attributes
+            for (attributeIndex = 1; attributeIndex <= attributeCount; attributeIndex++)
+            {
+                // Get attribute name
+                attributeName = conPeek(_dimensionValue, containerElementIndex);
+                containerElementIndex++;
+
+                // Validate the Financial Dimenion that was passed in.
+                dimensionAttribute = Global::validateFinancialDimension(attributeName);
+
+                // Get attribute value
+                attributeValue = conPeek(_dimensionValue, containerElementIndex);
+                containerElementIndex++;
+
+                // Validate the Financial Dimenion Value that was passed in.
+                dimensionAttributeValue = Global::validateFinancialDimensionValue(dimensionAttribute, attributeValue);
+
+                // Add attribute
+                storage.addItem(dimensionAttributeValue);
+            }
+
+            dimensionId = storage.save();
+        }
+
+        return dimensionId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validateFinancialDimensionValue</Name>
+				<Source><![CDATA[
+    public static DimensionAttributeValue validateFinancialDimensionValue(DimensionAttribute _dimensionAttribute, str _dimensionValue)
+    {
+        #DimensionServiceFaults
+        DimensionAttributeValue dimensionAttributeValue;
+
+        dimensionAttributeValue = DimensionAttributeValue::findByDimensionAttributeAndValueNoError(_dimensionAttribute, _dimensionValue, false, true);
+
+        if (!dimensionAttributeValue)
+        {
+            AifFault::checkFailedLogFault(strFmt("@SYS342560", _dimensionValue), #DimensionAttributeValueDoesNotExist);
+            throw AifFault::faultList("@SYS98197", #ValidationFailed);
+        }
+
+        return dimensionAttributeValue;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getDimensionAttributeValueSetValue</Name>
+				<Source><![CDATA[
+    public static container getDimensionAttributeValueSetValue(recId _dimensionId)
+    {
+        container                           value;
+        DimensionAttributeValueSetStorage   storage;
+        int                                 attributeCount, attributeIndex;
+        str                                 attributeName, attributeValue;
+
+        value = conNull();
+
+        // Get storage
+        storage = DimensionAttributeValueSetStorage::find(_dimensionId);
+
+        // Add attribute count
+        attributeCount = storage.elements();
+        value += attributeCount;
+
+        // Add attributes
+        for (attributeIndex = 1; attributeIndex <= attributeCount; attributeIndex++)
+        {
+            // Add attribute name
+            attributeName = DimensionAttribute::find(storage.getAttributeByIndex(attributeIndex)).Name;
+            value += attributeName;
+
+            // Add attribute value
+            attributeValue = DimensionAttributeValue::find(storage.getValueByIndex(attributeIndex)).getValue();
+            value += attributeValue;
+        }
+
+        return value;
+    }
+
+]]></Source>
+			</Method>
 		</Methods>
 	</SourceCode>
 </AxClass>
