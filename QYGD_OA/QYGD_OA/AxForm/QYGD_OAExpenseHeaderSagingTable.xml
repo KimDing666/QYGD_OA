@@ -395,6 +395,15 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 										<DataField>IncludeTaxAmount</DataField>
 										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
 									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormDateControl">
+										<Name>LinesGrid_ExpenseDate</Name>
+										<Type>Date</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>ExpenseDate</DataField>
+										<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>
+									</AxFormControl>
 								</Controls>
 								<DataGroup>Overview</DataGroup>
 								<DataSource>QYGD_OAExpenseLinesSagingTable</DataSource>

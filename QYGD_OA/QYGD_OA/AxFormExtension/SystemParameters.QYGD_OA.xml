@@ -52,11 +52,38 @@
 						<Controls>
 							<AxFormControl xmlns=""
 								i:type="AxFormStringControl">
+								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceCodeUrl</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>QYGD_OAInterfaceCodeUrl</DataField>
+								<DataSource>SystemParameters</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
 								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceTokenUrl</Name>
 								<Type>String</Type>
 								<FormControlExtension
 									i:nil="true" />
 								<DataField>QYGD_OAInterfaceTokenUrl</DataField>
+								<DataSource>SystemParameters</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceUrl</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>QYGD_OAInterfaceUrl</DataField>
+								<DataSource>SystemParameters</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceCorpId</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>QYGD_OAInterfaceCorpId</DataField>
 								<DataSource>SystemParameters</DataSource>
 							</AxFormControl>
 							<AxFormControl xmlns=""
@@ -76,15 +103,7 @@
 									i:nil="true" />
 								<DataField>QYGD_OAInterfaceSecretValue</DataField>
 								<DataSource>SystemParameters</DataSource>
-							</AxFormControl>
-							<AxFormControl xmlns=""
-								i:type="AxFormStringControl">
-								<Name>QYGD_OAInterfaceSetup_QYGD_OAInterfaceUrl</Name>
-								<Type>String</Type>
-								<FormControlExtension
-									i:nil="true" />
-								<DataField>QYGD_OAInterfaceUrl</DataField>
-								<DataSource>SystemParameters</DataSource>
+								<PasswordStyle>Yes</PasswordStyle>
 							</AxFormControl>
 						</Controls>
 						<ColumnsMode>Fill</ColumnsMode>

@@ -230,7 +230,8 @@ public class QYGD_OAExpenseVoucherService
                 newDimensionDefault = appendDimensions(newDimensionDefault, [#Other, _expenseHeading.Other]);
             }
         }
-        
+        trvExpTable.QYGD_OAExpenseNum   = _expenseHeading.ExpenseNum;
+        trvExpTable.QYGD_PaymentMethod  = _expenseHeading.PaymentMethod;
         trvExpTable.insert();
 
         if (trvExpTable.RecId)

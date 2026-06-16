@@ -13,7 +13,7 @@
 			<Tags></Tags>
 			<Type>String</Type>
 			<TypeName></TypeName>
-			<Name>accessToken</Name>
+			<Name>corpid</Name>
 			<Attributes />
 			<Visibility>Public</Visibility>
 		</AxClassMemberVariable>
@@ -21,7 +21,7 @@
 			<Tags></Tags>
 			<Type>String</Type>
 			<TypeName></TypeName>
-			<Name>errcode</Name>
+			<Name>response_type</Name>
 			<Attributes />
 			<Visibility>Public</Visibility>
 		</AxClassMemberVariable>
@@ -29,37 +29,21 @@
 			<Tags></Tags>
 			<Type>String</Type>
 			<TypeName></TypeName>
-			<Name>errmsg</Name>
-			<Attributes />
-			<Visibility>Public</Visibility>
-		</AxClassMemberVariable>
-		<AxClassMemberVariable>
-			<Tags></Tags>
-			<Type>String</Type>
-			<TypeName></TypeName>
-			<Name>refreshToken</Name>
-			<Attributes />
-			<Visibility>Public</Visibility>
-		</AxClassMemberVariable>
-		<AxClassMemberVariable>
-			<Tags></Tags>
-			<Type>Int32</Type>
-			<TypeName></TypeName>
-			<Name>expires_in</Name>
+			<Name>state</Name>
 			<Attributes />
 			<Visibility>Public</Visibility>
 		</AxClassMemberVariable>
 	</Members>
 	<Methods>
 		<Method>
-			<Name>paramAccessToken</Name>
+			<Name>paramCorpid</Name>
 			<Visibility>Public</Visibility>
 			<Attributes>
 				<AxAttribute>
 					<Name>DataMemberAttribute</Name>
 					<Parameters>
 						<AxAttributeParameter>
-							<TypeValue>'accessToken'</TypeValue>
+							<TypeValue>'corpid'</TypeValue>
 							<AdditionalData />
 						</AxAttributeParameter>
 					</Parameters>
@@ -70,8 +54,8 @@
 					<Tags></Tags>
 					<Type>String</Type>
 					<TypeName></TypeName>
-					<DefaultValue>accessToken</DefaultValue>
-					<Name>_accessToken</Name>
+					<DefaultValue>corpid</DefaultValue>
+					<Name>_corpid</Name>
 				</AxMethodParameter>
 			</Parameters>
 			<ReturnType>
@@ -81,14 +65,14 @@
 			</ReturnType>
 		</Method>
 		<Method>
-			<Name>paramErrcode</Name>
+			<Name>paramResponse_type</Name>
 			<Visibility>Public</Visibility>
 			<Attributes>
 				<AxAttribute>
 					<Name>DataMemberAttribute</Name>
 					<Parameters>
 						<AxAttributeParameter>
-							<TypeValue>'errcode'</TypeValue>
+							<TypeValue>'response_type'</TypeValue>
 							<AdditionalData />
 						</AxAttributeParameter>
 					</Parameters>
@@ -99,8 +83,8 @@
 					<Tags></Tags>
 					<Type>String</Type>
 					<TypeName></TypeName>
-					<DefaultValue>errcode</DefaultValue>
-					<Name>_errcode</Name>
+					<DefaultValue>response_type</DefaultValue>
+					<Name>_response_type</Name>
 				</AxMethodParameter>
 			</Parameters>
 			<ReturnType>
@@ -110,14 +94,14 @@
 			</ReturnType>
 		</Method>
 		<Method>
-			<Name>paramErrmsg</Name>
+			<Name>paramState</Name>
 			<Visibility>Public</Visibility>
 			<Attributes>
 				<AxAttribute>
 					<Name>DataMemberAttribute</Name>
 					<Parameters>
 						<AxAttributeParameter>
-							<TypeValue>'errmsg'</TypeValue>
+							<TypeValue>'state'</TypeValue>
 							<AdditionalData />
 						</AxAttributeParameter>
 					</Parameters>
@@ -128,71 +112,13 @@
 					<Tags></Tags>
 					<Type>String</Type>
 					<TypeName></TypeName>
-					<DefaultValue>errmsg</DefaultValue>
-					<Name>_errmsg</Name>
+					<DefaultValue>state</DefaultValue>
+					<Name>_state</Name>
 				</AxMethodParameter>
 			</Parameters>
 			<ReturnType>
 				<Tags></Tags>
 				<Type>String</Type>
-				<TypeName></TypeName>
-			</ReturnType>
-		</Method>
-		<Method>
-			<Name>paramRefreshToken</Name>
-			<Visibility>Public</Visibility>
-			<Attributes>
-				<AxAttribute>
-					<Name>DataMemberAttribute</Name>
-					<Parameters>
-						<AxAttributeParameter>
-							<TypeValue>'refreshToken'</TypeValue>
-							<AdditionalData />
-						</AxAttributeParameter>
-					</Parameters>
-				</AxAttribute>
-			</Attributes>
-			<Parameters>
-				<AxMethodParameter>
-					<Tags></Tags>
-					<Type>String</Type>
-					<TypeName></TypeName>
-					<DefaultValue>refreshToken</DefaultValue>
-					<Name>_refreshToken</Name>
-				</AxMethodParameter>
-			</Parameters>
-			<ReturnType>
-				<Tags></Tags>
-				<Type>String</Type>
-				<TypeName></TypeName>
-			</ReturnType>
-		</Method>
-		<Method>
-			<Name>paramExpires_in</Name>
-			<Visibility>Public</Visibility>
-			<Attributes>
-				<AxAttribute>
-					<Name>DataMemberAttribute</Name>
-					<Parameters>
-						<AxAttributeParameter>
-							<TypeValue>'expires_in'</TypeValue>
-							<AdditionalData />
-						</AxAttributeParameter>
-					</Parameters>
-				</AxAttribute>
-			</Attributes>
-			<Parameters>
-				<AxMethodParameter>
-					<Tags></Tags>
-					<Type>Int32</Type>
-					<TypeName></TypeName>
-					<DefaultValue>expires_in</DefaultValue>
-					<Name>_expires_in</Name>
-				</AxMethodParameter>
-			</Parameters>
-			<ReturnType>
-				<Tags></Tags>
-				<Type>Int32</Type>
 				<TypeName></TypeName>
 			</ReturnType>
 		</Method>

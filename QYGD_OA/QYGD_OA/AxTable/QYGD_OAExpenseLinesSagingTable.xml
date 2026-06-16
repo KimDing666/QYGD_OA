@@ -102,6 +102,9 @@ public class QYGD_OAExpenseLinesSagingTable extends common
 				<AxTableFieldGroupField>
 					<DataField>IncludeTaxAmount</DataField>
 				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>ExpenseDate</DataField>
+				</AxTableFieldGroupField>
 			</Fields>
 		</AxTableFieldGroup>
 	</FieldGroups>
@@ -194,7 +197,7 @@ public class QYGD_OAExpenseLinesSagingTable extends common
 			<Name>TaxRate</Name>
 			<ExtendedDataType>String30</ExtendedDataType>
 			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
-			<Label>@OA:OAExpenseVendorCode</Label>
+			<Label>@OA:OAExpenseTaxRate</Label>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

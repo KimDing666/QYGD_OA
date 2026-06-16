@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>GYGD_OAFlowStatus</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+public class GYGD_OAFlowStatus
+{
+    public str  errcode;
+    public str  errmsg;
+
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>paramErrcode</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('errcode')]
+    public str paramErrcode(str _errcode = errcode)
+    {
+        errcode = _errcode;
+
+        return errcode;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>paramErrmsg</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('errmsg')]
+    public str paramErrmsg(str _errmsg = errmsg)
+    {
+        errmsg = _errmsg;
+
+        return errmsg;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

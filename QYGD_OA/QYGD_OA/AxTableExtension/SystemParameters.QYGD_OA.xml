@@ -7,16 +7,22 @@
 			<Name>QYGD_OAInterface</Name>
 			<Fields>
 				<AxTableFieldGroupField>
+					<DataField>QYGD_OAInterfaceCodeUrl</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
 					<DataField>QYGD_OAInterfaceTokenUrl</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>QYGD_OAInterfaceUrl</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>QYGD_OAInterfaceCorpId</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
 					<DataField>QYGD_OAInterfaceSecret</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
 					<DataField>QYGD_OAInterfaceSecretValue</DataField>
-				</AxTableFieldGroupField>
-				<AxTableFieldGroupField>
-					<DataField>QYGD_OAInterfaceUrl</DataField>
 				</AxTableFieldGroupField>
 			</Fields>
 		</AxTableFieldGroup>
@@ -50,6 +56,20 @@
 			<ExtendedDataType>String255</ExtendedDataType>
 			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
 			<Label>@OA:OAExpenseInterfaceSecret</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>QYGD_OAInterfaceCodeUrl</Name>
+			<ExtendedDataType>String255</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+			<Label>@OA:OAExpenseInterfaceCodeUrl</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>QYGD_OAInterfaceCorpId</Name>
+			<ExtendedDataType>String255</ExtendedDataType>
+			<IgnoreEDTRelation>Yes</IgnoreEDTRelation>
+			<Label>@OA:OAExpenseInterfaceCorpId</Label>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

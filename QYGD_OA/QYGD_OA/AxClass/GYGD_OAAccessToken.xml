@@ -7,7 +7,10 @@
 public class GYGD_OAAccessToken
 {
     public str  accessToken;
-    public real expireInSeconds;
+    public str  errcode;
+    public str  errmsg;
+    public str  refreshToken;
+    public int  expires_in;
 
 
 }
@@ -27,14 +30,53 @@ public class GYGD_OAAccessToken
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>paramExpireInSeconds</Name>
+				<Name>paramErrcode</Name>
 				<Source><![CDATA[
-    [DataMemberAttribute('expireInSeconds')]
-    public real paramExpireInSeconds(real _expireInSeconds = expireInSeconds)
+    [DataMemberAttribute('errcode')]
+    public str paramErrcode(str _errcode = errcode)
     {
-        expireInSeconds = _expireInSeconds;
+        errcode = _errcode;
 
-        return expireInSeconds;
+        return errcode;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>paramErrmsg</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('errmsg')]
+    public str paramErrmsg(str _errmsg = errmsg)
+    {
+        errmsg = _errmsg;
+
+        return errmsg;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>paramRefreshToken</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('refreshToken')]
+    public str paramRefreshToken(str _refreshToken = refreshToken)
+    {
+        refreshToken = _refreshToken;
+
+        return refreshToken;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>paramExpires_in</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('expires_in')]
+    public int paramExpires_in(int _expires_in = expires_in)
+    {
+        expires_in = _expires_in;
+
+        return expires_in;
     }
 
 ]]></Source>

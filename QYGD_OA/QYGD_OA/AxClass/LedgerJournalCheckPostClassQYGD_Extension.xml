@@ -6,12 +6,7 @@
 [ExtensionOf(classstr(LedgerJournalCheckPost))]
 final class LedgerJournalCheckPostClassQYGD_Extension
 {
-}
-]]></Declaration>
-		<Methods>
-			<Method>
-				<Name>postJournal</Name>
-				<Source><![CDATA[
+    /*
     protected container postJournal()
     {
         boolean              postingSuccess;
@@ -33,11 +28,6 @@ final class LedgerJournalCheckPostClassQYGD_Extension
         return [postingSuccess, intercompanyPostingSuccess];
     }
 
-]]></Source>
-			</Method>
-			<Method>
-				<Name>createPaymentRequest</Name>
-				<Source><![CDATA[
     public void createPaymentRequest(LedgerJournalId _jorunalId)
     {
         QYGD_OAExpenseHeaderSagingTable expenseHeaderSagingTable;
@@ -53,9 +43,9 @@ final class LedgerJournalCheckPostClassQYGD_Extension
 
         }
     }
-
-]]></Source>
-			</Method>
-		</Methods>
+    */
+}
+]]></Declaration>
+		<Methods />
 	</SourceCode>
 </AxClass>

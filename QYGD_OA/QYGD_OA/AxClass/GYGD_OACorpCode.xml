@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>GYGD_OACorpCode</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+public class GYGD_OACorpCode
+{
+    public str corpid;
+    public str response_type;
+    public str state;
+
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>paramCorpid</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('corpid')]
+    public str paramCorpid(str _corpid = corpid)
+    {
+        corpid = _corpid;
+
+        return corpid;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>paramResponse_type</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('response_type')]
+    public str paramResponse_type(str _response_type = response_type)
+    {
+        response_type = _response_type;
+
+        return response_type;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>paramState</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute('state')]
+    public str paramState(str _state = state)
+    {
+        state = _state;
+
+        return state;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

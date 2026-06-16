@@ -32,6 +32,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Action Menu Items\" />
     <Folder Include="Classes\" />
     <Folder Include="Data Entity Extensions\" />
     <Folder Include="Display Menu Items\" />
@@ -57,10 +58,25 @@
       <Name>GYGD_OAAccessToken</Name>
       <Link>Classes\GYGD_OAAccessToken</Link>
     </Content>
+    <Content Include="AxClass\GYGD_OACorpCode">
+      <SubType>Content</SubType>
+      <Name>GYGD_OACorpCode</Name>
+      <Link>Classes\GYGD_OACorpCode</Link>
+    </Content>
+    <Content Include="AxClass\GYGD_OAFlowStatus">
+      <SubType>Content</SubType>
+      <Name>GYGD_OAFlowStatus</Name>
+      <Link>Classes\GYGD_OAFlowStatus</Link>
+    </Content>
     <Content Include="AxClass\HcmPositionV2EntityDataEntityQYGD_Extension">
       <SubType>Content</SubType>
       <Name>HcmPositionV2EntityDataEntityQYGD_Extension</Name>
       <Link>Classes\HcmPositionV2EntityDataEntityQYGD_Extension</Link>
+    </Content>
+    <Content Include="AxClass\IWS_PaymentWorkFlowTableTableQYGD_Extension">
+      <SubType>Content</SubType>
+      <Name>IWS_PaymentWorkFlowTableTableQYGD_Extension</Name>
+      <Link>Classes\IWS_PaymentWorkFlowTableTableQYGD_Extension</Link>
     </Content>
     <Content Include="AxClass\LedgerJournalCheckPostClassQYGD_Extension">
       <SubType>Content</SubType>
@@ -76,6 +92,11 @@
       <SubType>Content</SubType>
       <Name>QYGD_OAAuthorizationToken</Name>
       <Link>Classes\QYGD_OAAuthorizationToken</Link>
+    </Content>
+    <Content Include="AxClass\QYGD_OACustomRequest">
+      <SubType>Content</SubType>
+      <Name>QYGD_OACustomRequest</Name>
+      <Link>Classes\QYGD_OACustomRequest</Link>
     </Content>
     <Content Include="AxClass\QYGD_OAExpenseHeaderContract">
       <SubType>Content</SubType>
@@ -167,10 +188,25 @@
       <Name>OXC_GeneralLedger.QYGD_OA</Name>
       <Link>Menu Extensions\OXC_GeneralLedger.QYGD_OA</Link>
     </Content>
+    <Content Include="AxMenuExtension\OXC_TravelAndExpense.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>OXC_TravelAndExpense.QYGD_OA</Name>
+      <Link>Menu Extensions\OXC_TravelAndExpense.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxMenuItemAction\QYGD_OACustomRequest">
+      <SubType>Content</SubType>
+      <Name>QYGD_OACustomRequest</Name>
+      <Link>Action Menu Items\QYGD_OACustomRequest</Link>
+    </Content>
     <Content Include="AxMenuItemDisplay\QYGD_OAExpenseHeaderSagingTable">
       <SubType>Content</SubType>
       <Name>QYGD_OAExpenseHeaderSagingTable</Name>
       <Link>Display Menu Items\QYGD_OAExpenseHeaderSagingTable</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\QYGD_OACustomRequestMaintain">
+      <SubType>Content</SubType>
+      <Name>QYGD_OACustomRequestMaintain</Name>
+      <Link>Security Privileges\QYGD_OACustomRequestMaintain</Link>
     </Content>
     <Content Include="AxSecurityPrivilege\QYGD_OAExpenseHeaderSagingTableMaintain">
       <SubType>Content</SubType>
@@ -192,6 +228,11 @@
       <Name>HcmPositionV2Staging.QYGD_OA</Name>
       <Link>Table Extensions\HcmPositionV2Staging.QYGD_OA</Link>
     </Content>
+    <Content Include="AxTableExtension\IWS_PaymentWorkFlowTable.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>IWS_PaymentWorkFlowTable.QYGD_OA</Name>
+      <Link>Table Extensions\IWS_PaymentWorkFlowTable.QYGD_OA</Link>
+    </Content>
     <Content Include="AxTableExtension\LedgerParameters.QYGD_OA">
       <SubType>Content</SubType>
       <Name>LedgerParameters.QYGD_OA</Name>
@@ -201,6 +242,11 @@
       <SubType>Content</SubType>
       <Name>SystemParameters.QYGD_OA</Name>
       <Link>Table Extensions\SystemParameters.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxTableExtension\TrvExpTable.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>TrvExpTable.QYGD_OA</Name>
+      <Link>Table Extensions\TrvExpTable.QYGD_OA</Link>
     </Content>
     <Content Include="AxTableExtension\VendVendorV2Staging.QYGD_OA">
       <SubType>Content</SubType>

@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2026-06-15T22:27:14.5369144+08:00">
+  GenerationTime="2026-06-16T14:44:27.772593+08:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Error</Severity>
-      <Path>dynamics://Class/QYGD_OAExpenseVoucherService/Method/generateTrvExpense</Path>
+      <Path>dynamics://Class/QYGD_OACustomRequest/Method/syncFlowIdToOA</Path>
       <ElementType>Class Method</ElementType>
-      <Moniker>ExpectedToken</Moniker>
-      <Line>266</Line>
-      <Column>13</Column>
-      <EndLine>266</EndLine>
-      <EndColumn>14</EndColumn>
-      <Message>'}' expected.</Message>
+      <Moniker>InvalidTypeNameAsQualifier</Moniker>
+      <Line>127</Line>
+      <Column>23</Column>
+      <EndLine>127</EndLine>
+      <EndColumn>31</EndColumn>
+      <Message>The qualifier 'DataArea' is not valid in this context. Use a variable of this type instead. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/QYGD_OACustomRequest/Method/syncFlowIdToOA</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InvalidOperationBetweenTypes</Moniker>
+      <Line>127</Line>
+      <Column>23</Column>
+      <EndLine>127</EndLine>
+      <EndColumn>40</EndColumn>
+      <Message>Operator '!=' cannot be applied to operands of type 'DataArea' and 'str'.</Message>
     </Diagnostic>
   </Items>
   <Aliases />

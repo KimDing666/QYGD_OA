@@ -9,10 +9,10 @@
 			<Parameters>
 				<AxAttributeParameter>
 					<Type>Intrinsic</Type>
-					<TypeValue>classstr</TypeValue>
+					<TypeValue>tablestr</TypeValue>
 					<AdditionalData>
 						<AxAttributeParameter>
-							<TypeValue>LedgerJournalCheckPost</TypeValue>
+							<TypeValue>IWS_PaymentWorkFlowTable</TypeValue>
 							<AdditionalData />
 						</AxAttributeParameter>
 						<AxAttributeParameter>
@@ -26,4 +26,14 @@
 			</Parameters>
 		</AxAttribute>
 	</Attributes>
+	<Methods>
+		<Method>
+			<Name>insert</Name>
+			<Visibility>Public</Visibility>
+			<ReturnType>
+				<Tags></Tags>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+	</Methods>
 </z:anyType>

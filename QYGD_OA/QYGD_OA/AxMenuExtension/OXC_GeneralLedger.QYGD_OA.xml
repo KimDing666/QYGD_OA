@@ -2,16 +2,7 @@
 <AxMenuExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V1">
 	<Name>OXC_GeneralLedger.QYGD_OA</Name>
 	<Customizations />
-	<Elements>
-		<AxMenuExtensionElement xmlns="">
-			<Parent>InquiriesReports</Parent>
-			<MenuElement xmlns=""
-				i:type="AxMenuElementMenuItem">
-				<Name>QYGD_OAExpenseHeaderSagingTable</Name>
-				<MenuItemName>QYGD_OAExpenseHeaderSagingTable</MenuItemName>
-			</MenuElement>
-		</AxMenuExtensionElement>
-	</Elements>
+	<Elements />
 	<MenuElementModifications />
 	<PropertyModifications />
 </AxMenuExtension>

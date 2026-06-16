@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>QYGD_OACustomRequest</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class QYGD_OACustomRequest extends RunBaseBatch
+{
+    #DEFINE.CurrentVersion(1)
+    #LOCALMACRO.CurrentList
+    #ENDMACRO
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>canGoBatch</Name>
+				<Source><![CDATA[
+    public boolean canGoBatch()
+    {
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>canGoBatchJournal</Name>
+				<Source><![CDATA[
+    protected boolean canGoBatchJournal()
+    {
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>description</Name>
+				<Source><![CDATA[
+    public static ClassDescription description()
+    {
+        return "@OA:OAExpenseInterfaceSyncFlowId";
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>pack</Name>
+				<Source><![CDATA[
+    public container pack()
+    {
+        return [#CurrentVersion];
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>unpack</Name>
+				<Source><![CDATA[
+    public boolean unpack(container _packedClass)
+    {
+        Version     version     = RunBase::getVersion(_packedClass);
+    
+        switch (version)
+        {
+            case #CurrentVersion :
+                [version] = _packedClass;
+                break;
+            default :
+                return false;
+        }
+    
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>run</Name>
+				<Source><![CDATA[
+    public void run()
+    {
+        #OCCRetryCount
+        setPrefix(this.caption());
+
+        try
+        {
+            ttsbegin;
+            this.syncFlowIdToOA();
+            ttscommit;
+        }
+        catch (Exception::Deadlock)
+        {
+            retry;
+        }
+        catch (Exception::UpdateConflict)
+        {
+            if (appl.ttsLevel() == 0)
+            {
+                if (xSession::currentRetryCount() >= #RetryNum)
+                {
+                    throw Exception::UpdateConflictNotRecovered;
+                }
+                else
+                {
+                    retry;
+                }
+            }
+            else
+            {
+                throw Exception::UpdateConflict;
+            }
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>syncFlowIdToOA</Name>
+				<Source><![CDATA[
+    public void syncFlowIdToOA()
+    {
+        SystemParameters            systemParameters = SystemParameters::find();
+        IWS_PaymentWorkFlowTable    paymentWorkFlowTable, paymentWorkFlowTableUpdate;
+        TrvExpTable                 trvExpTable, trvExpTableUpdate;
+        CompanyInfo                 companyInfo;
+        str                         jsonData, code, token;
+        boolean                     success;
+        str                         message;
+        ;
+
+        while select crossCompany paymentWorkFlowTable
+            where paymentWorkFlowTable.PaymentType == IWS_PaymentType::Reimburse
+               && paymentWorkFlowTable.OriginalType == IWS_OriginalType::Reimburse
+               && paymentWorkFlowTable.QYGD_SyncedToOA == NoYes::No
+               && paymentWorkFlowTable.FlowId != ''
+               && paymentWorkFlowTable.QYGD_OAExpenseNum != ''
+        {
+            if (jsonData == '')
+            {
+                jsonData  = strFmt('{"lcbh": "%1", "lsh": "%2"}', paymentWorkFlowTable.QYGD_OAExpenseNum, paymentWorkFlowTable.FlowId);
+            }
+            else
+            {
+                jsonData += strFmt(',{"lcbh": "%1", "lsh": "%2"}', paymentWorkFlowTable.QYGD_OAExpenseNum, paymentWorkFlowTable.FlowId);
+            }
+        }
+        if (jsonData != '')
+        {
+            jsonData    = '[' + jsonData + ']';
+        }
+
+        code = QYGD_OACustomRequest::getAuthCode(systemParameters.QYGD_OAInterfaceCodeUrl, systemParameters.QYGD_OAInterfaceCorpId);
+        if (code)
+        {
+            token = QYGD_OACustomRequest::getAccessToken(systemParameters.QYGD_OAInterfaceTokenUrl, 
+                                                         systemParameters.QYGD_OAInterfaceSecret,
+                                                         systemParameters.QYGD_OAInterfaceSecretValue,
+                                                         code);
+
+            if (token)
+            {
+                [success, message] = QYGD_OACustomRequest::executeAPI(systemParameters.QYGD_OAInterfaceUrl, token, jsonData);
+            }
+        }
+        if (success)
+        {
+            while select companyInfo
+                where companyInfo.DataArea != 'Dat'
+            {
+                changecompany (companyInfo.DataArea)
+                {
+                    update_recordset paymentWorkFlowTableUpdate setting QYGD_SyncedToOA = NoYes::Yes
+                        where paymentWorkFlowTableUpdate.PaymentType == IWS_PaymentType::Reimburse
+                           && paymentWorkFlowTableUpdate.OriginalType == IWS_OriginalType::Reimburse
+                           && paymentWorkFlowTableUpdate.QYGD_SyncedToOA == NoYes::No
+                           && paymentWorkFlowTableUpdate.FlowId != ''
+                           && paymentWorkFlowTableUpdate.QYGD_OAExpenseNum != '';
+                }
+            }
+        }
+        else
+        {
+            throw error(message);
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    static void main(Args _args)
+    {
+        QYGD_OACustomRequest customRequest;
+        ;
+
+        customRequest = new QYGD_OACustomRequest();
+        if (customRequest.prompt())
+        {
+            customRequest.run();
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getAuthCode</Name>
+				<Source><![CDATA[
+    public static str getAuthCode(str _corpUrl, str _corpId)
+    {
+        System.Net.HttpWebRequest       request;
+        System.Net.HttpWebResponse      response;
+        System.Text.ASCIIEncoding       encodingASCII;
+        System.Net.WebHeaderCollection  httpHeader;
+        GYGD_OACorpCode                 corpCodeAuth        = new GYGD_OACorpCode();
+        System.IO.Stream                requestStream, receiveStream;
+        System.IO.StreamReader          readStream;
+        CLRObject                       clrObj;
+        str                             postData;
+        str                             corpCode;
+        ;
+
+        try
+        {
+            new InteropPermission(InteropKind::ClrInterop).assert();
+            httpHeader = new System.Net.WebHeaderCollection();
+            clrObj  = System.Net.WebRequest::Create(_corpUrl);
+            request = clrObj;
+
+            request.set_Method("POST");
+            request.set_KeepAlive(true);
+            request.set_ContentType("application/json");
+
+            postData  = strFmt('{"corpid":"%1", "response_type": "%2", "state":"%3"}', _corpId, 'code', '');
+
+            encodingASCII = new System.Text.ASCIIEncoding();
+            var data                = encodingASCII.GetBytes(postData);
+            request.ContentLength   = data.Length;
+            requestStream = request.GetRequestStream();
+            requestStream.Write(data, 0, data.Length);
+            requestStream.Close();
+
+            response        = request.GetResponse();
+            receiveStream   = response.GetResponseStream();
+            readStream      = new System.IO.StreamReader(receiveStream, System.Text.Encoding::get_UTF8());
+
+            str result      = readStream.ReadToEnd();
+            corpCodeAuth    = FormJsonSerializer::deserializeObject(classNum(GYGD_OACorpCode), result);
+
+            if (corpCodeAuth.paramCorpid())
+            {
+                corpCode = corpCodeAuth.paramCorpid();
+            }
+
+            response.Close();
+            readStream.Close();
+        }
+        catch (Exception::CLRError)
+        {
+            System.Exception ex = ClrInterop::getLastException();
+            if (ex != null)
+            {
+                ex = ex.get_InnerException();
+                error(ex.Message);
+            }
+        }
+
+        return corpCode;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getAccessToken</Name>
+				<Source><![CDATA[
+    public static str getAccessToken(str _tokenUrl, str _key, str _secret, str _code)
+    {
+        System.Net.HttpWebRequest       request;
+        System.Net.HttpWebResponse      response;
+        System.Text.ASCIIEncoding       encodingASCII;
+        System.Net.WebHeaderCollection  httpHeader;
+        GYGD_OAAccessToken              accessToken        = new GYGD_OAAccessToken();
+        System.IO.Stream                requestStream, receiveStream;
+        System.IO.StreamReader          readStream;
+        CLRObject                       clrObj;
+        str                             postData;
+        str                             token;
+        ;
+
+        try
+        {
+            new InteropPermission(InteropKind::ClrInterop).assert();
+            httpHeader = new System.Net.WebHeaderCollection();
+            clrObj  = System.Net.WebRequest::Create(_tokenUrl);
+            request = clrObj;
+
+            request.set_Method("POST");
+            request.set_KeepAlive(true);
+            request.set_ContentType("application/json");
+
+            postData  = strFmt('{"app_key":"%1", "app_secret": "%2", "grant_type":"%3", "code":"%3"}', _key, _secret, 'authorization_code', _code);
+
+            encodingASCII = new System.Text.ASCIIEncoding();
+            var data                = encodingASCII.GetBytes(postData);
+            request.ContentLength   = data.Length;
+            requestStream = request.GetRequestStream();
+            requestStream.Write(data, 0, data.Length);
+            requestStream.Close();
+
+            response        = request.GetResponse();
+            receiveStream   = response.GetResponseStream();
+            readStream      = new System.IO.StreamReader(receiveStream, System.Text.Encoding::get_UTF8());
+
+            str result      = readStream.ReadToEnd();
+            accessToken    = FormJsonSerializer::deserializeObject(classNum(GYGD_OAAccessToken), result);
+
+            if (accessToken.paramAccessToken())
+            {
+                token = accessToken.paramAccessToken();
+            }
+
+            response.Close();
+            readStream.Close();
+        }
+        catch (Exception::CLRError)
+        {
+            System.Exception ex = ClrInterop::getLastException();
+            if (ex != null)
+            {
+                ex = ex.get_InnerException();
+                error(ex.Message);
+            }
+        }
+
+        return token;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>executeAPI</Name>
+				<Source><![CDATA[
+    public static container executeAPI(str _url, str _token, str _requstJson)
+    {
+        System.Net.HttpWebRequest       request;
+        System.Net.HttpWebResponse      response;
+        System.Text.ASCIIEncoding       encodingASCII;
+        System.Net.WebHeaderCollection  httpHeader;
+        GYGD_OAFlowStatus               flowStatus        = new GYGD_OAFlowStatus();
+        System.IO.Stream                requestStream, receiveStream;
+        System.IO.StreamReader          readStream;
+        CLRObject                       clrObj;
+        str                             postData;
+        str                             corpCode;
+        container                       conResult;
+        ;
+
+        try
+        {
+            new InteropPermission(InteropKind::ClrInterop).assert();
+            httpHeader = new System.Net.WebHeaderCollection();
+            httpHeader.Add('access_token', _token);
+            clrObj  = System.Net.WebRequest::Create(_url);
+            request = clrObj;
+
+            request.set_Method("POST");
+            request.set_KeepAlive(true);
+            request.set_ContentType("application/json");
+            request.set_Headers(httpHeader);
+
+            //postData  = _requstJson;
+
+            encodingASCII = new System.Text.ASCIIEncoding();
+            var data                = encodingASCII.GetBytes(_requstJson);
+            request.ContentLength   = data.Length;
+            requestStream = request.GetRequestStream();
+            requestStream.Write(data, 0, data.Length);
+            requestStream.Close();
+
+            response        = request.GetResponse();
+            receiveStream   = response.GetResponseStream();
+            readStream      = new System.IO.StreamReader(receiveStream, System.Text.Encoding::get_UTF8());
+
+            str result      = readStream.ReadToEnd();
+            flowStatus    = FormJsonSerializer::deserializeObject(classNum(GYGD_OAFlowStatus), result);
+
+            if (flowStatus.paramErrcode() == '0')
+            {
+                conResult = [true, ''];
+            }
+            else
+            {
+                conResult = [false, flowStatus.paramErrmsg()];
+            }
+
+            response.Close();
+            readStream.Close();
+        }
+        catch (Exception::CLRError)
+        {
+            System.Exception ex = ClrInterop::getLastException();
+            if (ex != null)
+            {
+                ex = ex.get_InnerException();
+                error(ex.Message);
+            }
+        }
+
+        return conResult;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>executeOAService</Name>
+				<Source><![CDATA[
+    public static void executeOAService()
+    {
+
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

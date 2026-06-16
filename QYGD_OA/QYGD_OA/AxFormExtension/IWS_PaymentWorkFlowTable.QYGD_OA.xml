@@ -2,7 +2,49 @@
 <AxFormExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V6">
 	<Name>IWS_PaymentWorkFlowTable.QYGD_OA</Name>
 	<ControlModifications />
-	<Controls />
+	<Controls>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControlxt4n35na1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormStringControl">
+				<Name>IWS_PaymentWorkFlowTable_QYGD_PaymentMethod</Name>
+				<Type>String</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<DataField>QYGD_PaymentMethod</DataField>
+				<DataSource>IWS_PaymentWorkFlowTable</DataSource>
+			</FormControl>
+			<Parent>Grid</Parent>
+			<PositionType>AfterItem</PositionType>
+			<PreviousSibling>IWS_PaymentWorkFlowTable_ExpNumber</PreviousSibling>
+		</AxFormExtensionControl>
+		<AxFormExtensionControl xmlns="">
+			<Name>Copym13afnpo1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormStringControl">
+				<Name>IWS_PaymentWorkFlowTable_QYGD_OAExpenseNum</Name>
+				<Type>String</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<DataField>QYGD_OAExpenseNum</DataField>
+				<DataSource>IWS_PaymentWorkFlowTable</DataSource>
+			</FormControl>
+			<Parent>Grid</Parent>
+		</AxFormExtensionControl>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControltvewrq1l1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormCheckBoxControl">
+				<Name>IWS_PaymentWorkFlowTable_QYGD_SyncedToOA</Name>
+				<Type>CheckBox</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<DataField>QYGD_SyncedToOA</DataField>
+				<DataSource>IWS_PaymentWorkFlowTable</DataSource>
+			</FormControl>
+			<Parent>Grid</Parent>
+		</AxFormExtensionControl>
+	</Controls>
 	<DataSourceModifications />
 	<DataSourceReferences />
 	<DataSources />
