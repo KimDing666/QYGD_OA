@@ -351,6 +351,7 @@ public class QYGD_OACustomRequest extends RunBaseBatch
         CLRObject                       clrObj;
         str                             postData;
         str                             corpCode;
+        str                             requestUrl;
         container                       conResult;
         ;
 
@@ -358,14 +359,15 @@ public class QYGD_OACustomRequest extends RunBaseBatch
         {
             new InteropPermission(InteropKind::ClrInterop).assert();
             httpHeader = new System.Net.WebHeaderCollection();
-            httpHeader.Add('access_token', _token);
-            clrObj  = System.Net.WebRequest::Create(_url);
+            //httpHeader.Add('access_token', _token);
+            requestUrl  = _url + strFmt('?access_token=%1', _token);
+            clrObj  = System.Net.WebRequest::Create(requestUrl);
             request = clrObj;
 
             request.set_Method("POST");
             request.set_KeepAlive(true);
             request.set_ContentType("application/json");
-            request.set_Headers(httpHeader);
+            //request.set_Headers(httpHeader);
 
             //postData  = _requstJson;
 
