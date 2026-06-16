@@ -242,6 +242,7 @@ public class QYGD_OAExpenseVoucherService
                 trvExpTrans.clear();
                 trvExpTrans.initValue();
                 trvExpTrans.ExpNumber   = trvExpTable.ExpNumber;
+                trvExpTrans.TransDate   = expenseLines.ExpenseDate;
                 trvExpTrans.initFromTrvExpTable(trvExpTable.ExpNumber);
                 trvExpTrans.CostType    = expenseLines.Category;
                 trvExpTrans.modifiedField(fieldNum(TrvExpTrans, CostType));

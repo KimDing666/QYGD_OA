@@ -145,19 +145,20 @@ public class QYGD_OACustomRequest extends RunBaseBatch
         if (jsonData != '')
         {
             jsonData    = '[' + jsonData + ']';
-        }
+        
 
-        code = QYGD_OACustomRequest::getAuthCode(systemParameters.QYGD_OAInterfaceCodeUrl, systemParameters.QYGD_OAInterfaceCorpId);
-        if (code)
-        {
-            token = QYGD_OACustomRequest::getAccessToken(systemParameters.QYGD_OAInterfaceTokenUrl, 
+            code = QYGD_OACustomRequest::getAuthCode(systemParameters.QYGD_OAInterfaceCodeUrl, systemParameters.QYGD_OAInterfaceCorpId);
+            if (code)
+            {
+                token = QYGD_OACustomRequest::getAccessToken(systemParameters.QYGD_OAInterfaceTokenUrl,
                                                          systemParameters.QYGD_OAInterfaceSecret,
                                                          systemParameters.QYGD_OAInterfaceSecretValue,
                                                          code);
 
-            if (token)
-            {
-                [success, message] = QYGD_OACustomRequest::executeAPI(systemParameters.QYGD_OAInterfaceUrl, token, jsonData);
+                if (token)
+                {
+                    [success, message] = QYGD_OACustomRequest::executeAPI(systemParameters.QYGD_OAInterfaceUrl, token, jsonData);
+                }
             }
         }
         if (success)
@@ -245,9 +246,9 @@ public class QYGD_OACustomRequest extends RunBaseBatch
             str result      = readStream.ReadToEnd();
             corpCodeAuth    = FormJsonSerializer::deserializeObject(classNum(GYGD_OACorpCode), result);
 
-            if (corpCodeAuth.paramCorpid())
+            if (corpCodeAuth.paramCode())
             {
-                corpCode = corpCodeAuth.paramCorpid();
+                corpCode = corpCodeAuth.paramCode();
             }
 
             response.Close();
@@ -296,7 +297,7 @@ public class QYGD_OACustomRequest extends RunBaseBatch
             request.set_KeepAlive(true);
             request.set_ContentType("application/json");
 
-            postData  = strFmt('{"app_key":"%1", "app_secret": "%2", "grant_type":"%3", "code":"%3"}', _key, _secret, 'authorization_code', _code);
+            postData  = strFmt('{"app_key":"%1", "app_secret": "%2", "grant_type":"%3", "code":"%4"}', _key, _secret, 'authorization_code', _code);
 
             encodingASCII = new System.Text.ASCIIEncoding();
             var data                = encodingASCII.GetBytes(postData);

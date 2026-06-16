@@ -6,49 +6,49 @@
 [DataContractAttribute]
 public class GYGD_OACorpCode
 {
-    public str corpid;
-    public str response_type;
-    public str state;
+    public str  errcode;
+    public str  errmsg;
+    public str  code;
 
 
 }
 ]]></Declaration>
 		<Methods>
 			<Method>
-				<Name>paramCorpid</Name>
+				<Name>paramErrcode</Name>
 				<Source><![CDATA[
-    [DataMemberAttribute('corpid')]
-    public str paramCorpid(str _corpid = corpid)
+    [DataMemberAttribute('errcode')]
+    public str paramErrcode(str _errcode = errcode)
     {
-        corpid = _corpid;
+        errcode = _errcode;
 
-        return corpid;
+        return errcode;
     }
 
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>paramResponse_type</Name>
+				<Name>paramErrmsg</Name>
 				<Source><![CDATA[
-    [DataMemberAttribute('response_type')]
-    public str paramResponse_type(str _response_type = response_type)
+    [DataMemberAttribute('errmsg')]
+    public str paramErrmsg(str _errmsg = errmsg)
     {
-        response_type = _response_type;
+        errmsg = _errmsg;
 
-        return response_type;
+        return errmsg;
     }
 
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>paramState</Name>
+				<Name>paramCode</Name>
 				<Source><![CDATA[
-    [DataMemberAttribute('state')]
-    public str paramState(str _state = state)
+    [DataMemberAttribute('code')]
+    public str paramCode(str _code = code)
     {
-        state = _state;
+        code = _code;
 
-        return state;
+        return code;
     }
 
 ]]></Source>

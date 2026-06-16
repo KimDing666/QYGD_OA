@@ -13,7 +13,7 @@
 			<Tags></Tags>
 			<Type>String</Type>
 			<TypeName></TypeName>
-			<Name>corpid</Name>
+			<Name>errcode</Name>
 			<Attributes />
 			<Visibility>Public</Visibility>
 		</AxClassMemberVariable>
@@ -21,7 +21,7 @@
 			<Tags></Tags>
 			<Type>String</Type>
 			<TypeName></TypeName>
-			<Name>response_type</Name>
+			<Name>errmsg</Name>
 			<Attributes />
 			<Visibility>Public</Visibility>
 		</AxClassMemberVariable>
@@ -29,21 +29,21 @@
 			<Tags></Tags>
 			<Type>String</Type>
 			<TypeName></TypeName>
-			<Name>state</Name>
+			<Name>code</Name>
 			<Attributes />
 			<Visibility>Public</Visibility>
 		</AxClassMemberVariable>
 	</Members>
 	<Methods>
 		<Method>
-			<Name>paramCorpid</Name>
+			<Name>paramErrcode</Name>
 			<Visibility>Public</Visibility>
 			<Attributes>
 				<AxAttribute>
 					<Name>DataMemberAttribute</Name>
 					<Parameters>
 						<AxAttributeParameter>
-							<TypeValue>'corpid'</TypeValue>
+							<TypeValue>'errcode'</TypeValue>
 							<AdditionalData />
 						</AxAttributeParameter>
 					</Parameters>
@@ -54,8 +54,8 @@
 					<Tags></Tags>
 					<Type>String</Type>
 					<TypeName></TypeName>
-					<DefaultValue>corpid</DefaultValue>
-					<Name>_corpid</Name>
+					<DefaultValue>errcode</DefaultValue>
+					<Name>_errcode</Name>
 				</AxMethodParameter>
 			</Parameters>
 			<ReturnType>
@@ -65,14 +65,14 @@
 			</ReturnType>
 		</Method>
 		<Method>
-			<Name>paramResponse_type</Name>
+			<Name>paramErrmsg</Name>
 			<Visibility>Public</Visibility>
 			<Attributes>
 				<AxAttribute>
 					<Name>DataMemberAttribute</Name>
 					<Parameters>
 						<AxAttributeParameter>
-							<TypeValue>'response_type'</TypeValue>
+							<TypeValue>'errmsg'</TypeValue>
 							<AdditionalData />
 						</AxAttributeParameter>
 					</Parameters>
@@ -83,8 +83,8 @@
 					<Tags></Tags>
 					<Type>String</Type>
 					<TypeName></TypeName>
-					<DefaultValue>response_type</DefaultValue>
-					<Name>_response_type</Name>
+					<DefaultValue>errmsg</DefaultValue>
+					<Name>_errmsg</Name>
 				</AxMethodParameter>
 			</Parameters>
 			<ReturnType>
@@ -94,14 +94,14 @@
 			</ReturnType>
 		</Method>
 		<Method>
-			<Name>paramState</Name>
+			<Name>paramCode</Name>
 			<Visibility>Public</Visibility>
 			<Attributes>
 				<AxAttribute>
 					<Name>DataMemberAttribute</Name>
 					<Parameters>
 						<AxAttributeParameter>
-							<TypeValue>'state'</TypeValue>
+							<TypeValue>'code'</TypeValue>
 							<AdditionalData />
 						</AxAttributeParameter>
 					</Parameters>
@@ -112,8 +112,8 @@
 					<Tags></Tags>
 					<Type>String</Type>
 					<TypeName></TypeName>
-					<DefaultValue>state</DefaultValue>
-					<Name>_state</Name>
+					<DefaultValue>code</DefaultValue>
+					<Name>_code</Name>
 				</AxMethodParameter>
 			</Parameters>
 			<ReturnType>
