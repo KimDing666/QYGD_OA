@@ -182,7 +182,10 @@ public class QYGD_OACustomRequest extends RunBaseBatch
         }
         else
         {
-            throw error(message);
+            if (jsonData != '')
+            {
+                throw error(message);
+            }
         }
     }
 
