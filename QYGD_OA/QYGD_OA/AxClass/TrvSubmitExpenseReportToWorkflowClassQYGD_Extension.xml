@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>TrvSubmitExpenseReportToWorkflowClassQYGD_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(classstr(TrvSubmitExpenseReportToWorkflow))]
+final class TrvSubmitExpenseReportToWorkflowClassQYGD_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>getSubmitterUserId</Name>
+				<Source><![CDATA[
+    protected WorkflowUser getSubmitterUserId()
+    {
+        TrvExpTable 	trvExpTableInstance = this.parmEntity();
+
+        WorkflowUser user = next getSubmitterUserId();
+
+        if (trvExpTableInstance.QYGD_OAExpenseNum != '')
+        {
+            user = 'Admin';
+        }
+
+        return user;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2026-06-15T21:11:58.1094635+08:00">
+  GenerationTime="2026-06-16T17:38:02.7502256+08:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>ExternalReference</DiagnosticType>
@@ -25,6 +25,30 @@
       <Line>0</Line>
       <Column>0</Column>
       <Message>Is Runtime Services mode: False</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/Global_QYGD_OA_Extension/Method/getDataflowToken</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRange</Moniker>
+      <Line>20</Line>
+      <Column>9</Column>
+      <EndLine>20</EndLine>
+      <EndColumn>83</EndColumn>
+      <Message>The type conversion from 'System.Int64' to 'int(TimeOfDay)' loses range.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/Global_QYGD_OA_Extension/Method/appendDimensions</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>80</Line>
+      <Column>9</Column>
+      <EndLine>80</EndLine>
+      <EndColumn>93</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
@@ -55,13 +79,6 @@
       <Message>Referenced object 'CommercialRegisterSection' is marked as obsolete. </Message>
     </Diagnostic>
     <Diagnostic>
-      <DiagnosticType>FormPatternValidation</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxFormExtension/IWS_PaymentWorkFlowTable.QYGD_OA/Design/Controls/LineTab/GroupTrvExpTrans</Path>
-      <Moniker>ErrorFormControlPatternUnspecified</Moniker>
-      <Message>'AxFormExtension/IWS_PaymentWorkFlowTable.QYGD_OA/Design/Controls/LineTab/GroupTrvExpTrans' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
       <Severity>Warning</Severity>
       <Path>AxDataEntityViewExtension/VendVendorV2Entity.QYGD_OA/Fields/EnterpriseNumber/DataField</Path>
@@ -69,28 +86,11 @@
       <Message>Referenced object 'EnterpriseNumber' is marked as obsolete. </Message>
     </Diagnostic>
     <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
+      <DiagnosticType>FormPatternValidation</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Class/Global_QYGD_OA_Extension/Method/getDataflowToken</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeConversionLosesRange</Moniker>
-      <Line>20</Line>
-      <Column>9</Column>
-      <EndLine>20</EndLine>
-      <EndColumn>83</EndColumn>
-      <Message>The type conversion from 'System.Int64' to 'int(TimeOfDay)' loses range.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/Global_QYGD_OA_Extension/Method/appendDimensions</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
-      <Line>80</Line>
-      <Column>9</Column>
-      <EndLine>80</EndLine>
-      <EndColumn>93</EndColumn>
-      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+      <Path>AxFormExtension/IWS_PaymentWorkFlowTable.QYGD_OA/Design/Controls/LineTab/GroupTrvExpTrans</Path>
+      <Moniker>ErrorFormControlPatternUnspecified</Moniker>
+      <Message>'AxFormExtension/IWS_PaymentWorkFlowTable.QYGD_OA/Design/Controls/LineTab/GroupTrvExpTrans' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>
   </Items>
   <Aliases />

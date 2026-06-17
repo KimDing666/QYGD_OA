@@ -111,7 +111,7 @@
 			</Parameters>
 			<ReturnType>
 				<Tags></Tags>
-				<Type>String</Type>
+				<Type>Container</Type>
 				<TypeName></TypeName>
 			</ReturnType>
 		</Method>
@@ -147,7 +147,7 @@
 			</Parameters>
 			<ReturnType>
 				<Tags></Tags>
-				<Type>String</Type>
+				<Type>Container</Type>
 				<TypeName></TypeName>
 			</ReturnType>
 		</Method>

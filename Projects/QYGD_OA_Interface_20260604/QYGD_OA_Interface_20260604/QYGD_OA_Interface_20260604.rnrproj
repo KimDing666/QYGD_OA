@@ -118,6 +118,11 @@
       <Name>QYGD_OAExpenseVoucherService</Name>
       <Link>Classes\QYGD_OAExpenseVoucherService</Link>
     </Content>
+    <Content Include="AxClass\TrvSubmitExpenseReportToWorkflowClassQYGD_Extension">
+      <SubType>Content</SubType>
+      <Name>TrvSubmitExpenseReportToWorkflowClassQYGD_Extension</Name>
+      <Link>Classes\TrvSubmitExpenseReportToWorkflowClassQYGD_Extension</Link>
+    </Content>
     <Content Include="AxClass\VendVendorV2EntityDataEntityQYGD_Extension">
       <SubType>Content</SubType>
       <Name>VendVendorV2EntityDataEntityQYGD_Extension</Name>
