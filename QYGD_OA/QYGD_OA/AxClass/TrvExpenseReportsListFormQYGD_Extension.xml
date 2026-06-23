@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>TrvExpenseReportsListFormQYGD_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(formstr(TrvExpenseReportsList))]
+final class TrvExpenseReportsListFormQYGD_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>init</Name>
+				<Source><![CDATA[
+    void init()
+    {
+        TrvParameters parameters = TrvParameters::find();
+
+        next init();
+
+        TrvExpTable_ds.allowCreate(!parameters.QYGD_DisableCreateExpenseReport);
+
+        this.design().controlName(formControlStr(TrvExpenseReportsList, ExpenseCreateDelete)).enabled(!parameters.QYGD_DisableCreateExpenseReport);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

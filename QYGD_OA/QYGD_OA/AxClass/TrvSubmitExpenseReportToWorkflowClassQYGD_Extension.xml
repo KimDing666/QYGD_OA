@@ -17,12 +17,12 @@ final class TrvSubmitExpenseReportToWorkflowClassQYGD_Extension
         TrvExpTable 	trvExpTableInstance = this.parmEntity();
 
         WorkflowUser user = next getSubmitterUserId();
-
+        
         if (trvExpTableInstance.QYGD_OAExpenseNum != '')
         {
             user = 'Admin';
         }
-
+        
         return user;
     }
 

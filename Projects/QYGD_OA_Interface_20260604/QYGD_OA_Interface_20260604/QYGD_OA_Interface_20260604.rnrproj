@@ -118,6 +118,11 @@
       <Name>QYGD_OAExpenseVoucherService</Name>
       <Link>Classes\QYGD_OAExpenseVoucherService</Link>
     </Content>
+    <Content Include="AxClass\TrvExpenseReportsListFormQYGD_Extension">
+      <SubType>Content</SubType>
+      <Name>TrvExpenseReportsListFormQYGD_Extension</Name>
+      <Link>Classes\TrvExpenseReportsListFormQYGD_Extension</Link>
+    </Content>
     <Content Include="AxClass\TrvSubmitExpenseReportToWorkflowClassQYGD_Extension">
       <SubType>Content</SubType>
       <Name>TrvSubmitExpenseReportToWorkflowClassQYGD_Extension</Name>
@@ -162,6 +167,11 @@
       <SubType>Content</SubType>
       <Name>SystemParameters.QYGD_OA</Name>
       <Link>Form Extensions\SystemParameters.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxFormExtension\TrvParameters.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>TrvParameters.QYGD_OA</Name>
+      <Link>Form Extensions\TrvParameters.QYGD_OA</Link>
     </Content>
     <Content Include="AxForm\QYGD_OAExpenseHeaderSagingTable">
       <SubType>Content</SubType>
@@ -252,6 +262,11 @@
       <SubType>Content</SubType>
       <Name>TrvExpTable.QYGD_OA</Name>
       <Link>Table Extensions\TrvExpTable.QYGD_OA</Link>
+    </Content>
+    <Content Include="AxTableExtension\TrvParameters.QYGD_OA">
+      <SubType>Content</SubType>
+      <Name>TrvParameters.QYGD_OA</Name>
+      <Link>Table Extensions\TrvParameters.QYGD_OA</Link>
     </Content>
     <Content Include="AxTableExtension\VendVendorV2Staging.QYGD_OA">
       <SubType>Content</SubType>

@@ -13,7 +13,37 @@ public class QYGD_OAExpenseHeaderSagingTable extends FormRun
 ]]></Source>
 			</Method>
 		</Methods>
-		<DataSources xmlns="" />
+		<DataSources xmlns="">
+			<DataSource>
+				<Name>QYGD_OAExpenseHeaderSagingTable</Name>
+				<Methods>
+					<Method>
+						<Name>init</Name>
+						<Source><![CDATA[
+        public void init()
+        {
+            QueryBuildRange owenEntityRange;
+
+            super();
+
+            owenEntityRange = this.queryBuildDataSource().addRange(fieldNum(QYGD_OAExpenseHeaderSagingTable, OwenEntity));
+            owenEntityRange.status(RangeStatus::Locked);
+            if (SecurityRights::newUser(curUserId()).isSystemAdministrator())
+            {
+                this.queryBuildDataSource().clearRange(fieldNum(QYGD_OAExpenseHeaderSagingTable, OwenEntity));
+            }
+            else
+            {
+                owenEntityRange.value(curExt());
+            }
+        }
+
+]]></Source>
+					</Method>
+				</Methods>
+				<Fields />
+			</DataSource>
+		</DataSources>
 		<DataControls xmlns="" />
 		<Members xmlns="" />
 	</SourceCode>

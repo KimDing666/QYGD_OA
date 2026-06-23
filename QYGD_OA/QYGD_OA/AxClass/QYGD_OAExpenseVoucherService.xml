@@ -248,6 +248,7 @@ public class QYGD_OAExpenseVoucherService
                 trvExpTrans.modifiedField(fieldNum(TrvExpTrans, CostType));
                 trvExpTrans.AmountCurr  = expenseLines.IncludeTaxAmount;
                 trvExpTrans.TaxGroup    = expenseLines.TaxRate;
+                trvExpTrans.TaxIncluded = NoYes::Yes;
                 trvExpTrans.modifiedField(fieldNum(TrvExpTrans, TaxGroup));
                 if (expenseLines.CurrencyCode != trvExpTrans.ExchangeCode)
                 {
@@ -276,25 +277,37 @@ public class QYGD_OAExpenseVoucherService
 
             }
 
-            //Workflow::activateFromWorkflowType(workflowTypeStr(TrvDocumentTemplate), trvExpTable.RecId, 'Auto submit', false);
-            //trvExpTable.reread();
             TrvSubmitExpenseReportToWorkflow submitToWorkflow = TrvSubmitExpenseReportToWorkflow::construct(trvExpTable, null, 'Triggered expense submit workflow from Expense Agent');
             boolean submit = submitToWorkflow.submitEntityToWorkflow(true);
             if (submit)
             {
                 QYGD_OAExpenseVoucherService::updateDocumentStatus(trvExpTable, TrvAppStatus::Approved);
-            }
 
-            trvExpTable.reread();
-            if (trvExpTable.ApprovalStatus == TrvAppStatus::Approved)
+                trvExpTable.reread();
+                if (trvExpTable.ApprovalStatus == TrvAppStatus::Approved)
+                {
+                    TrvPost::post(trvExpTable);
+                }
+                trvExpTable.reread();
+
+                if (trvExpTable.ApprovalStatus == TrvAppStatus::Ledger)
+                {
+                    conResult = [true, trvExpTable.ExpNumber];
+                }
+                else
+                {
+                    trvExpTable.selectForUpdate(true);
+                    trvExpTable.delete();
+                    conResult = [false, ''];
+                }
+            }
+            else
             {
-                TrvPost::post(trvExpTable);
+                trvExpTable.selectForUpdate(true);
+                trvExpTable.delete();
+                conResult = [false, ''];
             }
-            trvExpTable.reread();
         }
-
-        conResult = [true, trvExpTable.ExpNumber];
-
 
         return conResult;
     }
@@ -737,10 +750,18 @@ public class QYGD_OAExpenseVoucherService
                 {
                     changecompany (_contract.parmOwenEntity())
                     {
+                        TaxGroupData    taxGroupData;
                         if (TrvCostType::find(expenseLinesContract.parmCategory()).RecId == 0)
                         {
                             validate = checkFailed(strFmt('@OA:OAExpenseValidateCategory', expenseLinesContract.parmCategory(),
                                                                                            _contract.parmOwenEntity()));
+                        }
+
+                        select firstonly taxGroupData
+                            where taxGroupData.TaxGroup == expenseLinesContract.parmTaxRate();
+                        if (taxGroupData.RecId == 0)
+                        {
+                            validate = checkFailed(strFmt('@OA:OAExpenseValidateTaxRate', expenseLinesContract.parmTaxRate(), _contract.parmOwenEntity()));
                         }
                     }
                 }

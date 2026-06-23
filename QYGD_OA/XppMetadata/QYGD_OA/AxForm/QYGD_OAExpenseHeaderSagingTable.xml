@@ -7,7 +7,21 @@
 			<ReturnType />
 		</Method>
 	</Methods>
-	<DataSources />
+	<DataSources>
+		<DataSource>
+			<Name>QYGD_OAExpenseHeaderSagingTable</Name>
+			<Methods>
+				<Method>
+					<Name>init</Name>
+					<Visibility>Public</Visibility>
+					<ReturnType>
+						<TypeName></TypeName>
+					</ReturnType>
+				</Method>
+			</Methods>
+			<Fields />
+		</DataSource>
+	</DataSources>
 	<DataControls />
 	<Members />
 </z:anyType>

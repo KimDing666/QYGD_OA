@@ -82,9 +82,7 @@ public class QYGD_OACustomRequest extends RunBaseBatch
 
         try
         {
-            ttsbegin;
             this.syncFlowIdToOA();
-            ttscommit;
         }
         catch (Exception::Deadlock)
         {
@@ -124,6 +122,8 @@ public class QYGD_OACustomRequest extends RunBaseBatch
         str                         jsonData, code, token;
         boolean                     success;
         str                         message;
+        Set                         setDataAreaId = new Set(Types::String);
+        SetEnumerator               setEnum;
         ;
 
         while select crossCompany paymentWorkFlowTable
@@ -140,6 +140,10 @@ public class QYGD_OACustomRequest extends RunBaseBatch
             else
             {
                 jsonData += strFmt(',{"lcbh": "%1", "lsh": "%2"}', paymentWorkFlowTable.QYGD_OAExpenseNum, paymentWorkFlowTable.FlowId);
+            }
+            if (!setDataAreaId.in(paymentWorkFlowTable.DataAreaId))
+            {
+                setDataAreaId.add(paymentWorkFlowTable.DataAreaId);
             }
         }
         if (jsonData != '')
@@ -163,11 +167,12 @@ public class QYGD_OACustomRequest extends RunBaseBatch
         }
         if (success)
         {
-            while select companyInfo
-                where companyInfo.DataArea != 'DAT'
+            setEnum = setDataAreaId.getEnumerator();
+            while (setEnum.moveNext())
             {
-                changecompany (companyInfo.DataArea)
+                changecompany (setEnum.current())
                 {
+                    ttsbegin;
                     paymentWorkFlowTableUpdate.skipDataMethods(true);
                     paymentWorkFlowTableUpdate.skipEvents(true);
                     paymentWorkFlowTableUpdate.skipDatabaseLog(true);
@@ -177,8 +182,10 @@ public class QYGD_OACustomRequest extends RunBaseBatch
                            && paymentWorkFlowTableUpdate.QYGD_SyncedToOA == NoYes::No
                            && paymentWorkFlowTableUpdate.FlowId != ''
                            && paymentWorkFlowTableUpdate.QYGD_OAExpenseNum != '';
+                    ttscommit;
                 }
             }
+            Info('@OA:OASyncedFinished');
         }
         else
         {
