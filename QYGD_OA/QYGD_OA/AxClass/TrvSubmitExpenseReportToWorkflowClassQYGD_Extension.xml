@@ -20,7 +20,7 @@ final class TrvSubmitExpenseReportToWorkflowClassQYGD_Extension
         
         if (trvExpTableInstance.QYGD_OAExpenseNum != '')
         {
-            user = 'Admin';
+            user = curUserId();
         }
         
         return user;
