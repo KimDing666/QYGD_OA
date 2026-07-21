@@ -6,6 +6,7 @@
 #define.Project('FD09_Project')&#xD;
 #define.Vendor('FD07_Vendor')&#xD;
 #define.Other('FD10_Other')&#xD;
-#define.VAT('VAT')</Source>
+#define.VAT('VAT')&#xD;
+#define.O_FixedAsset('O_FixedAsset')</Source>
 	<Macros />
 </AxMacroDictionary>

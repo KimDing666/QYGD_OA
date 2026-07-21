@@ -808,7 +808,8 @@ public class QYGD_OAExpenseVoucherService
                 }
                 else
                 {
-                    if (expenseLinesContract.parmCategory() like 'R*')
+                    if (expenseLinesContract.parmCategory() == #O_FixedAsset ||
+                        expenseLinesContract.parmCategory() like 'R*')
                     {
                         validate = checkFailed(strFmt('@OA:OAExpenseValidateProjectNull'));
                     }

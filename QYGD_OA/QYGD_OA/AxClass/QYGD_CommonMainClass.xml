@@ -115,6 +115,7 @@ internal final class QYGD_CommonMainClass extends RunBaseBatch
 
         try
         {
+            service.checkExpenseVoucher(FormJsonSerializer::deserializeObject(classNum(QYGD_OAExpenseHeaderContract), data));
             service.generateExpenseVoucher(FormJsonSerializer::deserializeObject(classNum(QYGD_OAExpenseHeaderContract), data));
         }
         catch (Exception::Deadlock)
