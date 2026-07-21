@@ -40,6 +40,7 @@ OAExpenseTabHeader=OA Expense voucher staging
 OAExpenseTaxRate=Tax rate
 OAExpenseTotalAmount=Payment total amount
 OAExpenseTransDate=Transaction date
+OAExpenseValidate=Data validation successful
 OAExpenseValidateAmount=The non-tax amount and the tax-inclusive amount must both be greater than zero.
 OAExpenseValidateAmountBalance=The tax-exclusive amount must be equal to the sum of the tax-inclusive amount and the tax amount.
 OAExpenseValidateCategory=The category code %1 does not exist in the legal entity %2.

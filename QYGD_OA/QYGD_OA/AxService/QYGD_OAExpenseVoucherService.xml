@@ -12,5 +12,12 @@
 				<Read>Allow</Read>
 			</SubscriberAccessLevel>
 		</AxServiceOperation>
+		<AxServiceOperation>
+			<Name>checkExpenseVoucher</Name>
+			<Method>checkExpenseVoucher</Method>
+			<SubscriberAccessLevel>
+				<Read>Allow</Read>
+			</SubscriberAccessLevel>
+		</AxServiceOperation>
 	</ServiceOperations>
 </AxService>

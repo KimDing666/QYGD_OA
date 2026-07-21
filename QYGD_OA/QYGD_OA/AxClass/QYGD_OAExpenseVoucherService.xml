@@ -24,6 +24,34 @@ public class QYGD_OAExpenseVoucherService
 ]]></Source>
 			</Method>
 			<Method>
+				<Name>checkExpenseVoucher</Name>
+				<Source><![CDATA[
+    public QYGD_OAExpenseVoucherResponse checkExpenseVoucher(QYGD_OAExpenseHeaderContract _requestJson)
+    {
+        int             statusCode,infologStartLine;
+
+        QYGD_OAExpenseVoucherResponse response = new QYGD_OAExpenseVoucherResponse();
+
+        infologStartLine = infologLine();
+        if (this.validateContract(_requestJson))
+        {
+            response.parmStatusCode(1);
+            response.parmVoucherId('');
+            response.parmMessage('@OA:OAExpenseValidate');
+        }
+        else
+        {
+            response.parmStatusCode(2);
+            response.parmVoucherId('');
+            response.parmMessage(this.getInfologStr(infologStartLine));
+        }
+
+        return response;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
 				<Name>createExpenseVoucher</Name>
 				<Source><![CDATA[
     public void createExpenseVoucher(QYGD_OAExpenseHeaderContract _contract, QYGD_OAExpenseVoucherResponse _response)
@@ -780,7 +808,10 @@ public class QYGD_OAExpenseVoucherService
                 }
                 else
                 {
-                    validate = checkFailed(strFmt('@OA:OAExpenseValidateProjectNull'));
+                    if (expenseLinesContract.parmCategory() like 'R*')
+                    {
+                        validate = checkFailed(strFmt('@OA:OAExpenseValidateProjectNull'));
+                    }
                 }
 
                 if (expenseLinesContract.parmCurrencyCode())

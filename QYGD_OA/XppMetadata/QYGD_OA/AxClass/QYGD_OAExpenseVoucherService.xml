@@ -21,6 +21,23 @@
 			</ReturnType>
 		</Method>
 		<Method>
+			<Name>checkExpenseVoucher</Name>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Class</Type>
+					<TypeName>QYGD_OAExpenseHeaderContract</TypeName>
+					<Name>_requestJson</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>Class</Type>
+				<TypeName>QYGD_OAExpenseVoucherResponse</TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
 			<Name>createExpenseVoucher</Name>
 			<Visibility>Public</Visibility>
 			<Parameters>

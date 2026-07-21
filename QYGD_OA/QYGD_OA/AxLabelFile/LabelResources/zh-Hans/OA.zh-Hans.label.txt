@@ -41,6 +41,7 @@ OAExpenseTabHeader=OA报销凭证暂存
 OAExpenseTaxRate=税率
 OAExpenseTotalAmount=付款总金额
 OAExpenseTransDate=交易日期
+OAExpenseValidate=数据验证成功
 OAExpenseValidateAmount=不含税金额和含税金额必须大于零。
 OAExpenseValidateAmountBalance=不含税金额必须等于含税金额和税额合计。
 OAExpenseValidateCategory=费用代码%1在账套%2中不存在。
